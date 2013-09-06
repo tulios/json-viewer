@@ -1,12 +1,12 @@
 # JSON Viewer
 
-![logo](https://github.com/tulios/json-viewer/blob/master/logo.png)
+![logo](https://raw.github.com/tulios/json-viewer/master/logo.png)
 
 A sweet JSON highlighter. It is a Chrome extension for printing JSON and JSONP.
 
 ## Output example
 
-![output example](https://github.com/tulios/json-viewer/blob/master/output_example.png)
+![output example](https://raw.github.com/tulios/json-viewer/master/output_example.png)
 
 ## Installation
 
