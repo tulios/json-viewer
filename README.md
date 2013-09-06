@@ -11,7 +11,7 @@ A sweet JSON highlighter. It is a Chrome extension for printing JSON and JSONP.
 ## Installation
 
 ### Install through Chrome Web Store
-### Compile and load
+### or compile and load by yourself
 
   1. it depends on ruby (preferable version 2.0.0-p247)
   2. gem install bundler
