@@ -25,4 +25,5 @@ A sweet JSON highlighter. It is a Chrome extension for printing JSON and JSONP.
 ## Try it on
 
 [https//api.github.com](https://api.github.com)
+
 [https://api.github.com/gists/public](https://api.github.com/gists/public)
