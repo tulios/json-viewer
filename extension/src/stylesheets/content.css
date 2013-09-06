@@ -1,0 +1,8 @@
+.token.string {
+  word-wrap: break-word;
+}
+
+pre[class*="language-"] {
+  margin: 0;
+  border-radius: 0;
+}

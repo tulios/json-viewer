@@ -1,0 +1,25 @@
+{
+  "name": "JSON Viewer",
+  "version": "0.1.0",
+  "manifest_version": 2,
+  "description": "A sweet JSON highlighter",
+  "homepage_url": "https://github.com/tulios/json-viewer",
+  "minimum_chrome_version": "21",
+  "icons": {
+       "128": "icons/128.png",
+       "32": "icons/32.png"
+  },
+  "web_accessible_resources": [
+    "all.css"
+  ],
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": [
+        "all.js"
+      ],
+      "run_at": "document_start"
+    }
+  ],
+  "permissions":["*://*/*", "<all_urls>"]
+}
