@@ -13,6 +13,7 @@
     <script type="text/javascript" src="lib/javascripts/prism-autolinker.js"></script>
     <script type="text/javascript" src="lib/javascripts/jsl-format.js"></script>
     <script type="text/javascript" src="src/javascripts/util.js"></script>
+    <script type="text/javascript" src="src/javascripts/content_util.js"></script>
     <script type="text/javascript" src="src/javascripts/content.js"></script>
     <script type="text/javascript">
       Themes = {
@@ -29,7 +30,7 @@
       var chrome = {
         runtime: {
           sendMessage: function(opts, callback) {
-            callback({theme: ConfiguredTheme});
+            callback(defaultOptions());
           }
         },
 

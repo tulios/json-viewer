@@ -1,30 +1,27 @@
-function twoDigits(number) {
-  var str = number + "";
-  if (str.length === 1) {
-    return "0" + str;
+function merge() {
+  var obj = {}, i = 0, il = arguments.length, key;
+  if (il === 0) {
+    return obj;
   }
 
-  return str;
-}
-
-function getTimestamp() {
-  var date = new Date();
-  var month = date.getMonth() + 1;
-  var day = date.getDate();
-  var hour = date.getHours();
-  var min = date.getMinutes();
-  var sec = date.getSeconds();
-
-  return date.getFullYear() + twoDigits(month) + twoDigits(day) + twoDigits(hour) + twoDigits(min) + twoDigits(sec);
-}
-
-function isJsonp(text) {
-  return /^[a-zA-Z0-9_$]+\(/.test(text);
-}
-
-function extractJSON(jsonText) {
-  if (isJsonp(jsonText)) {
-    jsonText = jsonText.replace(/^[a-zA-Z0-9_$]+\(/, '').replace(/\);?$/, '');
+  for (; i < il; i++) {
+    for (key in arguments[i]) {
+      if (arguments[i].hasOwnProperty(key)) {
+        obj[key] = arguments[i][key];
+      }
+    }
   }
-  return jsonText;
+  return obj;
+}
+
+function defaultOptions() {
+  return {
+    "theme": "default",
+    "maxJsonSize": 1024 // kbyte
+  };    
+}
+
+function getOptions() {
+  var options = JSON.parse(localStorage["options"] || "{}");
+  return merge(defaultOptions(), options);
 }

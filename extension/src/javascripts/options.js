@@ -1,9 +1,11 @@
 //= require jquery.js
+//= require jquery-serialize-object.js
+//= require util.js
 //= require_self
 
 $(function() {
 
-  var currentTheme = localStorage["theme"] || "default";
+  var currentOptions = getOptions();
 
   var updateTheme = function(theme) {
     $(".themes-list span").remove();
@@ -11,16 +13,34 @@ $(function() {
     var link = $("img[alt='" + theme + "']").parent();
     link.addClass("saved");
     link.append($("<span></span>", {text: "Saved"}));
-    localStorage["theme"] = theme;
   }
+
+  var updateOptions = function(jsonOptions) {
+    $.each(jsonOptions, function(key, value) {
+      $("#" + key).val(value);
+    });
+
+    currentOptions = merge(currentOptions, jsonOptions);
+    localStorage["options"] = JSON.stringify(currentOptions);
+    updateTheme(currentOptions.theme);
+  }
+
+  $("form").on("submit", function(e) {
+    e.preventDefault();
+    updateOptions($("form").serializeObject());
+  });
+
+  $("form button[type='submit']").click(function(e) {
+    e.preventDefault();
+    updateOptions($("form").serializeObject());
+  });
 
   $(".themes-list a").click(function(e) {
     e.preventDefault();
     var $this = $(this);
     var theme = $this.find("img").attr("alt");
-    updateTheme(theme);
+    updateOptions({"theme": theme});
   });
 
-  updateTheme(currentTheme);
-
+  updateOptions(currentOptions);
 });

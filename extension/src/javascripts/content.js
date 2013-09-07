@@ -1,4 +1,4 @@
-var CurrentTheme = "default";
+var CurrentOptions = {};
 var Themes = {
   "okaidia": "assets/themes/okaidia.css",
   "tomorrow": "assets/themes/tomorrow.css",
@@ -13,7 +13,7 @@ function importCss() {
     "assets/all.css"
   ]
 
-  var theme = Themes[CurrentTheme] || null;
+  var theme = Themes[CurrentOptions.theme] || null;
   if (theme !== null) {
     array.push(theme);
   }
@@ -68,9 +68,14 @@ function ready () {
   var pre = getPreWithSource();
   if (pre !== null && pre !== undefined) {
     pre.hidden = true;
+
     try {
-      chrome.runtime.sendMessage({action: "GET_THEME"}, function(response) {
-        CurrentTheme = response.theme;
+      chrome.runtime.sendMessage({action: "GET_OPTIONS"}, function(response) {
+        CurrentOptions = response;
+        if (pre.textContent.length > parseInt(CurrentOptions.maxJsonSize, 10) * 1024) {
+          return;
+        }
+
         var jsonText = extractJSON(pre.textContent);
 
         try {
@@ -81,6 +86,7 @@ function ready () {
     } finally {
       pre.hidden = false;
     }
+
   }
 }
 
