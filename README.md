@@ -27,6 +27,14 @@ A sweet JSON highlighter. It is a Chrome extension for printing JSON and JSONP.
 
 ## Try it on
 
-[https//api.github.com](https://api.github.com)
+### JSON
 
-[https://api.github.com/gists/public](https://api.github.com/gists/public)
+  [https//api.github.com](https://api.github.com)
+
+  [https://api.github.com/gists/public](https://api.github.com/gists/public)
+
+  [http://freemusicarchive.org/api/get/curators.json?api_key=60BLHNQCAOUFPIBZ](http://freemusicarchive.org/api/get/curators.jsonp?api_key=60BLHNQCAOUFPIBZ&callback=test)
+
+### JSONP
+
+  [http://freemusicarchive.org/api/get/curators.jsonp?api_key=60BLHNQCAOUFPIBZ&callback=test](http://freemusicarchive.org/api/get/curators.jsonp?api_key=60BLHNQCAOUFPIBZ&callback=test)

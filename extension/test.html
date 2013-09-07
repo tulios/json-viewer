@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link type="text/css" rel="stylesheet" href="lib/stylesheets/normalize.css">
+    <link type="text/css" rel="stylesheet" href="lib/stylesheets/prism.css">
+    <link type="text/css" rel="stylesheet" href="lib/stylesheets/prism-autolinker.css">
+    <link type="text/css" rel="stylesheet" href="src/stylesheets/content.css">
+
+    <script type="text/javascript" src="lib/javascripts/jquery.js"></script>
+    <script type="text/javascript" src="lib/javascripts/prism.js"></script>
+    <script type="text/javascript" src="lib/javascripts/prism-json.js"></script>
+    <script type="text/javascript" src="lib/javascripts/prism-autolinker.js"></script>
+    <script type="text/javascript" src="lib/javascripts/jsl-format.js"></script>
+    <script type="text/javascript" src="src/javascripts/util.js"></script>
+    <script type="text/javascript" src="src/javascripts/content.js"></script>
+    <script type="text/javascript">
+      Themes = {
+        "okaidia": "lib/stylesheets/themes/okaidia.css",
+        "tomorrow": "lib/stylesheets/themes/tomorrow.css",
+        "coy": "lib/stylesheets/themes/coy.css",
+        "funky": "lib/stylesheets/themes/funky.css",
+        "twilight": "lib/stylesheets/themes/twilight.css",
+        "dark": "lib/stylesheets/themes/dark.css"
+      }
+
+      var ConfiguredTheme = "okaidia";
+
+      var chrome = {
+        runtime: {
+          sendMessage: function(opts, callback) {
+            callback({theme: ConfiguredTheme});
+          }
+        },
+
+        extension: {
+          getURL: function(url) {
+            if (url !== "assets/all.css") {
+              return url;
+            }
+
+            return "";
+          }
+        }
+      }
+
+      function getPreWithSource() {
+        return $("pre").get(0);
+      }
+
+      $(function() {
+        $("textarea").on("blur", function() {
+          $("pre").remove();
+          $("<pre>", {"style": "word-wrap: break-word; white-space: pre-wrap;"}).appendTo("body");
+          $("pre").html(this.value);
+          ready();
+        });
+      });
+    </script>
+    <title>JSON Viewer Test Page</title>
+  </head>
+  <body>
+    <textarea style="width: 100%; height: 60px;"></textarea>
+  </body>
+</html>
