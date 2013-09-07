@@ -4,6 +4,14 @@
  * @author Lea Verou
  */
 
+.token.key {
+  color: #FFF;
+}
+
+body {
+	background: hsl(30,20%,25%);
+}
+
 code[class*="language-"],
 pre[class*="language-"] {
 	color: white;
@@ -40,10 +48,8 @@ pre[class*="language-"],
 pre[class*="language-"] {
 	padding: 1em;
 	margin: .5em 0;
-	overflow: auto;	
-	border: .3em solid hsl(30,20%,40%);
-	border-radius: .5em;
-	box-shadow: 1px 1px .5em black inset;
+	overflow: visible;
+  height: 100%;
 }
 
 /* Inline code */

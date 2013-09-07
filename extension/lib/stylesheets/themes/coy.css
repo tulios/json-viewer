@@ -4,6 +4,26 @@
  * @author Tim  Shedor
  */
 
+.token.key {
+	color: #F92672;
+}
+
+body {
+  padding: 1em 2em 1em 1em;
+  -webkit-box-shadow: -1px 0px 0px 0px #358ccb, 0px 0px 0px 1px #dfdfdf;
+  -moz-box-shadow: -1px 0px 0px 0px #358ccb, 0px 0px 0px 1px #dfdfdf;
+  box-shadow: -1px 0px 0px 0px #358ccb, 0px 0px 0px 1px #dfdfdf;
+  border-left: 10px solid #358ccb;
+  background-color: #fdfdfd;
+  background-image: -webkit-linear-gradient(transparent 50%, rgba(69, 142, 209, 0.04) 50%);
+  background-image: -moz-linear-gradient(transparent 50%, rgba(69, 142, 209, 0.04) 50%);
+  background-image: -ms-linear-gradient(transparent 50%, rgba(69, 142, 209, 0.04) 50%);
+  background-image: -o-linear-gradient(transparent 50%, rgba(69, 142, 209, 0.04) 50%);
+  background-image: linear-gradient(transparent 50%, rgba(69, 142, 209, 0.04) 50%);
+  background-size: 3em 3em;
+  background-origin:content-box;
+}
+
 code[class*="language-"],
 pre[class*="language-"] {
   color: black;
@@ -26,34 +46,16 @@ pre[class*="language-"] {
 /* Code blocks */
 pre[class*="language-"] {
   position:relative;
-  padding: 1em;
-  margin: .5em 0;
-  -webkit-box-shadow: -1px 0px 0px 0px #358ccb, 0px 0px 0px 1px #dfdfdf;
-  -moz-box-shadow: -1px 0px 0px 0px #358ccb, 0px 0px 0px 1px #dfdfdf;
-  box-shadow: -1px 0px 0px 0px #358ccb, 0px 0px 0px 1px #dfdfdf;
-  border-left: 10px solid #358ccb;
-  background-color: #fdfdfd;
-  background-image: -webkit-linear-gradient(transparent 50%, rgba(69, 142, 209, 0.04) 50%);
-  background-image: -moz-linear-gradient(transparent 50%, rgba(69, 142, 209, 0.04) 50%);
-  background-image: -ms-linear-gradient(transparent 50%, rgba(69, 142, 209, 0.04) 50%);
-  background-image: -o-linear-gradient(transparent 50%, rgba(69, 142, 209, 0.04) 50%);
-  background-image: linear-gradient(transparent 50%, rgba(69, 142, 209, 0.04) 50%);
-  background-size: 3em 3em;
-  background-origin:content-box;
-  overflow:visible;
-  max-height:30em;
 }
 
 code[class*="language"] {
-  max-height:29em;
   display:block;
-  overflow:scroll;
 }
 
 /* Margin bottom to accomodate shadow */
 :not(pre) > code[class*="language-"],
 pre[class*="language-"] {
-  background-color:#fdfdfd;
+  background: transparent;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
@@ -81,8 +83,6 @@ pre[class*="language-"]:after {
   position: absolute;
   bottom: 0.75em;
   left: 0.18em;
-  width: 40%;
-  height: 20%;
   -webkit-box-shadow: 0px 13px 8px #979797;
   -moz-box-shadow: 0px 13px 8px #979797;
   box-shadow: 0px 13px 8px #979797;
@@ -183,4 +183,8 @@ pre[class*="language-"]:after {
 .token.cr:before,
 .token.lf:before {
   color: #e0d7d1;
+}
+
+pre[class*="language-"] {
+  margin: 0;
 }

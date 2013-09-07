@@ -4,6 +4,14 @@
  * @author ocodia
  */
 
+.token.key {
+	color: #F92672;
+}
+
+body {
+  background: #272822;
+}
+
 code[class*="language-"],
 pre[class*="language-"] {
 	color: #f8f8f2;
@@ -105,4 +113,10 @@ color: #66d9ef;
 
 .token.entity {
 	cursor: help;
+}
+
+pre[class*="language-"] {
+  height: auto;
+  margin: 0;
+  border-radius: 0;
 }

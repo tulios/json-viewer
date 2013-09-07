@@ -4,6 +4,14 @@
  * @author Rose Pritchard
  */
 
+.token.key {
+  color: #CCC;
+}
+
+body {
+  background: #2D2D2D;
+}
+
 code[class*="language-"],
 pre[class*="language-"] {
   color: #ccc;
@@ -22,6 +30,7 @@ pre[class*="language-"] {
   -ms-hyphens: none;
   hyphens: none;
 
+	text-shadow: none;
 }
 
 /* Code blocks */
@@ -104,4 +113,8 @@ pre[class*="language-"] {
 
 .token.entity {
   cursor: help;
+}
+
+pre[class*="language-"] {
+  margin: 0;
 }

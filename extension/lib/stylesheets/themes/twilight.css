@@ -3,6 +3,19 @@
  * Based (more or less) on the Twilight theme originally of Textmate fame.
  * @author Remy Bach
  */
+
+.token.key {
+  color: #FFF;
+}
+
+body {
+	background:hsl(0, 0%, 8%); /* #141414 */
+}
+
+pre[class*="language-"] {
+  height: auto;
+}
+
 code[class*="language-"],
 pre[class*="language-"] {
 	color: white;
@@ -30,11 +43,8 @@ pre[class*="language-"],
 
 /* Code blocks */
 pre[class*="language-"] {
-	border-radius: .5em;
-	border: .3em solid hsl(0,0%,33%); /* #282A2B */
-	box-shadow: 1px 1px .5em black inset;
 	margin: .5em 0;
-	overflow: auto;	
+	overflow: visible;	
 	padding: 1em;
 }
 pre[class*="language-"]::selection { /* Safari */
@@ -169,4 +179,10 @@ pre[data-line] {
 	bottom: .4em;
 	content: attr(data-end);
 	top: auto;
+}
+
+pre[class*="language-"] {
+  height: 100%;
+  margin: 0;
+  border-radius: 0;
 }

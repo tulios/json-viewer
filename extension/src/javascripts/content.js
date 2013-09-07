@@ -1,7 +1,28 @@
+var ExtensionId = "lidggcihkifoejcamppcminfbmnnnnjf";
+var CurrentTheme = "default";
+
+function getThemeCss() {
+  var themes = {
+    "okaidia": "assets/themes/okaidia.css",
+    "tomorrow": "assets/themes/tomorrow.css",
+    "coy": "assets/themes/coy.css",
+    "funky": "assets/themes/funky.css",
+    "twilight": "assets/themes/twilight.css",
+    "dark": "assets/themes/dark.css"
+  }
+
+  return themes[CurrentTheme] || null;
+}
+
 function importCss() {
   var array = [
-    "all.css"
+    "assets/all.css"
   ]
+
+  var theme = getThemeCss();
+  if (theme !== null) {
+    array.push(theme);
+  }
 
   for (var i = 0; i < array.length; i++) {
     var url = chrome.extension.getURL(array[i]);
@@ -80,8 +101,21 @@ function ready () {
 
   if (childNodes.length === 1 && pre.tagName === "PRE") {
     pre.hidden = true;
-    renderJson(pre);
-    pre.hidden = false;
+    try {
+
+      chrome.runtime.sendMessage(ExtensionId, {action: "GET_THEME"}, function(response) {
+        try {
+          CurrentTheme = response.theme;
+          renderJson(pre);
+
+        } finally {
+          pre.hidden = false;
+        }
+      });
+
+    } catch(e) {
+      pre.hidden = false;
+    }
   }
 }
 

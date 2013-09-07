@@ -8,7 +8,7 @@ Bundler.require
 
 ROOT        = Pathname(File.dirname(__FILE__))
 LOGGER      = Logger.new(STDOUT)
-BUNDLES     = %w( all.css all.js )
+BUNDLES     = %w( all.css all.js options.css options.js event.js )
 BUILD_DIR   = ROOT.join("build")
 EXTENSION   = BUILD_DIR.join("json_viewer")
 RELEASE_DIR = ROOT.join("pkg")
@@ -17,10 +17,14 @@ desc "Build extension package"
 task build: [:compile] do
   puts "Copying files"
   FileUtils.mkdir_p EXTENSION
+
   FileUtils.cp_r ROOT.join("extension/icons"), EXTENSION.join("icons")
+  FileUtils.cp_r ROOT.join("extension/src/pages"), EXTENSION.join("pages")
+  FileUtils.cp_r ROOT.join("extension/src/assets"), EXTENSION.join("assets")
+  FileUtils.cp_r ROOT.join("extension/lib/stylesheets/themes"), EXTENSION.join("assets")
   FileUtils.cp_r ROOT.join("extension/manifest.json"), EXTENSION
   BUNDLES.each do |bundle|
-    FileUtils.cp_r BUILD_DIR.join(bundle), EXTENSION
+    FileUtils.cp_r BUILD_DIR.join(bundle), EXTENSION.join("assets").join(bundle)
   end
 
   puts "Zipping"

@@ -1,0 +1,61 @@
+/*
+ *= require bootstrap.css
+ *= require_self
+ */
+
+.container {
+  width: 1050px;
+  margin-bottom: 100px;
+}
+
+.themes-list {
+  overflow: hidden;
+  padding: 0;
+}
+
+.themes-list li {
+  width: 510px;
+  margin-bottom: 20px;
+  text-align: center;
+  list-style: none;
+  float: left;
+}
+
+.themes-list li a {
+  transition: border-color 250ms ease-in-out;
+  -webkit-transition: border-color 250ms ease-in-out;
+
+  position: relative;
+  display: inline-block;
+  border: 4px solid #CCC;
+  border-radius: 3px;
+}
+
+.themes-list li a.saved {
+  background: black;
+}
+
+.themes-list li a.saved img {
+  opacity: 0.5;
+}
+
+.themes-list li a:hover {
+  border: 4px solid #2F9C0A;
+}
+
+.themes-list li a.saved:hover {
+  border: 4px solid #CCC;
+}
+
+.themes-list li a span {
+  transition: color 250ms ease-in-out;
+  -webkit-transition: color 250ms ease-in-out;
+
+  position: absolute;
+  top: 30%;
+  left: 20%;
+  font-size: 80px;
+  text-transform: uppercase;
+  -webkit-text-stroke: 1px black;
+  opacity: 0.7;
+}
