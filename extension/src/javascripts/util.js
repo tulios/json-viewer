@@ -17,7 +17,7 @@ function merge() {
 function defaultOptions() {
   return {
     "theme": "default",
-    "maxJsonSize": 1024 // kbyte
+    "maxJsonSize": 200 // kbyte
   };    
 }
 

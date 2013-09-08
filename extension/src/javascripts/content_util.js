@@ -28,3 +28,10 @@ function extractJSON(jsonText) {
   }
   return jsonText;
 }
+
+function createLoader() {
+  var el = document.createElement("div");
+  el.className = "load";
+  el.innerHTML = '<div class="spinner"></div><span>Formatting</span></div>';
+  return el;
+}

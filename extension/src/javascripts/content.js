@@ -27,11 +27,20 @@ function importCss() {
   }
 }
 
-function appendCode(code, pre) {
+function appendCode(codeText, pre) {
   pre.innerHTML = null;
   pre.removeAttribute("style");
-  pre.appendChild(code);
-  Prism.highlightElement(code);
+  pre.className = "language-json";
+
+  chrome.runtime.sendMessage({action: "HIGHLIGHT", html: codeText}, function(response) {
+    pre.innerHTML = response.html;
+    var load = document.getElementsByClassName("load");
+    if (load && load.length >= 1) {
+      load[0].hidden = true;
+    }
+
+    pre.hidden = false;
+  });
 }
 
 function render(pre, jsonText) {
@@ -43,9 +52,7 @@ function render(pre, jsonText) {
   var header = "// " + getTimestamp() + "\n";
   header += "// " + document.location.href + "\n\n";
 
-  code.className = "language-json";
-  code.textContent = header + formattedText;
-  appendCode(code, pre);
+  appendCode((header + formattedText), pre);
 
   // Export
   var script = document.createElement("script") ;
@@ -68,25 +75,28 @@ function ready () {
   var pre = getPreWithSource();
   if (pre !== null && pre !== undefined) {
     pre.hidden = true;
+    var loader = createLoader();
 
-    try {
-      chrome.runtime.sendMessage({action: "GET_OPTIONS"}, function(response) {
-        CurrentOptions = response;
-        if (pre.textContent.length > parseInt(CurrentOptions.maxJsonSize, 10) * 1024) {
-          return;
-        }
+    chrome.runtime.sendMessage({action: "GET_OPTIONS"}, function(response) {
+      CurrentOptions = response;
 
-        var jsonText = extractJSON(pre.textContent);
+      if (pre.textContent.length > (parseInt(CurrentOptions.maxJsonSize, 10) * 1024)) {
+        pre.hidden = false;
+        return;
+      }
 
-        try {
-          JSON.parse(jsonText);
-          render(pre, jsonText);
-        } catch(e) {}
-      });
-    } finally {
-      pre.hidden = false;
-    }
+      document.body.appendChild(loader);
+      var jsonText = extractJSON(pre.textContent);
 
+      try {
+        JSON.parse(jsonText);
+        render(pre, jsonText);
+
+      } catch(e) {
+        loader.hidden = true;
+        pre.hidden = false;
+      }
+    });
   }
 }
 
