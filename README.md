@@ -4,9 +4,13 @@
 
 A sweet JSON highlighter. It is a Chrome extension for printing JSON and JSONP.
 
-## Output example
+## Themes
 
-![output example](https://raw.github.com/tulios/json-viewer/master/output_example.png)
+![okaidia](https://raw.github.com/tulios/json-viewer/master/extension/src/assets/image_themes/okaidia.png)
+![coy](https://raw.github.com/tulios/json-viewer/master/extension/src/assets/image_themes/coy.png)
+![tomorrow](https://raw.github.com/tulios/json-viewer/master/extension/src/assets/image_themes/tomorrow.png)
+
+[and more!](https://github.com/tulios/json-viewer/wiki/Themes)
 
 ## Installation
 
