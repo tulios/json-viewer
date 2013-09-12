@@ -34,6 +34,8 @@ function appendCode(codeText, pre) {
 
   chrome.runtime.sendMessage({action: "HIGHLIGHT", html: codeText}, function(response) {
     pre.innerHTML = response.html;
+    Prism.applyCodeFold();
+
     var load = document.getElementsByClassName("load");
     if (load && load.length >= 1) {
       load[0].hidden = true;
@@ -47,12 +49,15 @@ function render(pre, jsonText) {
   importCss();
   var codeText = pre.textContent;
   var formattedText = jsl.format.formatJson(codeText);
-
   var code = document.createElement("code");
-  var header = "// " + getTimestamp() + "\n";
-  header += "// " + document.location.href + "\n\n";
 
-  appendCode((header + formattedText), pre);
+  if (CurrentOptions.prependHeader === "true") {
+    var header = "// " + getTimestamp() + "\n";
+    header += "// " + document.location.href + "\n\n";
+    formattedText = header + formattedText;
+  }
+
+  appendCode(formattedText, pre);
 
   // Export
   var script = document.createElement("script") ;
@@ -95,6 +100,7 @@ function ready () {
       } catch(e) {
         loader.hidden = true;
         pre.hidden = false;
+        throw e;
       }
     });
   }

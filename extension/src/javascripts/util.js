@@ -18,10 +18,10 @@ function defaultOptions() {
   return {
     "theme": "default",
     "maxJsonSize": 200 // kbyte
-  };    
+  };
 }
 
 function getOptions() {
-  var options = JSON.parse(localStorage["options"] || "{}");
+  var options = JSON.parse(localStorage["options"] || '{"prependHeader": "true"}');
   return merge(defaultOptions(), options);
 }

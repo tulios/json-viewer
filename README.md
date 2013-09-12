@@ -12,6 +12,9 @@ A sweet JSON highlighter. It is a Chrome extension for printing JSON and JSONP.
 
 [and more!](https://github.com/tulios/json-viewer/wiki/Themes)
 
+
+  Change the themes in the options page (window > extensions > JSON Viewer > Options)
+
 ## Installation
 
 ### Install through Chrome Web Store

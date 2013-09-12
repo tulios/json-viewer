@@ -6,11 +6,27 @@
     <link type="text/css" rel="stylesheet" href="lib/stylesheets/prism.css">
     <link type="text/css" rel="stylesheet" href="lib/stylesheets/prism-autolinker.css">
     <link type="text/css" rel="stylesheet" href="src/stylesheets/content.css">
+    <style type="text/css" media="all">
+      .wrapper.closed {
+        display: block;
+        display: none;
+      }
+      .closer-token {
+        display: none;
+      }
+      .closer-token.enabled {
+        display: inherit;
+      }
+      .wrapper {
+        display: inline;
+      }
+    </style>
 
     <script type="text/javascript" src="lib/javascripts/jquery.js"></script>
     <script type="text/javascript" src="lib/javascripts/prism.js"></script>
     <script type="text/javascript" src="lib/javascripts/prism-json.js"></script>
     <script type="text/javascript" src="lib/javascripts/prism-autolinker.js"></script>
+    <script type="text/javascript" src="lib/javascripts/prism-code-folder.js"></script>
     <script type="text/javascript" src="lib/javascripts/jsl-format.js"></script>
     <script type="text/javascript" src="src/javascripts/util.js"></script>
     <script type="text/javascript" src="src/javascripts/content_util.js"></script>
@@ -26,12 +42,20 @@
       }
 
       var ConfiguredTheme = "okaidia";
+      var listener;
 
       var chrome = {
         runtime: {
           sendMessage: function(opts, callback) {
-            callback(defaultOptions());
+            listener(opts, null, callback);
+          },
+
+          onMessage: {
+            addListener: function(callback) {
+              listener = callback;
+            }
           }
+
         },
 
         extension: {
@@ -58,6 +82,7 @@
         });
       });
     </script>
+    <script type="text/javascript" src="src/javascripts/event.js"></script>
     <title>JSON Viewer Test Page</title>
   </head>
   <body>

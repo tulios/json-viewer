@@ -1,0 +1,13 @@
+.wrapper.closed {
+  display: block;
+  display: none;
+}
+.closer-token {
+  display: none;
+}
+.closer-token.enabled {
+  display: inherit;
+}
+.wrapper {
+  display: inline;
+}

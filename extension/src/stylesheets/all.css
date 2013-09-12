@@ -2,5 +2,6 @@
  *= require normalize.css
  *= require prism.css
  *= require prism-autolinker.css
+ *= require prism-code-folder.css
  *= require content.css
  */

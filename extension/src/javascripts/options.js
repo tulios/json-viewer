@@ -20,6 +20,15 @@ $(function() {
       $("#" + key).val(value);
     });
 
+    $(["awaysFold", "prependHeader"]).each(function(i, value) {
+      if (jsonOptions[value] === "true") {
+       $("#" + value).attr("checked", true);
+      } else {
+        delete currentOptions[value];
+        delete jsonOptions[value];
+      }
+    });
+
     currentOptions = merge(currentOptions, jsonOptions);
     localStorage["options"] = JSON.stringify(currentOptions);
     updateTheme(currentOptions.theme);
