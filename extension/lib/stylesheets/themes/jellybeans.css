@@ -81,13 +81,14 @@ pre[class*="language-"] {
 .token.url,
 .language-css .token.string,
 .style .token.string {
-  color: #818E5B;
+  color: #A24C3E;
+	background: #151515;
 }
 
 .token.atrule,
 .token.attr-value
 {
-	color: #e6db74;
+	color: #E6DB74;
 }
 
 
