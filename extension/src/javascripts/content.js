@@ -5,7 +5,8 @@ var Themes = {
   "coy": "assets/themes/coy.css",
   "funky": "assets/themes/funky.css",
   "twilight": "assets/themes/twilight.css",
-  "dark": "assets/themes/dark.css"
+  "dark": "assets/themes/dark.css",
+  "jellybeans":"assets/themes/jellybeans.css"
 }
 
 function importCss() {
