@@ -48,7 +48,7 @@ $(function() {
     e.preventDefault();
     var $this = $(this);
     var theme = $this.find("img").attr("alt");
-    updateOptions({"theme": theme});
+    updateOptions(merge({"theme": theme}, $("form").serializeObject()));
   });
 
   updateOptions(currentOptions);
