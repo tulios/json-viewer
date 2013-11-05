@@ -2,7 +2,8 @@
 
 ![logo](https://raw.github.com/tulios/json-viewer/master/logo.png)
 
-A sweet JSON highlighter. It is a Chrome extension for printing JSON and JSONP.
+The most beautiful and customizable JSON/JSONP highlighter that your eyes have ever seen.
+It is a Chrome extension for printing JSON and JSONP.
 
 ## Themes
 
