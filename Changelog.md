@@ -1,3 +1,8 @@
+# 0.4.0 - 2013-11-05
+
+  * Jellybeans theme by Thiago Pontes (https://github.com/thiagopnts)
+  * Keep settings when switching themes by Thiago Pontes (https://github.com/thiagopnts)
+
 # 0.3.0 - 2013-09-11
 
   * Collapsible nodes
