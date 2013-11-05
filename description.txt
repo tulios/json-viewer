@@ -1,4 +1,4 @@
-The most beautiful and customizable JSON/JSONP highlighter that your eyes have ever seen. 
+It is a Chrome extension for printing JSON and JSONP.
 
 Features
 * Syntax highlighting
