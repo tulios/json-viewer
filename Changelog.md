@@ -2,6 +2,7 @@
 
   * Added arrows up/down in foldable code
   * Option to configure the font-size
+  * Fixed a bug where content with tags inside was being omitted - ex: {"sldXml": "<UserStyle>#FF0000</UserStyle>"}
 
 # 0.4.0 - 2013-11-05
 

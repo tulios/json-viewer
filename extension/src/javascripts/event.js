@@ -14,7 +14,7 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
     var pre = document.createElement("pre");
     var code = document.createElement("code");
     code.className = "language-json";
-    code.innerHTML = request.html;
+    code.innerHTML = replaceAll(replaceAll(request.html, "<", "&lt;"), ">", "&gt;");
 
     pre.innerHTML = code.outerHTML;
     pre.className = "language-json";
