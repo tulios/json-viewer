@@ -9,6 +9,7 @@ Features
 * Options page with:
    - 8 themes
    - Max json size (200kb default)
+   - Option to configure the font-size
    - Option to activate/deactivate "nodes always collapsed" (from 2º level)
    - Option to activate/deactivate the header (timestamp + url)
 
