@@ -47,6 +47,10 @@
 
         closeMarkup.textContent = closeText;
 
+        var arrowMarkup = document.createElement("span");
+        arrowMarkup.className = "json_viewer arrow-down";
+
+        handle.appendChild(arrowMarkup);
         handle.appendChild(closeMarkup);
         context.appendChild(handle);
 
@@ -106,14 +110,18 @@
       e.preventDefault();
       var wrapper = element.nextSibling;
       var label = element.querySelectorAll("span.closer-token")[0];
+      var arrow = element.querySelectorAll("span.json_viewer")[0];
       var isOpen = /open/.test(wrapper.className);
 
       if (isOpen) {
         wrapper.className = wrapper.className.replace(/\s*open\s*/, ' closed');
         label.className = (label.className + " enabled");
+        arrow.className = arrow.className.replace(/\s*arrow-down\s*/, ' arrow-up');
+
       } else {
         wrapper.className = wrapper.className.replace(/\s*closed\s*/, ' open');
         label.className = label.className.replace(/\s*enabled\s*/, '');
+        arrow.className = arrow.className.replace(/\s*arrow-up\s*/, ' arrow-down');
       }
 
       return false;

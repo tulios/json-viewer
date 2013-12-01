@@ -8,6 +8,32 @@ pre[class*="language-"] {
   border-radius: 0;
 }
 
+.json_viewer {
+  font-family:'json-viewer';
+  font-weight: normal;
+  font-style: normal;
+  line-height: 1;
+  letter-spacing: 0;
+  speak: none;
+  -webkit-font-smoothing: antialiased;
+}
+
+.json_viewer.arrow-down:before{content:'\e001'}
+.json_viewer.arrow-up:before{content:'\e002'}
+
+.openner {
+  padding-left: 20px;
+  position: relative;
+  text-decoration: none;
+}
+
+.json_viewer.arrow-down,
+.json_viewer.arrow-up {
+  position: absolute;
+  left: 0;
+  top: 2px;
+}
+
 .load {
   position: relative;
 }

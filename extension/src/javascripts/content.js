@@ -19,11 +19,19 @@ function importCss() {
     array.push(theme);
   }
 
+  var fontUrl = chrome.extension.getURL("assets/fonts/jsonviewer-Regular.ttf");
+  var style = document.createElement("style");
+  style.rel = "stylesheet";
+  style.type = "text/css";
+  style.innerHTML = "@font-face { font-family: 'json-viewer'; src: url('" + fontUrl + "') format('truetype'); }";
+  document.head.appendChild(style);
+
+  var link = null;
   for (var i = 0; i < array.length; i++) {
     var url = chrome.extension.getURL(array[i]);
-    var link = document.createElement("link");
+    link = document.createElement("link");
     link.rel = "stylesheet";
-    link.href= url;
+    link.href = url;
     document.head.appendChild(link);
   }
 }
