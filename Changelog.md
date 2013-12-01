@@ -1,3 +1,7 @@
+# 0.5.0 - 2013-12-01
+
+  * Added arrows up/down in foldable code
+
 # 0.4.0 - 2013-11-05
 
   * Jellybeans theme by Thiago Pontes (https://github.com/thiagopnts)
