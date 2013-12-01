@@ -23,7 +23,13 @@ function importCss() {
   var style = document.createElement("style");
   style.rel = "stylesheet";
   style.type = "text/css";
-  style.innerHTML = "@font-face { font-family: 'json-viewer'; src: url('" + fontUrl + "') format('truetype'); }";
+
+  var textStyle = "@font-face { font-family: 'json-viewer'; src: url('" + fontUrl + "') format('truetype'); }";
+  if (CurrentOptions.fontSize !== undefined && CurrentOptions.fontSize.length > 0) {
+    textStyle += "\ncode, kbd, pre, samp { font-size: " + CurrentOptions.fontSize + " !important; }";
+  }
+
+  style.innerHTML = textStyle;
   document.head.appendChild(style);
 
   var link = null;
