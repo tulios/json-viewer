@@ -8,10 +8,13 @@
   color: #818E5B;
 }
 
+.json_viewer.gear {
+  color: #FFF;
+}
+
 body {
   background: #151515;
 }
-
 
 code[class*="language-"],
 pre[class*="language-"] {

@@ -8,6 +8,10 @@
 	color: #F92672;
 }
 
+.json_viewer.gear {
+  color: #000;
+}
+
 body {
   padding: 1em 2em 1em 1em;
   -webkit-box-shadow: -1px 0px 0px 0px #358ccb, 0px 0px 0px 1px #dfdfdf;

@@ -1,3 +1,7 @@
+# 0.6.0 - 2013-12-08
+
+  * Added an easy way to access the options page
+
 # 0.5.0 - 2013-12-01
 
   * Added arrows up/down in foldable code

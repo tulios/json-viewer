@@ -8,6 +8,10 @@
   color: #000;
 }
 
+.json_viewer.gear {
+  color: #000;
+}
+
 pre[class*="language-"] {
   height: auto;
 }

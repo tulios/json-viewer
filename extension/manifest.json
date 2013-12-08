@@ -1,6 +1,6 @@
 {
   "name": "JSON Viewer",
-  "version": "0.5.0",
+  "version": "0.6.0",
   "manifest_version": 2,
   "description": "The most beautiful and customizable JSON/JSONP highlighter that your eyes have ever seen",
   "homepage_url": "https://github.com/tulios/json-viewer",
@@ -28,7 +28,9 @@
     "assets/image_themes/twilight.png",
     "assets/image_themes/dark.png",
     "assets/image_themes/jellybeans.png",
-    "assets/fonts/jsonviewer-Regular.ttf"
+    "assets/fonts/jsonviewer-Regular.ttf",
+
+    "pages/options.html"
   ],
   "options_page": "pages/options.html",
   "content_scripts": [
@@ -44,5 +46,6 @@
     "scripts": ["assets/event.js"],
     "persistent": false
   },
-  "permissions":["*://*/*", "<all_urls>"]
+  "permissions":["*://*/*", "<all_urls>"],
+  "optional_permissions": ["tabs"]
 }

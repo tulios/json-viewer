@@ -8,6 +8,10 @@
 	color: #F92672;
 }
 
+.json_viewer.gear {
+  color: #FFF;
+}
+
 body {
   background: #272822;
 }

@@ -42,7 +42,7 @@ function importCss() {
   }
 }
 
-function appendCode(codeText, pre) {
+function appendCode(codeText, pre, afterAppendCallback) {
   pre.innerHTML = null;
   pre.removeAttribute("style");
   pre.className = "language-json";
@@ -57,6 +57,7 @@ function appendCode(codeText, pre) {
     }
 
     pre.hidden = false;
+    afterAppendCallback();
   });
 }
 
@@ -72,7 +73,18 @@ function render(pre, jsonText) {
     formattedText = header + formattedText;
   }
 
-  appendCode(formattedText, pre);
+  appendCode(formattedText, pre, function() {
+    var extras = document.createElement("div");
+    extras.className = "extras";
+
+    var optionsLink = document.createElement("a");
+    optionsLink.className = "json_viewer gear";
+    optionsLink.href = chrome.extension.getURL("/pages/options.html");
+    optionsLink.target = "_blank";
+
+    extras.appendChild(optionsLink);
+    document.body.appendChild(extras);
+  });
 
   // Export
   var script = document.createElement("script") ;

@@ -20,6 +20,32 @@ pre[class*="language-"] {
 
 .json_viewer.arrow-down:before{content:'\e001'}
 .json_viewer.arrow-up:before{content:'\e002'}
+.json_viewer.gear:before{content:'\e003'}
+
+.json_viewer.gear {
+  visibility: hidden;
+  font-size: 36px;
+  text-decoration: none;
+}
+
+.extras {
+  position: absolute;
+  top: 0;
+  right: 0;
+
+  padding: 10px 15px;
+}
+
+.extras a {
+  transition: opacity ease-in-out 300ms;
+  visibility: hidden;
+  opacity: 0;
+}
+
+.extras:hover a {
+  visibility: visible;
+  opacity: 1;
+}
 
 .openner {
   padding-left: 20px;
