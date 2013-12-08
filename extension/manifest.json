@@ -46,6 +46,5 @@
     "scripts": ["assets/event.js"],
     "persistent": false
   },
-  "permissions":["*://*/*", "<all_urls>"],
-  "optional_permissions": ["tabs"]
+  "permissions":["*://*/*", "<all_urls>"]
 }
