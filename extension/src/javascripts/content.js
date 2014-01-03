@@ -61,13 +61,17 @@ function appendCode(codeText, pre, afterAppendCallback) {
   });
 }
 
+function isPrependHeaderEnabled() {
+  return CurrentOptions.prependHeader === "true";
+}
+
 function render(pre, jsonText) {
   importCss();
   var codeText = pre.textContent;
   var formattedText = jsl.format.formatJson(codeText);
   var code = document.createElement("code");
 
-  if (CurrentOptions.prependHeader === "true") {
+  if (isPrependHeaderEnabled()) {
     var header = "// " + getTimestamp() + "\n";
     header += "// " + document.location.href + "\n\n";
     formattedText = header + formattedText;
@@ -103,7 +107,7 @@ function getPreWithSource() {
   return null
 }
 
-function ready () {
+function contentReady () {
   var pre = getPreWithSource();
   if (pre !== null && pre !== undefined) {
     pre.hidden = true;
@@ -132,5 +136,3 @@ function ready () {
     });
   }
 }
-
-document.addEventListener("DOMContentLoaded", ready, false);

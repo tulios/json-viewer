@@ -1,3 +1,8 @@
+# 0.7.0 - 2014-01-03
+
+  * Included the keyword 'json-viewer' into the Omnibox to highlight anonymous json content
+  * Gear icon to options page is now 10% visible to helps users find it
+
 # 0.6.0 - 2013-12-08
 
   * Added an easy way to access the options page

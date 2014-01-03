@@ -23,7 +23,6 @@ pre[class*="language-"] {
 .json_viewer.gear:before{content:'\e003'}
 
 .json_viewer.gear {
-  visibility: hidden;
   font-size: 36px;
   text-decoration: none;
 }
@@ -38,8 +37,8 @@ pre[class*="language-"] {
 
 .extras a {
   transition: opacity ease-in-out 300ms;
-  visibility: hidden;
-  opacity: 0;
+  visibility: visible;
+  opacity: 0.1;
 }
 
 .extras:hover a {

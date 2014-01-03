@@ -8,7 +8,7 @@ Bundler.require
 
 ROOT        = Pathname(File.dirname(__FILE__))
 LOGGER      = Logger.new(STDOUT)
-BUNDLES     = %w( all.css all.js options.css options.js event.js )
+BUNDLES     = %w( all.css all.js options.css options.js event.js omnibox.js json_container.js )
 BUILD_DIR   = ROOT.join("build")
 EXTENSION   = BUILD_DIR.join("json_viewer")
 RELEASE_DIR = ROOT.join("pkg")
