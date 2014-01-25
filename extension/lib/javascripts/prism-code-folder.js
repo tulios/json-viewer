@@ -48,7 +48,8 @@
         closeMarkup.textContent = closeText;
 
         var arrowMarkup = document.createElement("span");
-        arrowMarkup.className = "json_viewer arrow-down";
+        var arrowClass = awaysFold && mainNodePrinted ? "arrow-up" : "arrow-down";
+        arrowMarkup.className = "json_viewer " + arrowClass;
 
         handle.appendChild(arrowMarkup);
         handle.appendChild(closeMarkup);

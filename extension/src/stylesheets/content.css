@@ -59,6 +59,10 @@ pre[class*="language-"] {
   top: 2px;
 }
 
+.json_viewer.arrow-up {
+  -webkit-transform: rotate(90deg);
+}
+
 .load {
   position: relative;
 }
