@@ -21,6 +21,7 @@ https://github.com/tulios/json-viewer/issues
 
 Contributors
 Thiago Pontes (@thiagopnts)
+@bluec0re
 
 License
 MIT License

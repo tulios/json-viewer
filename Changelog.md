@@ -1,3 +1,7 @@
+# 0.7.2 - 2015-02-01
+
+  * Allow nested JSONP's by https://github.com/bluec0re
+
 # 0.7.1 - 2014-01-27
 
   * Fixed arrow state when using option "Always fold from second level"
