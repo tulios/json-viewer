@@ -1,6 +1,6 @@
 # JSON Viewer
 
-__This version is not yet ready!__
+:warning: __This version is not yet ready!__ :warning:
 
 TODO:
 
@@ -12,7 +12,7 @@ TODO:
 
 ### or compile and load by yourself
 
-  1. it depends on node (version in package.json engines)
+  1. it depends on node (version in `package.json` engines)
   2. `npm install`
   3. `npm run build`
   4. open Chrome and go to chrome://chrome/extensions/

@@ -3,8 +3,8 @@ var chrome = require("chrome-framework");
 function loadCSS(opts, doneCallback) {
   var url = chrome.extension.getURL(opts.path);
 
-	var link = document.createElement("link");
-	var sheets = document.styleSheets;
+  var link = document.createElement("link");
+  var sheets = document.styleSheets;
   link.rel = "stylesheet";
   link.href = url;
 
