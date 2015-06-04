@@ -1,0 +1,25 @@
+{
+  "name": "json_viewer",
+  "description": "The most beautiful and customizable JSON/JSONP highlighter that your eyes have ever seen",
+  "repository": "https://github.com/tulios/json-viewer",
+  "private": true,
+  "dependencies": {
+    "archiver": "0.14.x",
+    "clean-webpack-plugin": "0.1.x",
+    "codemirror": "5.3.x",
+    "css-loader": "0.14.x",
+    "extract-text-webpack-plugin": "0.8.x",
+    "fs-extra": "0.18.x",
+    "node-sass": "3.1.x",
+    "sass-loader": "1.0.x",
+    "style-loader": "0.12.x",
+    "webpack": "1.9.x"
+  },
+  "engines": {
+    "node": "0.10.38",
+    "npm": "2.7.5"
+  },
+  "scripts": {
+    "build": "./node_modules/.bin/webpack --progress --colors"
+  }
+}

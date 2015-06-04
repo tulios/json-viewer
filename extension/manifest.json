@@ -1,0 +1,28 @@
+{
+  "name": "new JSON Viewer",
+  "version": "0.8.0",
+  "manifest_version": 2,
+  "description": "The most beautiful and customizable JSON/JSONP highlighter that your eyes have ever seen",
+  "homepage_url": "https://github.com/tulios/json-viewer",
+  "minimum_chrome_version": "21",
+  "icons": {
+       "128": "icons/128.png",
+       "32": "icons/32.png",
+       "16": "icons/16.png"
+  },
+  "web_accessible_resources": [
+    "assets/viewer.css"
+  ],
+  "omnibox": { "keyword" : "json-viewer" },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["assets/viewer.js"],
+      "run_at": "document_start"
+    }
+  ],
+  "permissions": [
+    "*://*/*",
+    "<all_urls>"
+  ]
+}

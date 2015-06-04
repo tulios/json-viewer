@@ -1,0 +1,14 @@
+body {
+  padding: 0;
+  margin: 0;
+}
+
+.json-viewer-css-check:before {
+  content: 'loaded';
+  display: none;
+}
+
+.CodeMirror {
+  width: 100%;
+  height: 100%;
+}
