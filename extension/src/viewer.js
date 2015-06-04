@@ -12,7 +12,7 @@ function exposeJson(text) {
   document.head.appendChild(script);
 }
 
-function includeExtras() {
+function includeExtras(pre, highlighter) {
   var extras = document.createElement("div");
   extras.className = "extras";
 
@@ -26,8 +26,21 @@ function includeExtras() {
   var rawLink = document.createElement("a");
   rawLink.className = "json_viewer raw";
   rawLink.href = "#";
-  rawLink.title = "Original JSON";
+  rawLink.title = "Original JSON toggle";
   rawLink.style.backgroundImage = "url('" + chrome.extension.getURL("/icons/raw.svg") + "')";
+  rawLink.onclick = function(e) {
+    e.preventDefault();
+    var editor = document.getElementsByClassName('CodeMirror')[0];
+
+    if (pre.hidden) {
+      editor.hidden = true;
+      pre.hidden = false;
+
+    } else {
+      editor.hidden = false;
+      pre.hidden = true;
+    }
+  }
 
   extras.appendChild(optionsLink);
   extras.appendChild(rawLink);
@@ -42,9 +55,9 @@ document.addEventListener("DOMContentLoaded", function() {
     loadCss({path: "assets/viewer.css", checkClass: "json-viewer-css-check"}, function() {
       contentExtractor(pre, function(jsonText, extractedJson) {
 
-        new Highlighter(jsonText).highlight();
+        var highlighter = new Highlighter(jsonText).highlight();
         exposeJson(extractedJson);
-        includeExtras();
+        includeExtras(pre, highlighter);
 
       });
     });
