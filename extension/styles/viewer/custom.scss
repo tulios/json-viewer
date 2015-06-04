@@ -12,3 +12,38 @@ body {
   width: 100%;
   height: 100%;
 }
+
+.extras {
+  z-index: 10;
+  position: absolute;
+  top: 0;
+  right: 0;
+
+  padding: 10px 15px;
+
+  a {
+    transition: opacity ease-in-out 300ms;
+    visibility: visible;
+    opacity: 0.1;
+  }
+
+  &:hover a {
+    visibility: visible;
+    opacity: 1;
+  }
+
+  $icon-size: 40px;
+
+  .gear, .raw {
+    display: block;
+    width: $icon-size;
+    height: $icon-size;
+    background-size: $icon-size;
+    margin-bottom: 5px;
+
+    &:hover {
+      background-color: #ccc;
+      border-radius: 4px;
+    }
+  }
+}

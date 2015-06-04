@@ -11,9 +11,13 @@
        "16": "icons/16.png"
   },
   "web_accessible_resources": [
-    "assets/viewer.css"
+    "assets/viewer.css",
+    "icons/gear.svg",
+    "icons/raw.svg",
+    "pages/options.html"
   ],
   "omnibox": { "keyword" : "json-viewer" },
+  "options_page": "pages/options.html",
   "content_scripts": [
     {
       "matches": ["<all_urls>"],
