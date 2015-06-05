@@ -35,10 +35,12 @@ body {
   $icon-size: 40px;
 
   .gear, .raw {
+    transition: background-color ease-in-out 300ms;
     display: block;
     width: $icon-size;
     height: $icon-size;
     background-size: $icon-size;
+    background-color: transparent;
     margin-bottom: 5px;
 
     &:hover {

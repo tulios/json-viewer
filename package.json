@@ -20,6 +20,6 @@
     "npm": "2.7.5"
   },
   "scripts": {
-    "build": "./node_modules/.bin/webpack --progress --colors"
+    "build": "./node_modules/.bin/webpack --progress --colors && node ./lib/release-script"
   }
 }

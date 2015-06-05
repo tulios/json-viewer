@@ -2,9 +2,38 @@
 <html>
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link type="text/css" rel="stylesheet" href="../assets/options.css">
+    <script type="text/javascript" src="../assets/options.js"></script>
     <title>Options - JSON Viewer</title>
   </head>
   <body>
-    Options page
+    <h1>JSON Viewer - Options page</h1>
+
+    <header>
+      <h2>Theme</h2>
+    </header>
+
+    <div class="select-style">
+      <select id="themes"></select>
+    </div>
+    <textarea id="themes-example" name="themes-example" style="display: none;">
+    </textarea>
+
+    <header>
+      <h2>Structure</h2>
+      <span class="hint">Edit this code</span><br/>
+    </header>
+
+    <textarea id="structure" name="structure" style="display: none;">
+    </textarea>
+
+    <header>
+      <h2>Custom Style</h2>
+      <span class="hint">Edit this code</span><br/>
+      <span class="hint">This field accepts CSS code. Use ctrl + space to autocomplete the values, enjoy!</span>
+    </header>
+
+    <textarea id="style" name="style" style="display: none;">
+    </textarea>
   </body>
 </html>

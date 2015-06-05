@@ -1,0 +1,56 @@
+header {
+  padding: 20px 0 15px 0;
+
+  h2 {
+    padding: 0;
+    margin: 0;
+  }
+
+  .hint {
+    font-style: italic;
+    color: #999;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+  }
+}
+
+.CodeMirror {
+  font-family: monaco, Arial, sans-serif;
+  font-size: 16px;
+}
+
+.CodeMirror-hints {
+  font-family: monaco, Arial, sans-serif;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+// custom style
+.CodeMirror:last-child {
+  height: 450px;
+}
+
+.select-style {
+    border: 1px solid #ccc;
+    width: 120px;
+    border-radius: 3px;
+    overflow: hidden;
+    background: #fafafa url("data:image/png;base64,R0lGODlhDwAUAIABAAAAAP///yH5BAEAAAEALAAAAAAPABQAAAIXjI+py+0Po5wH2HsXzmw//lHiSJZmUAAAOw==") no-repeat 90% 50%;
+}
+
+.select-style {
+  margin-bottom: 15px;
+
+  select {
+    padding: 5px 8px;
+    width: 130%;
+    border: none;
+    box-shadow: none;
+    background: transparent;
+    background-image: none;
+    -webkit-appearance: none;
+
+    &:focus {
+        outline: none;
+    }
+  }
+}

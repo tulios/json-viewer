@@ -47,8 +47,7 @@ function includeExtras(pre, highlighter) {
   document.body.appendChild(extras);
 }
 
-document.addEventListener("DOMContentLoaded", function() {
-
+function onLoad() {
   checkIfJson(function(pre) {
     pre.hidden = true;
 
@@ -62,5 +61,6 @@ document.addEventListener("DOMContentLoaded", function() {
       });
     });
   });
+}
 
-}, false);
+document.addEventListener("DOMContentLoaded", onLoad, false);

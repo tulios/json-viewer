@@ -7,6 +7,7 @@ function loadCSS(opts, doneCallback) {
   var sheets = document.styleSheets;
   link.rel = "stylesheet";
   link.href = url;
+  if (opts.id) link.id = opts.id;
 
   document.head.appendChild(link);
 
