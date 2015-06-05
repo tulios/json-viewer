@@ -11,11 +11,15 @@ require('codemirror/mode/css/css');
 var renderThemeList = require('./json-viewer/options/render-theme-list');
 var renderStructure = require('./json-viewer/options/render-structure');
 var renderStyle = require('./json-viewer/options/render-style');
+var bindSaveButton = require('./json-viewer/options/bind-save-button');
 
 function onLoaded() {
   renderThemeList(CodeMirror);
   renderStructure(CodeMirror);
   renderStyle(CodeMirror);
+  bindSaveButton(function(options) {
+    console.log(options);
+  });
 }
 
 document.addEventListener("DOMContentLoaded", onLoaded, false);
