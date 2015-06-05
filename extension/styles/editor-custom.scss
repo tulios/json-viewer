@@ -1,3 +1,11 @@
 .CodeMirror pre {
   margin-left: 5px;
 }
+
+.CodeMirror-foldgutter {
+  padding: 0 5px;
+}
+
+.CodeMirror-gutter-elt {
+  text-align: center;
+}

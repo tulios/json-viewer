@@ -7,33 +7,46 @@
     <title>Options - JSON Viewer</title>
   </head>
   <body>
-    <h1>JSON Viewer - Options page</h1>
 
-    <header>
-      <h2>Theme</h2>
-    </header>
+    <div class="container">
+      <h1>
+        <span class="logo" title="JSON Viewer"></span>
+        <span class="page-title">Options page</span>
+      </h1>
 
-    <div class="select-style">
-      <select id="themes"></select>
+      <header>
+        <h2>Theme</h2>
+      </header>
+
+      <div class="select-style">
+        <select id="themes"></select>
+      </div>
+      <textarea id="themes-example" name="themes-example" style="display: none;">
+      </textarea>
+
+      <header>
+        <h2>Structure</h2>
+        <span class="hint">Edit this code</span><br/>
+      </header>
+
+      <textarea id="structure" name="structure" style="display: none;">
+      </textarea>
+
+      <header>
+        <h2>Custom Style</h2>
+        <span class="hint">Edit this code</span><br/>
+        <span class="hint">This field accepts CSS code. Use ctrl + space to autocomplete the values, enjoy!</span>
+      </header>
+
+      <textarea id="style" name="style" style="display: none;">
+      </textarea>
+
+      <div class="action-bar">
+        <div class="container">
+          <button id="save">Save</button>
+        </div>
+      </div>
+
     </div>
-    <textarea id="themes-example" name="themes-example" style="display: none;">
-    </textarea>
-
-    <header>
-      <h2>Structure</h2>
-      <span class="hint">Edit this code</span><br/>
-    </header>
-
-    <textarea id="structure" name="structure" style="display: none;">
-    </textarea>
-
-    <header>
-      <h2>Custom Style</h2>
-      <span class="hint">Edit this code</span><br/>
-      <span class="hint">This field accepts CSS code. Use ctrl + space to autocomplete the values, enjoy!</span>
-    </header>
-
-    <textarea id="style" name="style" style="display: none;">
-    </textarea>
   </body>
 </html>
