@@ -54,11 +54,19 @@ header {
 
 #structure + .CodeMirror {
   height: 150px;
+
+  pre {
+    margin-left: 0;
+  }
 }
 
 #style + .CodeMirror {
   height: 450px;
   margin-bottom: 100px;
+
+  pre {
+    margin-left: 0;
+  }
 }
 
 .select-style {

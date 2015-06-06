@@ -1,5 +1,6 @@
 var jsonFormater = require('../jsl-format');
 var loadCss = require('../load-css');
+var defaults = require('./defaults');
 
 var themesList = process.env.THEMES;
 var themeJSONExample = {
@@ -35,7 +36,7 @@ function onThemeChange(input, editor) {
   });
 }
 
-function renderThemeList(CodeMirror) {
+function renderThemeList(CodeMirror, value) {
   var themesInput = document.getElementById('themes');
   var themesExampleInput = document.getElementById('themes-example');
   themesExampleInput.innerHTML = jsonFormater(JSON.stringify(themeJSONExample));
@@ -54,10 +55,17 @@ function renderThemeList(CodeMirror) {
     onThemeChange(themesInput, themeEditor);
   }
 
+  var optionSelected = value || defaults.theme;
+
   themesList.forEach(function(theme) {
     var option = document.createElement("option");
     option.value = theme
     option.text = theme.replace(/_/, '-');
+
+    if (theme === optionSelected) {
+      option.selected = "selected";
+    }
+
     themesInput.appendChild(option);
   });
 }

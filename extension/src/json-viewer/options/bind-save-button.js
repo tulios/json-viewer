@@ -8,7 +8,9 @@ function bindSaveButton(onSaveClicked) {
 
     for (var i = 0; i < form.elements.length; i++) {
        var e = form.elements[i];
-       output[e.name] = e.value;
+       if (!/-example$/.test(e.name) && e.name.length !== 0) {
+         output[e.name] = e.value;
+       }
     }
 
     onSaveClicked(output);

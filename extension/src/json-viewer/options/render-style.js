@@ -1,13 +1,8 @@
-var styleConfigs = [
-  ".CodeMirror {",
-  "  font-family: monaco, Arial, sans-serif;",
-  "  font-size: 16px;",
-  "}"
-];
+var defaults = require('./defaults');
 
-function renderStyle(CodeMirror) {
+function renderStyle(CodeMirror, value) {
   var styleInput = document.getElementById('style');
-  styleInput.innerHTML = styleConfigs.join('\n');
+  styleInput.innerHTML = value || defaults.style;
 
   CodeMirror.fromTextArea(styleInput, {
     mode: "css",

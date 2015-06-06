@@ -1,15 +1,9 @@
 var jsonFormater = require('../jsl-format');
+var defaults = require('./defaults');
 
-var structureConfigs = {
-  lineWrapping: true,
-  lineNumbers: true,
-  foldGutter: true,
-  indentUnit: 2
-}
-
-function renderStructure(CodeMirror) {
+function renderStructure(CodeMirror, value) {
   var structureInput = document.getElementById('structure');
-  structureInput.innerHTML = jsonFormater(JSON.stringify(structureConfigs));
+  structureInput.innerHTML = value || jsonFormater(JSON.stringify(defaults.structure));
 
   CodeMirror.fromTextArea(structureInput, {
     mode: "application/ld+json",
