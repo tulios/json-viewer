@@ -15,7 +15,7 @@ function highlightContent(pre) {
       then(function() { return contentExtractor(pre) }).
       then(function(value) {
 
-        var highlighter = new Highlighter(value.jsonText, options.theme);
+        var highlighter = new Highlighter(value.jsonText, options);
         highlighter.highlight();
 
         exposeJson(value.jsonExtracted);

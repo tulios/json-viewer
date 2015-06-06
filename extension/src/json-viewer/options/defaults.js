@@ -1,10 +1,10 @@
 module.exports = {
   theme: "default",
   structure: {
-    lineWrapping: true,
+    readOnly: true,
     lineNumbers: true,
-    foldGutter: true,
-    indentUnit: 2
+    lineWrapping: true,
+    foldGutter: true
   },
   style: [
     ".CodeMirror {",

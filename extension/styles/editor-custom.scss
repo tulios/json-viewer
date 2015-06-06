@@ -6,6 +6,10 @@
   padding: 0 5px;
 }
 
+.CodeMirror-lines .CodeMirror-cursor {
+  margin-left: 5px;
+}
+
 .CodeMirror-gutter-elt {
   text-align: center;
 }

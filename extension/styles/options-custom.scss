@@ -58,6 +58,10 @@ header {
   pre {
     margin-left: 0;
   }
+
+  .CodeMirror-lines .CodeMirror-cursor {
+    margin-left: 0;
+  }
 }
 
 #style + .CodeMirror {
@@ -65,6 +69,10 @@ header {
   margin-bottom: 100px;
 
   pre {
+    margin-left: 0;
+  }
+
+  .CodeMirror-lines .CodeMirror-cursor {
     margin-left: 0;
   }
 }
