@@ -4,6 +4,7 @@ var contentExtractor = require('./json-viewer/content-extractor');
 var Highlighter = require('./json-viewer/highlighter');
 var loadCss = require('./json-viewer/load-css');
 var renderExtras = require('./json-viewer/viewer/render-extras');
+var defaults = require('./json-viewer/options/defaults');
 
 function exposeJson(text) {
   console.log("JsonViewer: Your json was stored into 'window.json', enjoy!");
@@ -16,15 +17,17 @@ function onLoad() {
   checkIfJson(function(pre) {
     pre.hidden = true;
 
-    loadCss({path: "assets/viewer.css", checkClass: "json-viewer-css-check"}).then(function() {
-      contentExtractor(pre, function(jsonText, extractedJson) {
+    var viewerCSS = {path: "assets/viewer.css", checkClass: "json-viewer-css-check"};
 
-        var highlighter = new Highlighter(jsonText).highlight();
-        exposeJson(extractedJson);
+    loadCss(viewerCSS).
+      then(function() { return contentExtractor(pre) }).
+      then(function(value) {
+
+        var highlighter = new Highlighter(value.jsonText).highlight();
+        exposeJson(value.jsonExtracted);
         renderExtras(pre, highlighter);
 
       });
-    });
   });
 }
 

@@ -1,5 +1,6 @@
 var Promise = require('promise');
 var chrome = require("chrome-framework");
+var MAX_WAIT = 20;
 
 function loadCSS(opts, doneCallback) {
   var url = chrome.extension.getURL(opts.path);
@@ -17,11 +18,15 @@ function loadCSS(opts, doneCallback) {
   document.body.appendChild(checkElement);
 
   var scheduleId = null;
+  var attempts = 0;
+
   return new Promise(function(resolve, reject) {
     function scheduleCheck() {
       var content = window.
         getComputedStyle(checkElement, ":before").
         getPropertyValue("content");
+
+      if (attempts > MAX_WAIT) return reject();
 
       if (content === "'loaded'" || content === "loaded") {
         clearTimeout(scheduleId);
@@ -29,7 +34,8 @@ function loadCSS(opts, doneCallback) {
         resolve();
 
       } else {
-        scheduleId = setTimeout(scheduleCheck);
+        attempts++;
+        scheduleId = setTimeout(scheduleCheck, 1);
       }
     }
 
