@@ -12,8 +12,6 @@
   },
   "web_accessible_resources": [
     "assets/viewer.css",
-    "icons/gear.svg",
-    "icons/raw.svg",
     "pages/options.html"
   ],
   "omnibox": { "keyword" : "json-viewer" },
@@ -25,6 +23,10 @@
       "run_at": "document_start"
     }
   ],
+  "background": {
+    "scripts": ["assets/backend.js"],
+    "persistent": false
+  },
   "permissions": [
     "*://*/*",
     "<all_urls>"

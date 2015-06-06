@@ -15,7 +15,6 @@ function contentExtractor(pre) {
       resolve({jsonText: jsonText, jsonExtracted: jsonExtracted})
 
     } catch(e) {
-      pre.hidden = false;
       reject(e);
     }
   });

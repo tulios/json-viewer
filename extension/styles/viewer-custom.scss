@@ -22,9 +22,9 @@ body {
   padding: 10px 15px;
 
   a {
-    transition: opacity ease-in-out 300ms;
+    transition: all ease-in-out 250ms;
     visibility: visible;
-    opacity: 0.1;
+    opacity: 0.3;
   }
 
   &:hover a {
@@ -35,7 +35,12 @@ body {
   $icon-size: 40px;
 
   .gear, .raw {
-    transition: background-color ease-in-out 300ms;
+    svg {
+      width: $icon-size;
+      height: $icon-size;
+      fill: #000000;
+    }
+
     display: block;
     width: $icon-size;
     height: $icon-size;

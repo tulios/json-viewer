@@ -1,4 +1,16 @@
-.theme-solarized-dark-css-check:before {
+.theme-solarized_dark-css-check:before {
   content: 'loaded';
   display: none;
+}
+
+.extras {
+  .gear, .raw {
+    svg {
+      fill: #fff;
+    }
+
+    &:hover {
+      background-color: #333;
+    }
+  }
 }

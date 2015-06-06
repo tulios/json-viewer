@@ -1,8 +1,7 @@
 var jsonFormater = require('../jsl-format');
 var loadCss = require('../load-css');
-var defaults = require('./defaults');
 
-var themesList = process.env.THEMES;
+var themesList = ["default"].concat(process.env.THEMES);
 var themeJSONExample = {
   title: "JSON Example",
   nested: {
@@ -17,7 +16,7 @@ var themeJSONExample = {
 
 function onThemeChange(input, editor) {
   var selectedTheme = input.options[input.selectedIndex].value;
-  var checkName = selectedTheme.replace(/_/, '-');
+  // Split '_' to allow themes with variations (e.g: solarized dark; solarized light)
   var themeOption = selectedTheme.replace(/_/, ' ');
 
   var currentLinkTag = document.getElementById('selected-theme');
@@ -28,13 +27,17 @@ function onThemeChange(input, editor) {
   var themeToLoad = {
     id: "selected-theme",
     path: "themes/" + selectedTheme + ".css",
-    checkClass: "theme-" + checkName + "-css-check"
+    checkClass: "theme-" + selectedTheme + "-css-check"
   };
 
-  loadCss(themeToLoad).then(function() {
-    // Split '_' to allow themes with variations (e.g: solarized dark; solarized light)
+  if (selectedTheme === "default") {
     editor.setOption("theme", themeOption);
-  });
+
+  } else {
+    loadCss(themeToLoad).then(function() {
+      editor.setOption("theme", themeOption);
+    });
+  }
 }
 
 function renderThemeList(CodeMirror, value) {
@@ -56,12 +59,12 @@ function renderThemeList(CodeMirror, value) {
     onThemeChange(themesInput, themeEditor);
   }
 
-  var optionSelected = value || defaults.theme;
+  var optionSelected = value;
 
   themesList.forEach(function(theme) {
     var option = document.createElement("option");
     option.value = theme
-    option.text = theme.replace(/_/, '-');
+    option.text = theme;
 
     if (theme === optionSelected) {
       option.selected = "selected";
@@ -69,6 +72,10 @@ function renderThemeList(CodeMirror, value) {
 
     themesInput.appendChild(option);
   });
+
+  if (optionSelected && optionSelected !== "default") {
+    themes.onchange();
+  }
 }
 
 module.exports = renderThemeList;

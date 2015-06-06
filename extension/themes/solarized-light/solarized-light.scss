@@ -1,4 +1,12 @@
-.theme-solarized-light-css-check:before {
+.theme-solarized_light-css-check:before {
   content: 'loaded';
   display: none;
+}
+
+.extras {
+  .gear, .raw {
+    &:hover {
+      background-color: #D6D1C0;
+    }
+  }
 }

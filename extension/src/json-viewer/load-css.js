@@ -2,7 +2,7 @@ var Promise = require('promise');
 var chrome = require("chrome-framework");
 var MAX_WAIT = 20;
 
-function loadCSS(opts, doneCallback) {
+function loadCSS(opts) {
   var url = chrome.extension.getURL(opts.path);
 
   var link = document.createElement("link");
@@ -26,7 +26,7 @@ function loadCSS(opts, doneCallback) {
         getComputedStyle(checkElement, ":before").
         getPropertyValue("content");
 
-      if (attempts > MAX_WAIT) return reject();
+      if (attempts > MAX_WAIT) return reject(Error("fail to load css: '" + url + "'"));
 
       if (content === "'loaded'" || content === "loaded") {
         clearTimeout(scheduleId);

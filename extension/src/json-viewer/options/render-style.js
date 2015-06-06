@@ -2,7 +2,7 @@ var defaults = require('./defaults');
 
 function renderStyle(CodeMirror, value) {
   var styleInput = document.getElementById('style');
-  styleInput.innerHTML = value || defaults.style;
+  styleInput.innerHTML = value;
 
   CodeMirror.fromTextArea(styleInput, {
     mode: "css",
