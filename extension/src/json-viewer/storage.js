@@ -12,7 +12,7 @@ module.exports = {
 
     options.theme = options.theme || defaults.theme;
     options.structure = options.structure ? JSON.parse(options.structure) : defaults.structure;
-    options.style = options.style || defaults.style;
+    options.style = options.style && options.style.length > 0 ? options.style : defaults.style;
     return options;
   }
 }

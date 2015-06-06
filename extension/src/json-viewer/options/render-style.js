@@ -4,7 +4,7 @@ function renderStyle(CodeMirror, value) {
   var styleInput = document.getElementById('style');
   styleInput.innerHTML = value;
 
-  CodeMirror.fromTextArea(styleInput, {
+  return CodeMirror.fromTextArea(styleInput, {
     mode: "css",
     lineWrapping: true,
     lineNumbers: true,

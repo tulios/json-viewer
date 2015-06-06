@@ -4,7 +4,7 @@ function renderStructure(CodeMirror, value) {
   var structureInput = document.getElementById('structure');
   structureInput.innerHTML = jsonFormater(JSON.stringify(value));
 
-  CodeMirror.fromTextArea(structureInput, {
+  return CodeMirror.fromTextArea(structureInput, {
     mode: "application/ld+json",
     lineWrapping: true,
     lineNumbers: true,
