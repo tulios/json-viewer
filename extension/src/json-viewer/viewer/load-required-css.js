@@ -16,7 +16,13 @@ function loadRequiredCss(options) {
     }));
   }
 
-  return Promise.all(loaders);
+  return Promise.all(loaders).then(function() {
+    var style = document.createElement("style");
+    style.rel = "stylesheet";
+    style.type = "text/css";
+    style.innerHTML = options.style;
+    document.head.appendChild(style);
+  });
 }
 
 module.exports = loadRequiredCss;
