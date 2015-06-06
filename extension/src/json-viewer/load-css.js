@@ -1,3 +1,4 @@
+var Promise = require('promise');
 var chrome = require("chrome-framework");
 
 function loadCSS(opts, doneCallback) {
@@ -16,22 +17,24 @@ function loadCSS(opts, doneCallback) {
   document.body.appendChild(checkElement);
 
   var scheduleId = null;
-  function scheduleCheck() {
-    var content = window.
-      getComputedStyle(checkElement, ":before").
-      getPropertyValue("content");
+  return new Promise(function(resolve, reject) {
+    function scheduleCheck() {
+      var content = window.
+        getComputedStyle(checkElement, ":before").
+        getPropertyValue("content");
 
-    if (content === "'loaded'" || content === "loaded") {
-      clearTimeout(scheduleId);
-      document.body.removeChild(checkElement);
-      doneCallback();
+      if (content === "'loaded'" || content === "loaded") {
+        clearTimeout(scheduleId);
+        document.body.removeChild(checkElement);
+        resolve();
 
-    } else {
-      scheduleId = setTimeout(scheduleCheck);
+      } else {
+        scheduleId = setTimeout(scheduleCheck);
+      }
     }
-  }
 
-  scheduleCheck();
+    scheduleCheck();
+  });
 }
 
 module.exports = loadCSS;

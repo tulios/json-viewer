@@ -11,6 +11,7 @@
     "extract-text-webpack-plugin": "0.8.x",
     "fs-extra": "0.18.x",
     "node-sass": "3.1.x",
+    "promise": "7.0.x",
     "sass-loader": "1.0.x",
     "style-loader": "0.12.x",
     "webpack": "1.9.x"

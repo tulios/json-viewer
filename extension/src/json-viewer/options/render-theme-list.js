@@ -25,12 +25,13 @@ function onThemeChange(input, editor) {
     document.head.removeChild(currentLinkTag);
   }
 
-  loadCss({
+  var themeToLoad = {
     id: "selected-theme",
     path: "themes/" + selectedTheme + ".css",
     checkClass: "theme-" + checkName + "-css-check"
-  }, function() {
+  };
 
+  loadCss(themeToLoad).then(function() {
     // Split '_' to allow themes with variations (e.g: solarized dark; solarized light)
     editor.setOption("theme", themeOption);
   });

@@ -16,7 +16,7 @@ function onLoad() {
   checkIfJson(function(pre) {
     pre.hidden = true;
 
-    loadCss({path: "assets/viewer.css", checkClass: "json-viewer-css-check"}, function() {
+    loadCss({path: "assets/viewer.css", checkClass: "json-viewer-css-check"}).then(function() {
       contentExtractor(pre, function(jsonText, extractedJson) {
 
         var highlighter = new Highlighter(jsonText).highlight();
