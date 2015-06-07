@@ -14,8 +14,8 @@
 .cm-s-dark span.cm-keyword{color:rgba(255,255,255,1) !important;}
 .cm-s-dark span.cm-string{color:hsl(75, 70%, 60%) !important;}
 .cm-s-dark span.cm-string-2{color:hsl(75, 70%, 60%) !important;}
-.cm-s-dark span.cm-variable{color:rgba(4,125,101,1) !important;}
-.cm-s-dark span.cm-variable-2{color:rgba(46,56,60,1) !important;}
+.cm-s-dark span.cm-variable{color:rgba(255,255,255,1) !important;}
+.cm-s-dark span.cm-variable-2{color:rgba(255,255,255,1) !important;}
 .cm-s-dark span.cm-def{color:rgba(46,56,60,1) !important;}
 .cm-s-dark span.cm-bracket{color:rgba(46,56,60,1) !important;}
 .cm-s-dark span.cm-tag{color:rgba(156,51,40,1) !important;}

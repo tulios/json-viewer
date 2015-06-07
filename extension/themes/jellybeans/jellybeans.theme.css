@@ -15,9 +15,9 @@
 .cm-s-jellybeans span.cm-attribute{color:rgba(129,142,91,1) !important;}
 .cm-s-jellybeans span.cm-keyword{color:rgba(129,142,91,1) !important;}
 .cm-s-jellybeans span.cm-string{color:rgba(129,142,91,1) !important;}
-.cm-s-jellybeans span.cm-string-2{color:rgba(46,56,60,1) !important;}
-.cm-s-jellybeans span.cm-variable{color:rgba(4,125,101,1) !important;}
-.cm-s-jellybeans span.cm-variable-2{color:rgba(46,56,60,1) !important;}
+.cm-s-jellybeans span.cm-string-2{color:rgba(129,142,91,1) !important;}
+.cm-s-jellybeans span.cm-variable{color:rgba(129,142,91,1) !important;}
+.cm-s-jellybeans span.cm-variable-2{color:rgba(129,142,91,1) !important;}
 .cm-s-jellybeans span.cm-def{color:rgba(46,56,60,1) !important;}
 .cm-s-jellybeans span.cm-bracket{color:rgba(46,56,60,1) !important;}
 .cm-s-jellybeans span.cm-tag{color:rgba(156,51,40,1) !important;}

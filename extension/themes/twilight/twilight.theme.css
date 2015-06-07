@@ -14,8 +14,8 @@
 .cm-s-twilight span.cm-keyword{color:rgba(255,255,255,1) !important;}
 .cm-s-twilight span.cm-string{color:rgba(145,158,107,1) !important;}
 .cm-s-twilight span.cm-string-2{color:rgba(145,158,107,1) !important;}
-.cm-s-twilight span.cm-variable{color:rgba(4,125,101,1) !important;}
-.cm-s-twilight span.cm-variable-2{color:rgba(46,56,60,1) !important;}
+.cm-s-twilight span.cm-variable{color:rgba(255,255,255,1) !important;}
+.cm-s-twilight span.cm-variable-2{color:rgba(255,255,255,1) !important;}
 .cm-s-twilight span.cm-def{color:rgba(46,56,60,1) !important;}
 .cm-s-twilight span.cm-bracket{color:rgba(46,56,60,1) !important;}
 .cm-s-twilight span.cm-tag{color:rgba(156,51,40,1) !important;}

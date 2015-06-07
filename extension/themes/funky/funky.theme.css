@@ -17,9 +17,9 @@
 .cm-s-funky span.cm-attribute{color:rgba(248,28,147,1) !important;}
 .cm-s-funky span.cm-keyword{color:rgba(248,28,147,1) !important;}
 .cm-s-funky span.cm-string{color:rgba(254,251,69,1) !important;}
-.cm-s-funky span.cm-string-2{color:rgba(46,56,60,1) !important;}
-.cm-s-funky span.cm-variable{color:rgba(4,125,101,1) !important;}
-.cm-s-funky span.cm-variable-2{color:rgba(46,56,60,1) !important;}
+.cm-s-funky span.cm-string-2{color:rgba(254,251,69,1) !important;}
+.cm-s-funky span.cm-variable{color:rgba(248,28,147,1) !important;}
+.cm-s-funky span.cm-variable-2{color:rgba(248,28,147,1) !important;}
 .cm-s-funky span.cm-def{color:rgba(46,56,60,1) !important;}
 .cm-s-funky span.cm-bracket{color:rgba(46,56,60,1) !important;}
 .cm-s-funky span.cm-tag{color:rgba(248,28,147,1) !important;}
