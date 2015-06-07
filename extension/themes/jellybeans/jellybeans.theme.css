@@ -1,0 +1,28 @@
+.cm-s-jellybeans.CodeMirror{background:rgba(21,21,21,1) !important;}
+.cm-s-jellybeans.CodeMirror{color:rgba(227,165,89,1) !important;}
+.cm-s-jellybeans div.CodeMirror-selected {background: #49483E !important;}
+.cm-s-jellybeans.CodeMirror ::selection { background: rgba(73, 72, 62, .99); }
+.cm-s-jellybeans.CodeMirror ::-moz-selection { background: rgba(73, 72, 62, .99); }
+.cm-s-jellybeans .CodeMirror-gutters{background:rgba(0,0,0,0) !important; border: none;}
+.cm-s-jellybeans .CodeMirror-guttermarker{color:rgba(29,117,179,1) !important;}
+.cm-s-jellybeans .CodeMirror-guttermarker-subtle{color:rgba(224,226,229,1) !important;}
+.cm-s-jellybeans .CodeMirror-linenumber{color:rgba(224,226,229,1) !important;}
+.cm-s-jellybeans .CodeMirror-cursor{border-color:rgba(46,56,60,1) !important;}
+.cm-s-jellybeans span.cm-comment{color:rgba(133,138,129,1) !important;}
+.cm-s-jellybeans span.cm-atom{color:rgba(162,76,62,1) !important;}
+.cm-s-jellybeans span.cm-number{color:rgba(162,76,62,1) !important;}
+.cm-s-jellybeans span.cm-property{color:rgba(129,142,91,1) !important;}
+.cm-s-jellybeans span.cm-attribute{color:rgba(129,142,91,1) !important;}
+.cm-s-jellybeans span.cm-keyword{color:rgba(129,142,91,1) !important;}
+.cm-s-jellybeans span.cm-string{color:rgba(129,142,91,1) !important;}
+.cm-s-jellybeans span.cm-string-2{color:rgba(46,56,60,1) !important;}
+.cm-s-jellybeans span.cm-variable{color:rgba(4,125,101,1) !important;}
+.cm-s-jellybeans span.cm-variable-2{color:rgba(46,56,60,1) !important;}
+.cm-s-jellybeans span.cm-def{color:rgba(46,56,60,1) !important;}
+.cm-s-jellybeans span.cm-bracket{color:rgba(46,56,60,1) !important;}
+.cm-s-jellybeans span.cm-tag{color:rgba(156,51,40,1) !important;}
+.cm-s-jellybeans span.cm-link{color:rgba(46,56,60,1) !important;}
+.cm-s-jellybeans span.cm-error{background:rgba(0,0,0,0) !important;}
+.cm-s-jellybeans span.cm-error{color:rgba(46,56,60,1) !important;}
+.cm-s-jellybeans .CodeMirror-activeline-background{color:rgba(46,56,60,1) !important;}
+.cm-s-jellybeans .CodeMirror-matchingbracket{color:rgba(0,255,0,1) !important;}
