@@ -1,0 +1,28 @@
+.cm-s-tomorrow.CodeMirror{background:rgba(45,45,45,1) !important;}
+.cm-s-tomorrow.CodeMirror{color:rgba(204,204,204,1) !important;}
+.cm-s-tomorrow div.CodeMirror-selected {background: #49483E !important;}
+.cm-s-tomorrow.CodeMirror ::selection { background: rgba(73, 72, 62, .99); }
+.cm-s-tomorrow.CodeMirror ::-moz-selection { background: rgba(73, 72, 62, .99); }
+.cm-s-tomorrow .CodeMirror-gutters{background:rgba(0,0,0,0) !important; border: none;}
+.cm-s-tomorrow .CodeMirror-guttermarker{color:rgba(29,117,179,1) !important;}
+.cm-s-tomorrow .CodeMirror-guttermarker-subtle{color:rgba(204,204,204,1) !important;}
+.cm-s-tomorrow .CodeMirror-linenumber{color:rgba(204,204,204,1) !important;}
+.cm-s-tomorrow .CodeMirror-cursor{border-color:rgba(204,204,204,1) !important;}
+.cm-s-tomorrow span.cm-comment{color:rgba(153,153,153,1) !important;}
+.cm-s-tomorrow span.cm-atom{color:rgba(240,141,73,1) !important;}
+.cm-s-tomorrow span.cm-number{color:rgba(240,141,73,1) !important;}
+.cm-s-tomorrow span.cm-property{color:rgba(204,204,204,1) !important;}
+.cm-s-tomorrow span.cm-attribute{color:rgba(204,204,204,1) !important;}
+.cm-s-tomorrow span.cm-keyword{color:rgba(204,204,204,1) !important;}
+.cm-s-tomorrow span.cm-string{color:rgba(126,198,153,1) !important;}
+.cm-s-tomorrow span.cm-string-2{color:rgba(126,198,153,1) !important;}
+.cm-s-tomorrow span.cm-variable{color:rgba(4,125,101,1) !important;}
+.cm-s-tomorrow span.cm-variable-2{color:rgba(46,56,60,1) !important;}
+.cm-s-tomorrow span.cm-def{color:rgba(46,56,60,1) !important;}
+.cm-s-tomorrow span.cm-bracket{color:rgba(46,56,60,1) !important;}
+.cm-s-tomorrow span.cm-tag{color:rgba(226,119,122,1) !important;}
+.cm-s-tomorrow span.cm-link{color:rgba(46,56,60,1) !important;}
+.cm-s-tomorrow span.cm-error{background:rgba(0,0,0,0) !important;}
+.cm-s-tomorrow span.cm-error{color:rgba(46,56,60,1) !important;}
+.cm-s-tomorrow .CodeMirror-activeline-background{color:rgba(46,56,60,1) !important;}
+.cm-s-tomorrow .CodeMirror-matchingbracket{color:rgba(0,255,0,1) !important;}
