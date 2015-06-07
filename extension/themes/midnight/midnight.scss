@@ -1,3 +1,9 @@
+.cm-s-midnight .CodeMirror-gutters{border: none;}
+.cm-s-monokai .CodeMirror-guttermarker-subtle,
+.cm-s-monokai .CodeMirror-linenumber {
+  color: #7D7D7D;
+}
+
 .theme-midnight-css-check:before {
   content: 'loaded';
   display: none;

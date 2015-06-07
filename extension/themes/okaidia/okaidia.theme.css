@@ -3,10 +3,10 @@
 .cm-s-okaidia div.CodeMirror-selected {background: #49483E !important;}
 .cm-s-okaidia.CodeMirror ::selection { background: rgba(73, 72, 62, .99); }
 .cm-s-okaidia.CodeMirror ::-moz-selection { background: rgba(73, 72, 62, .99); }
-.cm-s-okaidia .CodeMirror-gutters{background:rgba(0,0,0,0) !important; border-right: 1px solid #3D3D38 !important;}
+.cm-s-okaidia .CodeMirror-gutters{background:rgba(0,0,0,0) !important; border: none;}
 .cm-s-okaidia .CodeMirror-guttermarker{color:rgba(243,55,117,1) !important;}
-.cm-s-okaidia .CodeMirror-guttermarker-subtle{color:#B3B5B7 !important;}
-.cm-s-okaidia .CodeMirror-linenumber{color:#B3B5B7 !important;}
+.cm-s-okaidia .CodeMirror-guttermarker-subtle{color:#575757 !important;}
+.cm-s-okaidia .CodeMirror-linenumber{color:#52534E !important;}
 .cm-s-okaidia .CodeMirror-cursor{border-color:rgba(46,56,60,1) !important;}
 .cm-s-okaidia span.cm-comment{color:rgba(117,120,123,1) !important;}
 .cm-s-okaidia span.cm-atom{color:rgba(173,222,57,1) !important;}

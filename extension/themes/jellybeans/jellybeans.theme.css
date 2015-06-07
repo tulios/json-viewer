@@ -5,8 +5,8 @@
 .cm-s-jellybeans.CodeMirror ::-moz-selection { background: rgba(73, 72, 62, .99); }
 .cm-s-jellybeans .CodeMirror-gutters{background:rgba(0,0,0,0) !important; border: none;}
 .cm-s-jellybeans .CodeMirror-guttermarker{color:rgba(29,117,179,1) !important;}
-.cm-s-jellybeans .CodeMirror-guttermarker-subtle{color:rgba(224,226,229,1) !important;}
-.cm-s-jellybeans .CodeMirror-linenumber{color:rgba(224,226,229,1) !important;}
+.cm-s-jellybeans .CodeMirror-guttermarker-subtle{color:#5B5B5B !important;}
+.cm-s-jellybeans .CodeMirror-linenumber{color:#5B5B5B !important;}
 .cm-s-jellybeans .CodeMirror-cursor{border-color:rgba(46,56,60,1) !important;}
 .cm-s-jellybeans span.cm-comment{color:rgba(133,138,129,1) !important;}
 .cm-s-jellybeans span.cm-atom{color:rgba(162,76,62,1) !important;}

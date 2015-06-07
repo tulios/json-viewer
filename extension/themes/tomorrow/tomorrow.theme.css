@@ -5,8 +5,8 @@
 .cm-s-tomorrow.CodeMirror ::-moz-selection { background: rgba(73, 72, 62, .99); }
 .cm-s-tomorrow .CodeMirror-gutters{background:rgba(0,0,0,0) !important; border: none;}
 .cm-s-tomorrow .CodeMirror-guttermarker{color:rgba(29,117,179,1) !important;}
-.cm-s-tomorrow .CodeMirror-guttermarker-subtle{color:rgba(204,204,204,1) !important;}
-.cm-s-tomorrow .CodeMirror-linenumber{color:rgba(204,204,204,1) !important;}
+.cm-s-tomorrow .CodeMirror-guttermarker-subtle{color:#575757 !important;}
+.cm-s-tomorrow .CodeMirror-linenumber{color:#575757 !important;}
 .cm-s-tomorrow .CodeMirror-cursor{border-color:rgba(204,204,204,1) !important;}
 .cm-s-tomorrow span.cm-comment{color:rgba(153,153,153,1) !important;}
 .cm-s-tomorrow span.cm-atom{color:rgba(240,141,73,1) !important;}

@@ -1,3 +1,8 @@
+.cm-s-monokai .CodeMirror-guttermarker-subtle,
+.cm-s-monokai .CodeMirror-linenumber {
+  color: #686868;
+}
+
 .theme-monokai-css-check:before {
   content: 'loaded';
   display: none;
