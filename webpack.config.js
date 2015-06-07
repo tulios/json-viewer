@@ -53,8 +53,8 @@ module.exports = {
   plugins: [
     new Clean(["build"]),
     new ExtractTextPlugin("[name].css", {allChunks: true}),
-    // new webpack.optimize.UglifyJsPlugin({sourceMap: false}),
-    // new webpack.optimize.DedupePlugin(),
+    new webpack.optimize.UglifyJsPlugin({sourceMap: false}),
+    new webpack.optimize.DedupePlugin(),
     new webpack.NoErrorsPlugin(),
     new webpack.DefinePlugin({
       "process.env": {

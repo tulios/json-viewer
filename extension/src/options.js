@@ -15,6 +15,7 @@ var renderAddons = require('./json-viewer/options/render-addons');
 var renderStructure = require('./json-viewer/options/render-structure');
 var renderStyle = require('./json-viewer/options/render-style');
 var bindSaveButton = require('./json-viewer/options/bind-save-button');
+var bindResetButton = require('./json-viewer/options/bind-reset-button');
 
 function isValidJSON(pseudoJSON) {
   try {
@@ -34,6 +35,7 @@ function onLoaded() {
   var structureEditor = renderStructure(CodeMirror, currentOptions.structure);
   var styleEditor = renderStyle(CodeMirror, currentOptions.style);
 
+  bindResetButton();
   bindSaveButton([addonsEditor, structureEditor, styleEditor], function(options) {
     if (!isValidJSON(options.addons)) {
       sweetAlert("Ops!", "\"Add-ons\" isn't a valid JSON", "error");

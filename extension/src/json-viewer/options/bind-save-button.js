@@ -1,11 +1,12 @@
 function bindSaveButton(editors, onSaveClicked) {
+  var form = document.getElementById("options");
+  form.onsubmit = function() { return false; }
+
   var saveButton = document.getElementById("save");
-  saveButton.onclick = function() {
+  saveButton.onclick = function(e) {
+    e.preventDefault();
 
     var output = {};
-    var form = document.getElementById("options");
-    form.onsubmit = function() { return false; }
-
     editors.forEach(function(editor) {
       editor.save();
     });
