@@ -52,22 +52,19 @@ header {
   height: 300px;
 }
 
+#addons + .CodeMirror,
 #structure + .CodeMirror {
   height: 150px;
-
-  pre {
-    margin-left: 0;
-  }
-
-  .CodeMirror-lines .CodeMirror-cursor {
-    margin-left: 0;
-  }
 }
 
 #style + .CodeMirror {
   height: 450px;
   margin-bottom: 100px;
+}
 
+#addons + .CodeMirror
+#structure + .CodeMirror,
+#style + .CodeMirror {
   pre {
     margin-left: 0;
   }

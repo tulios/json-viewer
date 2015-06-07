@@ -11,6 +11,7 @@ var sweetAlert = require('sweetalert');
 
 var Storage = require('./json-viewer/storage');
 var renderThemeList = require('./json-viewer/options/render-theme-list');
+var renderAddons = require('./json-viewer/options/render-addons');
 var renderStructure = require('./json-viewer/options/render-structure');
 var renderStyle = require('./json-viewer/options/render-style');
 var bindSaveButton = require('./json-viewer/options/bind-save-button');
@@ -29,11 +30,15 @@ function onLoaded() {
   var currentOptions = Storage.load();
 
   renderThemeList(CodeMirror, currentOptions.theme);
+  var addonsEditor = renderAddons(CodeMirror, currentOptions.addons);
   var structureEditor = renderStructure(CodeMirror, currentOptions.structure);
   var styleEditor = renderStyle(CodeMirror, currentOptions.style);
 
-  bindSaveButton([structureEditor, styleEditor], function(options) {
-    if (!isValidJSON(options.structure)) {
+  bindSaveButton([addonsEditor, structureEditor, styleEditor], function(options) {
+    if (!isValidJSON(options.addons)) {
+      sweetAlert("Ops!", "\"Add-ons\" isn't a valid JSON", "error");
+
+    } else if (!isValidJSON(options.structure)) {
       sweetAlert("Ops!", "\"Structure\" isn't a valid JSON", "error");
 
     } else {
