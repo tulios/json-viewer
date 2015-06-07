@@ -1,0 +1,16 @@
+.theme-twilight-css-check:before {
+  content: 'loaded';
+  display: none;
+}
+
+.extras {
+  .gear, .raw {
+    svg {
+      fill: #fff;
+    }
+
+    &:hover {
+      background-color: #333;
+    }
+  }
+}

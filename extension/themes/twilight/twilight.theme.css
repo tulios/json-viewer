@@ -1,0 +1,26 @@
+.cm-s-twilight.CodeMirror{background:rgba(20,20,20,1) !important;}
+.cm-s-twilight.CodeMirror{color:rgba(107,120,120,1) !important;}
+.cm-s-twilight div.CodeMirror-selected{background:#434343 !important;}
+.cm-s-twilight .CodeMirror-gutters{background:rgba(0,0,0,0) !important; border: none;}
+.cm-s-twilight .CodeMirror-guttermarker{color:rgba(29,117,179,1) !important;}
+.cm-s-twilight .CodeMirror-guttermarker-subtle{color:#5B5B5B !important;}
+.cm-s-twilight .CodeMirror-linenumber{color:#5B5B5B !important;}
+.cm-s-twilight .CodeMirror-cursor{border-color:rgba(46,56,60,1) !important;}
+.cm-s-twilight span.cm-comment{color:rgba(120,120,112,1) !important;}
+.cm-s-twilight span.cm-atom{color:rgba(207,105,73,1) !important;}
+.cm-s-twilight span.cm-number{color:rgba(207,105,73,1) !important;}
+.cm-s-twilight span.cm-property{color:rgba(255,255,255,1) !important;}
+.cm-s-twilight span.cm-attribute{color:rgba(255,255,255,1) !important;}
+.cm-s-twilight span.cm-keyword{color:rgba(255,255,255,1) !important;}
+.cm-s-twilight span.cm-string{color:rgba(145,158,107,1) !important;}
+.cm-s-twilight span.cm-string-2{color:rgba(145,158,107,1) !important;}
+.cm-s-twilight span.cm-variable{color:rgba(4,125,101,1) !important;}
+.cm-s-twilight span.cm-variable-2{color:rgba(46,56,60,1) !important;}
+.cm-s-twilight span.cm-def{color:rgba(46,56,60,1) !important;}
+.cm-s-twilight span.cm-bracket{color:rgba(46,56,60,1) !important;}
+.cm-s-twilight span.cm-tag{color:rgba(156,51,40,1) !important;}
+.cm-s-twilight span.cm-link{color:rgba(46,56,60,1) !important;}
+.cm-s-twilight span.cm-error{background:rgba(0,0,0,0) !important;}
+.cm-s-twilight span.cm-error{color:rgba(46,56,60,1) !important;}
+.cm-s-twilight .CodeMirror-activeline-background{color:rgba(46,56,60,1) !important;}
+.cm-s-twilight .CodeMirror-matchingbracket{color:rgba(0,255,0,1) !important;}
