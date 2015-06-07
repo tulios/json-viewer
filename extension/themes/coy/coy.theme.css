@@ -1,0 +1,41 @@
+.cm-s-coy.CodeMirror{
+  background-color: #fdfdfd;
+  background-image: -webkit-linear-gradient(transparent 50%, rgba(69, 142, 209, 0.04) 50%);
+  background-image: -moz-linear-gradient(transparent 50%, rgba(69, 142, 209, 0.04) 50%);
+  background-image: -ms-linear-gradient(transparent 50%, rgba(69, 142, 209, 0.04) 50%);
+  background-image: -o-linear-gradient(transparent 50%, rgba(69, 142, 209, 0.04) 50%);
+  background-image: linear-gradient(transparent 50%, rgba(69, 142, 209, 0.04) 50%);
+  background-size: 3em 3em;
+  background-origin:content-box;
+}
+.cm-s-coy.CodeMirror{color:rgba(95,99,100,1) !important;}
+.cm-s-coy div.CodeMirror-selected{background:rgba(217,217,217,1) !important;}
+.cm-s-coy .CodeMirror-gutters{
+  background:rgba(0,0,0,0) !important;
+  -webkit-box-shadow: -1px 0px 0px 0px #358ccb, 0px 0px 0px 1px #dfdfdf;
+  -moz-box-shadow: -1px 0px 0px 0px #358ccb, 0px 0px 0px 1px #dfdfdf;
+  box-shadow: -1px 0px 0px 0px #358ccb, 0px 0px 0px 1px #dfdfdf;
+  border-left: 10px solid #358ccb;
+}
+.cm-s-coy .CodeMirror-guttermarker{color:rgba(29,117,179,1) !important;}
+.cm-s-coy .CodeMirror-guttermarker-subtle{color:rgba(224,226,229,1) !important;}
+.cm-s-coy .CodeMirror-linenumber{color:rgba(224,226,229,1) !important;}
+.cm-s-coy .CodeMirror-cursor{border-color:rgba(46,56,60,1) !important;}
+.cm-s-coy span.cm-comment{color:rgba(125,139,153,1) !important;}
+.cm-s-coy span.cm-atom{color:rgba(201,44,44,1) !important;}
+.cm-s-coy span.cm-number{color:rgba(201,44,44,1) !important;}
+.cm-s-coy span.cm-property{color:rgba(243,55,117,1) !important;}
+.cm-s-coy span.cm-attribute{color:rgba(46,56,60,1) !important;}
+.cm-s-coy span.cm-keyword{color:rgba(243,55,117,1) !important;}
+.cm-s-coy span.cm-string{color:rgba(63,152,34,1) !important;}
+.cm-s-coy span.cm-string-2{color:rgba(63,152,34,1) !important;}
+.cm-s-coy span.cm-variable{color:rgba(4,125,101,1) !important;}
+.cm-s-coy span.cm-variable-2{color:rgba(46,56,60,1) !important;}
+.cm-s-coy span.cm-def{color:rgba(46,56,60,1) !important;}
+.cm-s-coy span.cm-bracket{color:rgba(46,56,60,1) !important;}
+.cm-s-coy span.cm-tag{color:rgba(243,55,117,1) !important;}
+.cm-s-coy span.cm-link{color:rgba(46,56,60,1) !important;}
+.cm-s-coy span.cm-error{background:rgba(0,0,0,0) !important;}
+.cm-s-coy span.cm-error{color:rgba(46,56,60,1) !important;}
+.cm-s-coy .CodeMirror-activeline-background{color:rgba(46,56,60,1) !important;}
+.cm-s-coy .CodeMirror-matchingbracket{color:rgba(0,255,0,1) !important;}
