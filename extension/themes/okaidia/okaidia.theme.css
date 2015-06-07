@@ -1,6 +1,8 @@
 .cm-s-okaidia.CodeMirror{background:rgba(39,40,34,1) !important;}
 .cm-s-okaidia.CodeMirror{color:rgba(255,255,255,1) !important;}
-.cm-s-okaidia div.CodeMirror-selected{background:rgba(217,217,217,1) !important;}
+.cm-s-okaidia div.CodeMirror-selected {background: #49483E !important;}
+.cm-s-okaidia.CodeMirror ::selection { background: rgba(73, 72, 62, .99); }
+.cm-s-okaidia.CodeMirror ::-moz-selection { background: rgba(73, 72, 62, .99); }
 .cm-s-okaidia .CodeMirror-gutters{background:rgba(0,0,0,0) !important; border-right: 1px solid #3D3D38 !important;}
 .cm-s-okaidia .CodeMirror-guttermarker{color:rgba(243,55,117,1) !important;}
 .cm-s-okaidia .CodeMirror-guttermarker-subtle{color:#B3B5B7 !important;}
