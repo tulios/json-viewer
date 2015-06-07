@@ -1,0 +1,30 @@
+.cm-s-funky.CodeMirror{
+  background: url('data:image/svg+xml;charset=utf-8,<svg%20version%3D"1.1"%20xmlns%3D"http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg"%20width%3D"100"%20height%3D"100"%20fill%3D"rgba(0%2C0%2C0%2C.2)">%0D%0A<polygon%20points%3D"0%2C50%2050%2C0%200%2C0"%20%2F>%0D%0A<polygon%20points%3D"0%2C100%2050%2C100%20100%2C50%20100%2C0"%20%2F>%0D%0A<%2Fsvg>');
+	background-size: 1em 1em;
+}
+.cm-s-funky.CodeMirror{color:rgba(153,153,153,1) !important;}
+.cm-s-funky div.CodeMirror-selected{margin-left: 5px; background:rgba(0, 0, 0, 0.6) !important;}
+.cm-s-funky .CodeMirror-gutters{background: #000 !important;}
+.cm-s-funky .CodeMirror-guttermarker{color:rgba(29,117,179,1) !important;}
+.cm-s-funky .CodeMirror-guttermarker-subtle{color:rgba(224,226,229,1) !important;}
+.cm-s-funky .CodeMirror-linenumber{color:rgba(224,226,229,1) !important;}
+.cm-s-funky .CodeMirror-cursor{border-color:rgba(46,56,60,1) !important;}
+.cm-s-funky .CodeMirror-code pre > span {background-color: #000; padding: 1px 5px !important;}
+.cm-s-funky span.cm-comment{color:rgba(163,154,144,1) !important;}
+.cm-s-funky span.cm-atom{color:rgba(53,204,251,1) !important;}
+.cm-s-funky span.cm-number{color:rgba(53,204,251,1) !important;}
+.cm-s-funky span.cm-property{color:rgba(248,28,147,1) !important;}
+.cm-s-funky span.cm-attribute{color:rgba(248,28,147,1) !important;}
+.cm-s-funky span.cm-keyword{color:rgba(248,28,147,1) !important;}
+.cm-s-funky span.cm-string{color:rgba(254,251,69,1) !important;}
+.cm-s-funky span.cm-string-2{color:rgba(46,56,60,1) !important;}
+.cm-s-funky span.cm-variable{color:rgba(4,125,101,1) !important;}
+.cm-s-funky span.cm-variable-2{color:rgba(46,56,60,1) !important;}
+.cm-s-funky span.cm-def{color:rgba(46,56,60,1) !important;}
+.cm-s-funky span.cm-bracket{color:rgba(46,56,60,1) !important;}
+.cm-s-funky span.cm-tag{color:rgba(248,28,147,1) !important;}
+.cm-s-funky span.cm-link{color:rgba(46,56,60,1) !important;}
+.cm-s-funky span.cm-error{background:rgba(0,0,0,0) !important;}
+.cm-s-funky span.cm-error{color:rgba(46,56,60,1) !important;}
+.cm-s-funky .CodeMirror-activeline-background{color:rgba(46,56,60,1) !important;}
+.cm-s-funky .CodeMirror-matchingbracket{color:rgba(0,255,0,1) !important;}
