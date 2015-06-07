@@ -28,11 +28,17 @@ module.exports = {
       oldOptions = JSON.parse(oldOptions);
       options = {};
       options.theme = oldOptions.theme;
-      options.addons = JSON.stringify({
+      options.addons = {
         prependHeader: oldOptions.prependHeader,
         maxJsonSize: parseInt(oldOptions.maxJsonSize, 10)
-      });
+      }
 
+      // Update to at least the new max value
+      if (options.addons.maxJsonSize < defaults.addons.maxJsonSize) {
+        options.addons.maxJsonSize = defaults.addons.maxJsonSize;
+      }
+
+      options.addons = JSON.stringify(options.addons);
       options.structure = JSON.stringify(defaults.structure);
       options.style = defaults.style;
       this.save(options);

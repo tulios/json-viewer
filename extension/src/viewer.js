@@ -8,8 +8,14 @@ var renderExtras = require('./json-viewer/viewer/render-extras');
 var getOptions = require('./json-viewer/viewer/get-options');
 var loadRequiredCss = require('./json-viewer/viewer/load-required-css');
 
+function oversizedJSON(pre, options) {
+  return pre.textContent.length > (options.addons.maxJsonSize * 1024);
+}
+
 function highlightContent(pre) {
   getOptions().then(function(options) {
+
+    if (oversizedJSON(pre, options)) return pre.hidden = false;
 
     return loadRequiredCss(options).
       then(function() { return contentExtractor(pre) }).
