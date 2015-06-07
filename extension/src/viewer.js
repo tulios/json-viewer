@@ -3,6 +3,7 @@ var checkIfJson = require('./json-viewer/check-if-json');
 var contentExtractor = require('./json-viewer/content-extractor');
 var Highlighter = require('./json-viewer/highlighter');
 var loadCss = require('./json-viewer/load-css');
+var timestamp = require('./json-viewer/timestamp');
 var exposeJson = require('./json-viewer/viewer/expose-json');
 var renderExtras = require('./json-viewer/viewer/render-extras');
 var getOptions = require('./json-viewer/viewer/get-options');
@@ -10,6 +11,16 @@ var loadRequiredCss = require('./json-viewer/viewer/load-required-css');
 
 function oversizedJSON(pre, options) {
   return pre.textContent.length > (options.addons.maxJsonSize * 1024);
+}
+
+function prependHeader(options, jsonText) {
+  if (options.addons.prependHeader) {
+    var header = "// " + timestamp() + "\n";
+    header += "// " + document.location.href + "\n\n";
+    jsonText = header + jsonText;
+  }
+
+  return jsonText;
 }
 
 function highlightContent(pre) {
@@ -21,7 +32,8 @@ function highlightContent(pre) {
       then(function() { return contentExtractor(pre) }).
       then(function(value) {
 
-        var highlighter = new Highlighter(value.jsonText, options);
+        var formatted = prependHeader(options, value.jsonText);
+        var highlighter = new Highlighter(formatted, options);
         highlighter.highlight();
 
         exposeJson(value.jsonExtracted);

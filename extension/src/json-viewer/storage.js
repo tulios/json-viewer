@@ -29,7 +29,7 @@ module.exports = {
       options = {};
       options.theme = oldOptions.theme;
       options.addons = {
-        prependHeader: oldOptions.prependHeader,
+        prependHeader: JSON.parse(oldOptions.prependHeader),
         maxJsonSize: parseInt(oldOptions.maxJsonSize, 10)
       }
 
