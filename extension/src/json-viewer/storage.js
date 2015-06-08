@@ -25,26 +25,35 @@ module.exports = {
     var options = null;
 
     if (optionsStr === null && oldOptions !== null) {
-      oldOptions = JSON.parse(oldOptions);
-      options = {};
-      options.theme = oldOptions.theme;
-      options.addons = {
-        prependHeader: JSON.parse(oldOptions.prependHeader),
-        maxJsonSize: parseInt(oldOptions.maxJsonSize, 10)
+      try {
+        oldOptions = JSON.parse(oldOptions);
+        if(!oldOptions || typeof oldOptions !== "object") oldOptions = {};
+
+        options = {};
+        options.theme = oldOptions.theme;
+        options.addons = {
+          prependHeader: JSON.parse(oldOptions.prependHeader || defaults.addons.prependHeader),
+          maxJsonSize: parseInt(oldOptions.maxJsonSize || defaults.addons.maxJsonSize, 10)
+        }
+
+        // Update to at least the new max value
+        if (options.addons.maxJsonSize < defaults.addons.maxJsonSize) {
+          options.addons.maxJsonSize = defaults.addons.maxJsonSize;
+        }
+
+        options.addons = JSON.stringify(options.addons);
+        options.structure = JSON.stringify(defaults.structure);
+        options.style = defaults.style;
+        this.save(options);
+
+        optionsStr = JSON.stringify(options);
+
+      } catch(e) {
+        console.error(e);
+
+      } finally {
+        localStorage.removeItem(OLD_NAMESPACE);
       }
-
-      // Update to at least the new max value
-      if (options.addons.maxJsonSize < defaults.addons.maxJsonSize) {
-        options.addons.maxJsonSize = defaults.addons.maxJsonSize;
-      }
-
-      options.addons = JSON.stringify(options.addons);
-      options.structure = JSON.stringify(defaults.structure);
-      options.style = defaults.style;
-      this.save(options);
-
-      localStorage.removeItem(OLD_NAMESPACE);
-      optionsStr = JSON.stringify(options);
     }
 
     return optionsStr;

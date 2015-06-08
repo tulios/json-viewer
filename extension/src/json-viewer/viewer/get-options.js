@@ -3,12 +3,15 @@ var chrome = require('chrome-framework');
 
 function getOptions() {
   return new Promise(function(resolve, reject) {
-    chrome.runtime.sendMessage({action: "GET_OPTIONS"}, function(err, response) {
+    chrome.runtime.sendMessage({action: "GET_OPTIONS"}, function(response) {
+      var err = response.err;
+      var value = response.value;
+
       if (err) {
         reject(err);
 
       } else {
-        resolve(response);
+        resolve(value);
       }
     });
   });

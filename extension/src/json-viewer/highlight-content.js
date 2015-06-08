@@ -22,7 +22,6 @@ function prependHeader(options, outsideViewer, jsonText) {
 
 function highlightContent(pre, outsideViewer) {
   getOptions().then(function(options) {
-
     if (oversizedJSON(pre, options)) return pre.hidden = false;
 
     return loadRequiredCss(options).
@@ -41,7 +40,7 @@ function highlightContent(pre, outsideViewer) {
 
   }).catch(function(e) {
     pre.hidden = false;
-    console.log(e);
+    console.error(e);
   });
 }
 
