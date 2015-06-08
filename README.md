@@ -1,8 +1,24 @@
+![JSONViewer Logo](https://raw.githubusercontent.com/tulios/json-viewer/new-version/logo.png)
+
 # JSON Viewer
 
-:warning: __This version is not yet ready!__ :warning:
+The most beautiful and customizable JSON/JSONP highlighter that your eyes have ever seen. It is a Chrome extension for printing JSON and JSONP.
 
-TODO:
+Features:
+
+* Syntax highlighting
+* 21 built-in themes
+* Collapsible nodes
+* URL does not matter
+* Inspect your json typing "json" in the console
+* Hot word `json-viewer` into omnibox
+* Toggle button to view the raw/highlighted version
+* Option to show line numbers
+* Option to customize your theme
+* Option to configure a max JSON size to highlight
+* Option to collapse nodes from second level + Button to unfold all collapsed nodes
+* Option to include a header with timestamp + url
+* Option to allow the edition of the loaded JSON
 
 ## Installation
 
@@ -19,3 +35,21 @@ TODO:
   5. enable "Developer mode"
   6. click "Load unpacked extension"
   7. select "build/json_viewer" directory
+
+## Try it on
+
+### JSON
+
+  [http://graph.facebook.com/github](http://graph.facebook.com/github)
+
+  [https//api.github.com](https://api.github.com)
+
+  [https://api.github.com/gists/public](https://api.github.com/gists/public)
+
+  Large file:
+
+  [https://raw.githubusercontent.com/ebrelsford/geojson-examples/master/596acres-02-18-2014.geojson](https://raw.githubusercontent.com/ebrelsford/geojson-examples/master/596acres-02-18-2014.geojson)
+
+### JSONP
+
+  [http://freemusicarchive.org/api/get/curators.jsonp?api_key=60BLHNQCAOUFPIBZ&callback=test](http://freemusicarchive.org/api/get/curators.jsonp?api_key=60BLHNQCAOUFPIBZ&callback=test)
