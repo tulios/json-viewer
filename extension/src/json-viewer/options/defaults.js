@@ -2,7 +2,8 @@ module.exports = {
   theme: "default",
   addons: {
     prependHeader: true,
-    maxJsonSize: 400
+    maxJsonSize: 400,
+    awaysFold: false
   },
   structure: {
     readOnly: true,

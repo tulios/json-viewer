@@ -35,14 +35,16 @@ function highlightContent(pre) {
         var formatted = prependHeader(options, value.jsonText);
         var highlighter = new Highlighter(formatted, options);
         highlighter.highlight();
+        if (options.addons.awaysFold) highlighter.fold();
 
         exposeJson(value.jsonExtracted);
-        renderExtras(pre);
+        renderExtras(pre, options, highlighter);
 
       });
 
-  }).catch(function() {
+  }).catch(function(e) {
     pre.hidden = false;
+    console.log(e);
   });
 }
 
