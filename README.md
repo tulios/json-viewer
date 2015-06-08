@@ -1,4 +1,4 @@
-![JSONViewer Logo](https://raw.githubusercontent.com/tulios/json-viewer/new-version/logo.png)
+![JSONViewer Logo](https://raw.githubusercontent.com/tulios/json-viewer/master/logo.png)
 
 # JSON Viewer
 
@@ -19,6 +19,11 @@ Features:
 * Option to collapse nodes from second level + Button to unfold all collapsed nodes
 * Option to include a header with timestamp + url
 * Option to allow the edition of the loaded JSON
+
+Notes:
+
+* This extension might crash with other JSON highlighters/formatters, you may need to disable them
+* To highlight local files and incognito tabs you have to manually enable these options on the extensions page
 
 ## Installation
 

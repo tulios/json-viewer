@@ -1,3 +1,18 @@
+# 0.8.0 - 2015-06-08
+
+  * Rewritten
+  * New logo
+  * Based on CodeMirror (~10x more performance)
+  * New themes (21 built-in)
+  * Highlighted/raw toggle button
+  * Line numbers (optional)
+  * Accepts custom CSS
+  * Button to unfold everything when alwaysFold true
+  * Options to customize text wrap, gutters, etc
+  * Removed clickable URLs. Just while I think in a better solution
+  * Increased Max JSON size default from 200kb to 400kb
+  * Included reset button to options page
+
 # 0.7.2 - 2015-02-01
 
   * Allow nested JSONP's by https://github.com/bluec0re
