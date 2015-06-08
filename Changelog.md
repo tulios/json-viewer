@@ -1,3 +1,8 @@
+# 0.8.1 - 2015-06-08
+
+  * Fixed a long problem with UTF-8 Characters
+  * Clickable URLs with a better matcher
+
 # 0.8.0 - 2015-06-08
 
   * Rewritten
@@ -5,6 +10,7 @@
   * Based on CodeMirror (~10x more performance)
   * New themes (21 built-in)
   * Highlighted/raw toggle button
+  * Clickable URLs
   * Line numbers (optional)
   * Accepts custom CSS
   * Button to unfold everything when alwaysFold true

@@ -4,6 +4,7 @@ Features
 * Syntax highlighting
 * 21 built-in themes
 * Collapsible nodes
+* Clickable URLs
 * URL does not matter
 * Inspect your json typing "json" in the console
 * Hot word `json-viewer` into omnibox

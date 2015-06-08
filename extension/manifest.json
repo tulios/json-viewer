@@ -1,6 +1,6 @@
 {
   "name": "JSON Viewer",
-  "version": "0.8.0",
+  "version": "0.8.1",
   "manifest_version": 2,
   "description": "The most beautiful and customizable JSON/JSONP highlighter that your eyes have ever seen",
   "homepage_url": "https://github.com/tulios/json-viewer",
