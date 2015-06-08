@@ -12,7 +12,8 @@
   },
   "web_accessible_resources": [
     "assets/viewer.css",
-    "pages/options.html"
+    "pages/options.html",
+    "pages/omnibox.html"
   ],
   "omnibox": { "keyword" : "json-viewer" },
   "options_page": "pages/options.html",
@@ -24,7 +25,7 @@
     }
   ],
   "background": {
-    "scripts": ["assets/backend.js"],
+    "scripts": ["assets/backend.js", "assets/omnibox.js"],
     "persistent": false
   },
   "permissions": [

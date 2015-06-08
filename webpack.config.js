@@ -8,7 +8,9 @@ var ExtractTextPlugin = require("extract-text-webpack-plugin");
 var entries = {
   viewer: ["./extension/src/viewer.js"],
   options: ["./extension/src/options.js"],
-  backend: ["./extension/src/backend.js"]
+  backend: ["./extension/src/backend.js"],
+  omnibox: ["./extension/src/omnibox.js"],
+  "omnibox-page": ["./extension/src/omnibox-page.js"]
 };
 
 var themesList = fs.readdirSync(path.join('extension', 'themes')).

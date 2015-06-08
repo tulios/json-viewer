@@ -9,8 +9,8 @@ function getPreWithSource() {
   return null
 }
 
-function checkIfJson(sucessCallback) {
-  var pre = getPreWithSource();
+function checkIfJson(sucessCallback, element) {
+  var pre = element || getPreWithSource();
   if (pre !== null && pre !== undefined) {
     sucessCallback(pre);
   }
