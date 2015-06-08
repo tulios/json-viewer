@@ -1,3 +1,7 @@
+# 0.8.2 - 2015-06-08
+
+  * Improved reliability of the code which migrates the old options to the new ones
+
 # 0.8.1 - 2015-06-08
 
   * Fixed a long problem with UTF-8 Characters
