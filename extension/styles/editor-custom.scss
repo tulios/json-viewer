@@ -1,5 +1,12 @@
-.CodeMirror pre {
-  margin-left: 5px;
+.CodeMirror {
+  pre {
+    margin-left: 5px;
+  }
+
+  span.cm-string-link {
+    text-decoration: underline;
+    cursor: pointer;
+  }
 }
 
 .CodeMirror-foldgutter {

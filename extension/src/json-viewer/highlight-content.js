@@ -41,6 +41,7 @@ function highlightContent(pre, outsideViewer) {
 
   }).catch(function(e) {
     pre.hidden = false;
+    console.log(e);
   });
 }
 
