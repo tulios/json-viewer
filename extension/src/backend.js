@@ -3,8 +3,11 @@ var Storage = require('./json-viewer/storage');
 
 chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
 
-  if (request.action === "GET_OPTIONS") {
-    sendResponse(Storage.load());
+  try {
+    if (request.action === "GET_OPTIONS") {
+      sendResponse(null, Storage.load());
+    }
+  } catch(e) {
+    sendResponse(e.stack);
   }
-
 });
