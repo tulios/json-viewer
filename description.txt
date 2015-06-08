@@ -1,0 +1,29 @@
+It is a Chrome extension for printing JSON and JSONP.
+
+Features
+* Syntax highlighting
+* Collapsible nodes
+* Clickable URLs
+* URL does not matter
+* Inspect your json typing "json" in the console
+* Options page with:
+   - 8 themes
+   - Max json size (200kb default)
+   - Option to configure the font-size
+   - Option to activate/deactivate "nodes always collapsed" (from 2º level)
+   - Option to activate/deactivate the header (timestamp + url)
+
+Note
+This extension might crash with other JSON highlighters/formatters, you may need to disable them
+
+Bugs and suggestions
+https://github.com/tulios/json-viewer/issues
+
+Contributors
+Thiago Pontes (@thiagopnts)
+@bluec0re
+
+License
+MIT License
+
+Any questions tweet me @tulios
