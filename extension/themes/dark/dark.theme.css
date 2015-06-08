@@ -19,7 +19,7 @@
 .cm-s-dark span.cm-def{color:rgba(46,56,60,1) !important;}
 .cm-s-dark span.cm-bracket{color:rgba(46,56,60,1) !important;}
 .cm-s-dark span.cm-tag{color:rgba(156,51,40,1) !important;}
-.cm-s-dark span.cm-link{color:rgba(46,56,60,1) !important;}
+.cm-s-dark span.cm-link{color:hsl(75, 70%, 60%) !important;}
 .cm-s-dark span.cm-error{background:rgba(0,0,0,0) !important;}
 .cm-s-dark span.cm-error{color:rgba(46,56,60,1) !important;}
 .cm-s-dark .CodeMirror-activeline-background{color:rgba(46,56,60,1) !important;}
