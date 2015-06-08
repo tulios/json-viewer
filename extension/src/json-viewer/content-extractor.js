@@ -8,11 +8,11 @@ function contentExtractor(pre) {
       var rawJsonText = pre.textContent;
       var jsonExtracted = extractJSON(rawJsonText);
 
-      // validate json
-      JSON.parse(jsonExtracted);
+      // validate and decode json
+      var decodedJson = JSON.stringify(JSON.parse(jsonExtracted));
+      var jsonText = rawJsonText.replace(jsonExtracted, jsonFormater(decodedJson));
 
-      var jsonText = jsonFormater(rawJsonText);
-      resolve({jsonText: jsonText, jsonExtracted: jsonExtracted})
+      resolve({jsonText: jsonText, jsonExtracted: decodedJson});
 
     } catch(e) {
       reject(e);
