@@ -1,0 +1,16 @@
+{
+  "number_bigger_than_Number.MAX_VALUE": 80402000000790837,
+  "number_string": "53061",
+  "float": 122.80,
+  "float_negative": -122.80402000000790837,
+  "integer_negative": -122,
+  "unicode_symbols": "Best Overall Start-up \u2022 2012 Crunchies (TechCrunch Awards)\nBest Bootstrapped Start-up \u2022 2008 Crunchies",
+  "url_html_encoded": "https://www.facebook.com/GitHub&#63;param1&#61;1&amp;param2&#61;2",
+  "diatrics": "Adaptação os três porém D'Artagnan maléfico",
+  "path_with_escaped_slash": "\/some\/path\/here",
+  "unicode_letters": "Quando voc\u00ea vai \u00e0 praia, costuma levar comes e bebes?",
+  "unicode_slash":"/some_action\u0026key=value",
+  "chinese_string": "\u6CA1\u6709\u66F4\u591A\u7684\u95EE\u9898",
+  "korean_string": "\uB354 \uC774\uC0C1 \uBB38\uC81C",
+  "russian_string": "\u041D\u0435\u0442 \u0431\u043E\u043B\u044C\u0448\u0435 \u043F\u0440\u043E\u0431\u043B\u0435\u043C"
+}
