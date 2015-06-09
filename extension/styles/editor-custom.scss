@@ -1,8 +1,4 @@
 .CodeMirror {
-  pre {
-    margin-left: 5px;
-  }
-
   span.cm-string-link {
     text-decoration: underline;
     cursor: pointer;
@@ -13,7 +9,9 @@
   padding: 0 5px;
 }
 
-.CodeMirror-lines .CodeMirror-cursor {
+.CodeMirror pre,
+.CodeMirror-lines .CodeMirror-cursor,
+div.CodeMirror-selected {
   margin-left: 5px;
 }
 

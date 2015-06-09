@@ -2,10 +2,16 @@ var CodeMirror = require('codemirror');
 require('codemirror/addon/fold/foldcode');
 require('codemirror/addon/fold/foldgutter');
 require('codemirror/addon/fold/brace-fold');
+require('codemirror/addon/dialog/dialog');
+require('codemirror/addon/scroll/annotatescrollbar');
+require('codemirror/addon/search/matchesonscrollbar');
+require('codemirror/addon/search/searchcursor');
+require('codemirror/addon/search/search');
 require('codemirror/mode/javascript/javascript');
 var merge = require('./merge');
 var defaults = require('./options/defaults');
 var URL_PATTERN = require('./url-pattern');
+var F_LETTER = 70;
 
 function Highlighter(jsonText, options) {
   this.options = options || {};
@@ -16,25 +22,14 @@ function Highlighter(jsonText, options) {
 
 Highlighter.prototype = {
   highlight: function() {
-    var obligatory = {
-      value: this.text,
-      theme: this.theme,
-      mode: "application/ld+json",
-      indentUnit: 2,
-      gutters: ["CodeMirror-linenumbers", "CodeMirror-foldgutter"]
-    }
+    var options = this.getEditorOptions();
+    this.editor = CodeMirror(document.body, options);
 
-    var optional = defaults.structure;
-    var configured = this.options.structure;
-
-    this.editor = CodeMirror(
-      document.body,
-      merge({}, optional, configured, obligatory)
-    );
-
+    this.preventDefaultSearch();
     this.bindRenderLine();
     this.bindMousedown();
     this.editor.refresh();
+    this.editor.focus();
   },
 
   fold: function() {
@@ -98,6 +93,49 @@ Highlighter.prototype = {
     var div = document.createElement("div");
     div.innerHTML = text;
     return div.firstChild.nodeValue;
+  },
+
+  getEditorOptions: function() {
+    var obligatory = {
+      value: this.text,
+      theme: this.theme,
+      mode: "application/ld+json",
+      indentUnit: 2,
+      gutters: ["CodeMirror-linenumbers", "CodeMirror-foldgutter"],
+      extraKeys: this.getExtraKeysMap()
+    }
+
+    var optional = defaults.structure;
+    var configured = this.options.structure;
+
+    return merge({}, optional, configured, obligatory);
+  },
+
+  getExtraKeysMap: function() {
+    return {
+      "Ctrl-F": this.openSearchDialog,
+      "Cmd-F": this.openSearchDialog,
+      "Enter": function(cm) {
+        CodeMirror.commands.findNext(cm);
+      },
+      "Esc": function(cm) {
+        CodeMirror.commands.clearSearch(cm);
+        cm.setSelection(cm.getCursor());
+        cm.focus();
+      }
+    }
+  },
+
+  preventDefaultSearch: function() {
+    document.addEventListener("keydown", function(e) {
+      var metaKey = navigator.platform.match("Mac") ? e.metaKey : e.ctrlKey;
+      if (e.keyCode === F_LETTER && metaKey) e.preventDefault();
+    }, false);
+  },
+
+  openSearchDialog: function(cm) {
+    cm.setCursor({line: 0, ch: 0});
+    CodeMirror.commands.find(cm);
   }
 }
 
