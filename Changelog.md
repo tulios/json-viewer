@@ -1,3 +1,9 @@
+# 0.8.3 - 2015-06-09
+
+  * Fixed numbers bigger than Number.MAX_VALUE being rounded
+  * Included search (also by regex)
+  * Included option to render all content and use the browser search
+
 # 0.8.2 - 2015-06-08
 
   * Improved reliability of the code which migrates the old options to the new ones
