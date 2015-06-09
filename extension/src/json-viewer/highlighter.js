@@ -22,10 +22,9 @@ function Highlighter(jsonText, options) {
 
 Highlighter.prototype = {
   highlight: function() {
-    var options = this.getEditorOptions();
-    this.editor = CodeMirror(document.body, options);
+    this.editor = CodeMirror(document.body, this.getEditorOptions());
+    if (!this.options.addons.awaysRenderAllContent) this.preventDefaultSearch();
 
-    this.preventDefaultSearch();
     this.bindRenderLine();
     this.bindMousedown();
     this.editor.refresh();
@@ -105,6 +104,10 @@ Highlighter.prototype = {
       extraKeys: this.getExtraKeysMap()
     }
 
+    if (this.options.addons.awaysRenderAllContent) {
+      obligatory.viewportMargin = Infinity;
+    }
+
     var optional = defaults.structure;
     var configured = this.options.structure;
 
@@ -112,9 +115,7 @@ Highlighter.prototype = {
   },
 
   getExtraKeysMap: function() {
-    return {
-      "Ctrl-F": this.openSearchDialog,
-      "Cmd-F": this.openSearchDialog,
+    var extraKeyMap = {
       "Enter": function(cm) {
         CodeMirror.commands.findNext(cm);
       },
@@ -124,6 +125,11 @@ Highlighter.prototype = {
         cm.focus();
       }
     }
+
+    var nativeSearch = this.options.addons.awaysRenderAllContent;
+    extraKeyMap["Ctrl-F"] = nativeSearch ? false : this.openSearchDialog;
+    extraKeyMap["Cmd-F"] = nativeSearch ? false : this.openSearchDialog;
+    return extraKeyMap;
   },
 
   preventDefaultSearch: function() {

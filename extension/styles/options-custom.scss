@@ -11,6 +11,7 @@ body {
 h1 {
   line-height: 128px;
   margin: 0 0 0 -10px;
+  font-size: 2.5em;
 
   .logo {
     float: left;
@@ -28,6 +29,15 @@ header {
   h2 {
     padding: 0;
     margin: 0;
+    font-size: 2em;
+  }
+
+  .underline {
+    text-decoration: underline;
+  }
+
+  .explain strong, .hint {
+    font-size: 1.5em;
   }
 
   .hint {

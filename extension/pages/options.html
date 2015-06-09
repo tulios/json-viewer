@@ -28,8 +28,19 @@
         <header>
           <h2>Add-ons</h2>
           <span class="hint">Edit this code</span><br/>
-          <span class="hint">The value of "maxJsonSize" is in kbytes</span><br/>
-          <span class="hint">"awaysFold" is from the second level. A button to unfold all will appear if the value is true</span><br/>
+          <div class="explain">
+            <ul>
+              <li>
+                <strong>"maxJsonSize"</strong> - <span class="hint">value in kbytes (integer)</span>
+              </li>
+              <li>
+                <strong>"awaysFold"</strong> - <span class="hint">Fold from the second level. A button to unfold all will appear if the value is true (boolean)</span>
+              </li>
+              <li>
+                <strong>"awaysRenderAllContent"</strong> - <span class="hint">Disables the custom search and renders all content. Be aware that with this option <span class="underline">large files</span> will have a <span class="underline">significant performance reduction</span></span>
+              </li>
+            </ul>
+          </div>
         </header>
 
         <textarea id="addons" name="addons" style="display: none;">
