@@ -23,7 +23,7 @@ function Highlighter(jsonText, options) {
 Highlighter.prototype = {
   highlight: function() {
     this.editor = CodeMirror(document.body, this.getEditorOptions());
-    if (!this.options.addons.awaysRenderAllContent) this.preventDefaultSearch();
+    if (!this.alwaysRenderAllContent()) this.preventDefaultSearch();
 
     this.bindRenderLine();
     this.bindMousedown();
@@ -104,7 +104,7 @@ Highlighter.prototype = {
       extraKeys: this.getExtraKeysMap()
     }
 
-    if (this.options.addons.awaysRenderAllContent) {
+    if (this.alwaysRenderAllContent()) {
       obligatory.viewportMargin = Infinity;
     }
 
@@ -126,7 +126,7 @@ Highlighter.prototype = {
       }
     }
 
-    var nativeSearch = this.options.addons.awaysRenderAllContent;
+    var nativeSearch = this.alwaysRenderAllContent();
     extraKeyMap["Ctrl-F"] = nativeSearch ? false : this.openSearchDialog;
     extraKeyMap["Cmd-F"] = nativeSearch ? false : this.openSearchDialog;
     return extraKeyMap;
@@ -142,6 +142,13 @@ Highlighter.prototype = {
   openSearchDialog: function(cm) {
     cm.setCursor({line: 0, ch: 0});
     CodeMirror.commands.find(cm);
+  },
+
+  alwaysRenderAllContent: function() {
+    // "awaysRenderAllContent" was a typo but to avoid any problems
+    // I'll keep it a while
+    return this.options.addons.alwaysRenderAllContent ||
+           this.options.addons.awaysRenderAllContent;
   }
 }
 

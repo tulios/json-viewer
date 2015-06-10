@@ -45,7 +45,13 @@ function renderExtras(pre, options, highlighter) {
 
   extras.appendChild(optionsLink);
   extras.appendChild(rawLink);
-  if (options.addons.awaysFold) extras.appendChild(unfoldLink);
+
+  // "awaysFold" was a typo but to avoid any problems I'll keep it
+  // a while
+  if (options.addons.alwaysFold || options.addons.awaysFold) {
+    extras.appendChild(unfoldLink);
+  }
+
   document.body.appendChild(extras);
 }
 

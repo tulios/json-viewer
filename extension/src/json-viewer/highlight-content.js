@@ -31,7 +31,12 @@ function highlightContent(pre, outsideViewer) {
         var formatted = prependHeader(options, outsideViewer, value.jsonText);
         var highlighter = new Highlighter(formatted, options);
         highlighter.highlight();
-        if (options.addons.awaysFold) highlighter.fold();
+
+        // "awaysFold" was a typo but to avoid any problems I'll keep it
+        // a while
+        if (options.addons.alwaysFold || options.addons.awaysFold) {
+          highlighter.fold();
+        }
 
         exposeJson(value.jsonExtracted, outsideViewer);
         renderExtras(pre, options, highlighter);

@@ -3,8 +3,8 @@ module.exports = {
   addons: {
     prependHeader: true,
     maxJsonSize: 400,
-    awaysFold: false,
-    awaysRenderAllContent: false
+    alwaysFold: false,
+    alwaysRenderAllContent: false
   },
   structure: {
     readOnly: true,

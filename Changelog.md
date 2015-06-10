@@ -1,3 +1,7 @@
+# 0.8.5 - 2015-06-10
+
+  * Fixed typos with "alwaysFold" and "alwaysRenderAllContent"
+
 # 0.8.4 - 2015-06-10
 
   * Fixed a bug where the decoding to allow numbers bigger than Number.MAX_VALUE breaks JSON files without numbers
