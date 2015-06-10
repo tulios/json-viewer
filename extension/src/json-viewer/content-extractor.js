@@ -18,9 +18,11 @@ function contentExtractor(pre) {
       // bigger than Number.MAX_VALUE and so on
       // https://github.com/tulios/json-viewer/issues/37
       var matches = rawJsonText.match(regex);
-      decodedJson.match(regex).forEach(function(number, i) {
-        decodedJson = decodedJson.replace(number, matches[i]);
-      });
+      if (matches && matches.length > 0) {
+        decodedJson.match(regex).forEach(function(number, i) {
+          decodedJson = decodedJson.replace(number, matches[i]);
+        });
+      }
 
       var jsonText = rawJsonText.replace(jsonExtracted, jsonFormater(decodedJson));
       resolve({jsonText: jsonText, jsonExtracted: decodedJson});
