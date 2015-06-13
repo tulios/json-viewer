@@ -14,7 +14,7 @@ module.exports = {
   },
   style: [
     ".CodeMirror {",
-    "  font-family: monaco, Arial, sans-serif;",
+    "  font-family: monaco, Consolas, Menlo, Courier, monospace;",
     "  font-size: 16px;",
     "}"
   ].join('\n')
