@@ -12,7 +12,7 @@ function contentExtractor(pre) {
       var decodedJson = JSON.stringify(JSON.parse(jsonExtracted));
 
       // match any numbers (integers, floats, negatives)
-      var regex = /\s*:\s*(-?\d+\.?\d*)/g;
+      var regex = /\"\s*:\s*(-?\d+\.?\d*)\s*,/g;
 
       // Replace the numbers with their original values to avoid convert numbers
       // bigger than Number.MAX_VALUE and so on
