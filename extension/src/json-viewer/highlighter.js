@@ -16,6 +16,7 @@ var F_LETTER = 70;
 function Highlighter(jsonText, options) {
   this.options = options || {};
   this.text = jsonText;
+  this.defaultSearch = false;
   this.theme = this.options.theme || "default";
   this.theme = this.theme.replace(/_/, ' ');
 }
@@ -135,8 +136,10 @@ Highlighter.prototype = {
   preventDefaultSearch: function() {
     document.addEventListener("keydown", function(e) {
       var metaKey = navigator.platform.match("Mac") ? e.metaKey : e.ctrlKey;
-      if (e.keyCode === F_LETTER && metaKey) e.preventDefault();
-    }, false);
+      if (!this.defaultSearch && e.keyCode === F_LETTER && metaKey) {
+        e.preventDefault();
+      }
+    }.bind(this), false);
   },
 
   openSearchDialog: function(cm) {

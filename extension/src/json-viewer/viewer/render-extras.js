@@ -24,10 +24,14 @@ function renderExtras(pre, options, highlighter) {
     var editor = document.getElementsByClassName('CodeMirror')[0];
 
     if (pre.hidden) {
+      // Raw enabled
+      highlighter.defaultSearch = true;
       editor.hidden = true;
       pre.hidden = false;
 
     } else {
+      // Raw disabled
+      highlighter.defaultSearch = false;
       editor.hidden = false;
       pre.hidden = true;
     }
