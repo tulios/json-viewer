@@ -1,0 +1,16 @@
+.theme-material-css-check:before {
+  content: 'loaded';
+  display: none;
+}
+
+.extras {
+  .gear, .raw, .unfold {
+    svg {
+      fill: #fff;
+    }
+
+    &:hover {
+      background-color: #666;
+    }
+  }
+}

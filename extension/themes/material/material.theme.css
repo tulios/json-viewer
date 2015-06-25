@@ -1,0 +1,26 @@
+.cm-s-material.CodeMirror{background:rgba(34,47,53,1) !important;}
+.cm-s-material.CodeMirror{color:rgba(96,125,138,1) !important;}
+.cm-s-material div.CodeMirror-selected{background:rgba(0,64,115,1) !important;}
+.cm-s-material .CodeMirror-gutters{background:rgba(0,0,0,0) !important; border: 0;}
+.cm-s-material .CodeMirror-guttermarker{color:#546f7a !important;}
+.cm-s-material .CodeMirror-guttermarker-subtle{color:#546f7a !important;}
+.cm-s-material .CodeMirror-linenumber{color:rgba(84,111,122,1) !important;}
+.cm-s-material .CodeMirror-cursor{border-color:rgba(46,56,60,1) !important;}
+.cm-s-material span.cm-comment{color:rgba(145,145,145,1) !important;}
+.cm-s-material span.cm-atom{color:rgb(255, 47, 146) !important;}
+.cm-s-material span.cm-number{color:rgba(215,131,255,1) !important;}
+.cm-s-material span.cm-property{color:rgba(0,253,255,1) !important;}
+.cm-s-material span.cm-attribute{color:rgba(0,253,255,1) !important;}
+.cm-s-material span.cm-keyword{color:rgba(122,129,255,1) !important;}
+.cm-s-material span.cm-string{color:rgba(0,250,146,1) !important;}
+.cm-s-material span.cm-string-2{color:rgba(0,250,146,1) !important;}
+.cm-s-material span.cm-variable{color:rgba(96,125,138,1) !important;}
+.cm-s-material span.cm-variable-2{color:rgba(96,125,138,1) !important;}
+.cm-s-material span.cm-def{color:rgba(96,125,138,1) !important;}
+.cm-s-material span.cm-bracket{color:rgba(0,253,255,1) !important;}
+.cm-s-material span.cm-tag{color:rgba(0,250,146,1) !important;}
+.cm-s-material span.cm-link{color:rgba(46,56,60,1) !important;}
+.cm-s-material span.cm-error{background:rgba(0,0,0,0) !important;}
+.cm-s-material span.cm-error{color:rgba(46,56,60,1) !important;}
+.cm-s-material .CodeMirror-activeline-background{color:rgba(46,56,60,1) !important;}
+.cm-s-material .CodeMirror-matchingbracket{color:rgba(0,255,0,1) !important;}
