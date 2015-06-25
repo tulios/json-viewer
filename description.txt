@@ -2,7 +2,7 @@ It is a Chrome extension for printing JSON and JSONP.
 
 Features
 * Syntax highlighting
-* 21 built-in themes
+* 22 built-in themes
 * Collapsible nodes
 * Clickable URLs
 * URL does not matter

@@ -7,7 +7,7 @@ The most beautiful and customizable JSON/JSONP highlighter that your eyes have e
 Features:
 
 * Syntax highlighting
-* 21 built-in themes
+* 22 built-in themes
 * Collapsible nodes
 * Clickable URLs
 * URL does not matter

@@ -1,3 +1,14 @@
+# 0.9.0 - 2015-06-25
+
+  * Increased loadCSS max wait to 2s
+  * Enabled browser search on raw content
+  * Bugfix: fixed an issue with Number.MAX_VALUE replace fix
+  * Bugfix: allowing private and local networks with url-pattern
+  * Sorted themes by darkness
+  * New theme (material)
+  * Better default font for snippets in options page (improved for windows users)
+  * Better default font-family
+
 # 0.8.5 - 2015-06-10
 
   * Fixed typos with "alwaysFold" and "alwaysRenderAllContent"
