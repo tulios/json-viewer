@@ -1,6 +1,6 @@
 var Promise = require('promise');
 var chrome = require("chrome-framework");
-var MAX_WAIT = 20;
+var MAX_WAIT = 1000 * 2; // 2s
 
 function loadCSS(opts) {
   var url = chrome.extension.getURL(opts.path);
