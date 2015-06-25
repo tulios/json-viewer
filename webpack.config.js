@@ -13,17 +13,28 @@ var entries = {
   "omnibox-page": ["./extension/src/omnibox-page.js"]
 };
 
-var themesList = fs.readdirSync(path.join('extension', 'themes')).
-  filter(function(filename) {
-    return /\.js$/.test(filename);
-  }).
-  map(function(theme) {
-    return theme.replace(/\.js$/, '');
-  });
+function findThemes(darkness) {
+  return fs.readdirSync(path.join('extension', 'themes', darkness)).
+    filter(function(filename) {
+      return /\.js$/.test(filename);
+    }).
+    map(function(theme) {
+      return theme.replace(/\.js$/, '');
+    });
+}
 
-themesList.forEach(function(filename) {
-  entries[filename] = ["./extension/themes/" + filename + ".js"];
-});
+function includeThemes(darkness, list) {
+  list.forEach(function(filename) {
+    entries[filename] = ["./extension/themes/" + darkness + "/" + filename + ".js"];
+  });
+}
+
+var lightThemes = findThemes('light');
+var darkThemes = findThemes('dark');
+var themes = {light: lightThemes, dark: darkThemes};
+
+includeThemes('light', lightThemes);
+includeThemes('dark', darkThemes);
 
 console.log("Entries list:");
 console.log(entries);
@@ -33,7 +44,7 @@ module.exports = {
   debug: false,
   context: __dirname,
   entry: entries,
-  themes: themesList,
+  themes: themes,
   output: {
     path: path.join(__dirname, "build/json_viewer/assets"),
     filename: "[name].js"
@@ -61,7 +72,7 @@ module.exports = {
     new webpack.DefinePlugin({
       "process.env": {
         NODE_ENV: JSON.stringify("production"),
-        THEMES: JSON.stringify(themesList)
+        THEMES: JSON.stringify(themes)
       }
     }),
     new BuildExtension()

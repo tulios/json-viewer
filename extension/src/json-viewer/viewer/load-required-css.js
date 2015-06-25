@@ -1,5 +1,6 @@
 var Promise = require('promise');
 var loadCss = require('../load-css');
+var themeDarkness = require('../theme-darkness');
 
 function loadRequiredCss(options) {
   var theme = options.theme;
@@ -11,7 +12,7 @@ function loadRequiredCss(options) {
 
   if (theme && theme !== "default") {
     loaders.push(loadCss({
-      path: "themes/" + theme + ".css",
+      path: "themes/" + themeDarkness(theme) + "/" + theme + ".css",
       checkClass: "theme-" + theme + "-css-check"
     }));
   }
