@@ -2,6 +2,10 @@ body {
   margin: 0;
 }
 
+*:focus {
+  outline: 0;
+}
+
 .container {
   position: relative;
   max-width: 1150px;
