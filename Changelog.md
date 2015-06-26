@@ -1,3 +1,8 @@
+# 0.9.1 - 2015-06-26
+
+  * Bugfix: new versions of chrome (45.0.2442.0 canary (64-bit)) have changed the format of the value hold by `:before content`, using a safe approach to check the CSS load (many thanks to @Wideshanks)
+  * Removed outline from settings page
+
 # 0.9.0 - 2015-06-25
 
   * Increased loadCSS max wait to 2s
