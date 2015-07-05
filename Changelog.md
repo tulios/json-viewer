@@ -1,3 +1,7 @@
+# 0.9.2 - 2015-07-05
+
+  * Bugfix: fixed the problem with Number.MAX_VALUE in all scenarios, used solution proposed by @alexlopashev
+
 # 0.9.1 - 2015-06-26
 
   * Bugfix: new versions of chrome (45.0.2442.0 canary (64-bit)) have changed the format of the value hold by `:before content`, using a safe approach to check the CSS load (many thanks to @Wideshanks)
