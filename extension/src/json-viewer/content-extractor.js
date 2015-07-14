@@ -5,21 +5,21 @@ var jsonFormater = require('./jsl-format');
 var TOKEN = (Math.random() + 1).toString(36).slice(2, 7);
 var WRAP_START = "<wrap_" + TOKEN + ">";
 var WRAP_END = "</wrap_" + TOKEN +">";
-var NUM_REGEX = /^-?\d+\.?\d*$/g;
+var NUM_REGEX = /^-?\d+\.?[\deE]*$/g;
 
 var WRAP_REGEX = new RegExp(
-  "^" + WRAP_START + "(-?\\d+\\.?\\d*)" + WRAP_END + "$", "g"
+  "^" + WRAP_START + "(-?\\d+\\.?[\\deE]*)" + WRAP_END + "$", "g"
 );
 
 var REPLACE_WRAP_REGEX = new RegExp(
-  "\"" + WRAP_START + "(-?\\d+\\.?\\d*)" + WRAP_END + "\"", "g"
+  "\"" + WRAP_START + "(-?\\d+\\.?[\\deE]*)" + WRAP_END + "\"", "g"
 );
 
 function contentExtractor(pre) {
   return new Promise(function(resolve, reject) {
     try {
       var rawJsonText = pre.textContent;
-      var wrappedText = wrapIntegers(rawJsonText);
+      var wrappedText = wrapNumbers(rawJsonText);
       var jsonExtracted = extractJSON(wrappedText);
 
       // Validate and decode json
@@ -39,7 +39,7 @@ function contentExtractor(pre) {
 // unwrap them later without quotes.
 //
 // Solution with some changes from https://github.com/alexlopashev
-function wrapIntegers(text) {
+function wrapNumbers(text) {
   var buffer = "";
   var numberBuffer = "";
   var isInString = false;
@@ -47,15 +47,17 @@ function wrapIntegers(text) {
   var previous = "";
 
   for (var i = 0, len = text.length; i < len; i++) {
-    if (text[i] == '"' && previous != '\\') {
+    var char = text[i];
+
+    if (char == '"' && previous != '\\') {
       isInString = !isInString;
     }
 
-    if (!isInString && !isInNumber && isCharInNumber(text[i])) {
+    if (!isInString && !isInNumber && isCharInNumber(char, previous)) {
       isInNumber = true;
     }
 
-    if (!isInString && isInNumber && isCharInString(text[i])) {
+    if (!isInString && isInNumber && isCharInString(char, previous)) {
       isInNumber = false;
 
       if (numberBuffer.match(NUM_REGEX)) {
@@ -69,23 +71,30 @@ function wrapIntegers(text) {
     }
 
     if (isInNumber) {
-      numberBuffer += text[i];
+      numberBuffer += char;
 
     } else {
-      buffer += text[i];
-      previous = text[i];
+      buffer += char;
+      previous = char;
     }
   }
 
   return buffer;
 }
 
-function isCharInNumber(char) {
-  return ('0' <= char && char <= '9') || char == '.' || char == '-';
+function isCharInNumber(char, previous) {
+  return ('0' <= char && char <= '9') ||
+         ('0' <= previous && previous <= '9' && (char == 'e' || char == 'E')) ||
+         char == '.' ||
+         char == '-';
 }
 
-function isCharInString(char) {
-  return ('0' > char || char > '9') && char != '.' && char != '-';
+function isCharInString(char, previous) {
+  return ('0' > char || char > '9') &&
+         char != 'e' &&
+         char != 'E' &&
+         char != '.' &&
+         char != '-';
 }
 
 module.exports = contentExtractor;
