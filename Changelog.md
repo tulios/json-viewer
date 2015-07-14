@@ -1,3 +1,9 @@
+# 0.9.3 - 2015-07-14
+
+  * Bugfix: fixed an issue where numbers with exponent were incorrectly parsed
+  * Included description of "prependHeader" add-on
+  * Included version number into options page
+
 # 0.9.2 - 2015-07-05
 
   * Bugfix: fixed the problem with Number.MAX_VALUE in all scenarios, used solution proposed by @alexlopashev
