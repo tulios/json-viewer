@@ -2,8 +2,12 @@ var path = require("path");
 var fs = require('fs-extra');
 var webpack = require("webpack");
 var Clean = require("clean-webpack-plugin");
+var BuildPaths = require("./lib/build-paths");
 var BuildExtension = require("./lib/build-extension-webpack-plugin");
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
+
+var manifest = fs.readJSONSync(path.join(BuildPaths.SRC_ROOT, 'manifest.json'));
+var version = manifest.version;
 
 var entries = {
   viewer: ["./extension/src/viewer.js"],
@@ -72,6 +76,7 @@ module.exports = {
     new webpack.DefinePlugin({
       "process.env": {
         NODE_ENV: JSON.stringify("production"),
+        VERSION: JSON.stringify(version),
         THEMES: JSON.stringify(themes)
       }
     }),

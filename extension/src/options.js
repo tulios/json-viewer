@@ -27,9 +27,17 @@ function isValidJSON(pseudoJSON) {
   }
 }
 
+function renderVersion() {
+  var version = process.env.VERSION;
+  var versionLink = document.getElementsByClassName('version')[0];
+  versionLink.innerHTML = version;
+  versionLink.href = "https://github.com/tulios/json-viewer/tree/" + version;
+}
+
 function onLoaded() {
   var currentOptions = Storage.load();
 
+  renderVersion();
   renderThemeList(CodeMirror, currentOptions.theme);
   var addonsEditor = renderAddons(CodeMirror, currentOptions.addons);
   var structureEditor = renderStructure(CodeMirror, currentOptions.structure);

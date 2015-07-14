@@ -10,6 +10,17 @@ body {
   position: relative;
   max-width: 1150px;
   margin: 0 auto;
+
+  .version {
+    float: left;
+    display: block;
+    padding: 9px;
+    text-decoration: none;
+
+    &:before {
+      content: "v";
+    }
+  }
 }
 
 h1 {
