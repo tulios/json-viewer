@@ -2,7 +2,7 @@
 
   * Option to sort json by keys (thanks to @North101)
   * New theme (yeti)
-  * Updated CodeMirror
+  * Updated CodeMirror (now it preserves the last search query)
 
 # 0.9.3 - 2015-07-14
 
