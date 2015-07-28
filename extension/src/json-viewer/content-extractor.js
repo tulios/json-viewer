@@ -16,7 +16,7 @@ var REPLACE_WRAP_REGEX = new RegExp(
 );
 
 var sortByKeys = function(obj) {
-    if (!(typeof obj === 'function' || typeof obj === 'object' && !!obj)) {
+    if (typeof obj !== 'object' || !obj) {
         return obj;
     }
     var sorted;
