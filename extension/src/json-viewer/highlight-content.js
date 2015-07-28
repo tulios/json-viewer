@@ -25,7 +25,7 @@ function highlightContent(pre, outsideViewer) {
     if (oversizedJSON(pre, options)) return pre.hidden = false;
 
     return loadRequiredCss(options).
-      then(function() { return contentExtractor(pre) }).
+      then(function() { return contentExtractor(pre, options) }).
       then(function(value) {
 
         var formatted = prependHeader(options, outsideViewer, value.jsonText);
