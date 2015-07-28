@@ -1,3 +1,9 @@
+# 0.10.0 - ?
+
+  * Option to sort json by keys (thanks to @North101)
+  * New theme (yeti)
+  * Updated CodeMirror
+
 # 0.9.3 - 2015-07-14
 
   * Bugfix: fixed an issue where numbers with exponent were incorrectly parsed

@@ -9,16 +9,17 @@ Notes:
 * This extension might crash with other JSON highlighters/formatters, you may need to disable them
 * To highlight local files and incognito tabs you have to manually enable these options on the extensions page
 * Sometimes when the plugin updates chrome leaves the old background process running and revokes some options, like the access to local files. When this happen just recheck the option that everything will work again
+* Works on local files (if you enable this in chrome://extensions)
 
 Features:
 
 * Syntax highlighting
-* 22 built-in themes
+* 23 built-in themes
 * Collapsible nodes
 * Clickable URLs
 * URL does not matter (the content is analysed to determine if its a JSON or not)
 * Inspect your json typing "json" in the console
-* Hot word `json-viewer` into omnibox (paste your JSON into omnibox and it will be highlighted)
+* Hot word `json-viewer` into omnibox (type `json-viewer` + TAB and paste your JSON into omnibox, hit ENTER and it will be highlighted)
 * Toggle button to view the raw/highlighted version
 * Works with numbers bigger than Number.MAX_VALUE
 * Option to show line numbers
@@ -27,6 +28,7 @@ Features:
 * Option to collapse nodes from second level + Button to unfold all collapsed nodes
 * Option to include a header with timestamp + url
 * Option to allow the edition of the loaded JSON
+* Option to sort json by keys
 
 ## Installation
 
