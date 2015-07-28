@@ -4,7 +4,8 @@ module.exports = {
     prependHeader: true,
     maxJsonSize: 400,
     alwaysFold: false,
-    alwaysRenderAllContent: false
+    alwaysRenderAllContent: false,
+    sortKeys: false
   },
   structure: {
     readOnly: true,

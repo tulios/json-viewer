@@ -15,22 +15,23 @@ var REPLACE_WRAP_REGEX = new RegExp(
   "\"" + WRAP_START + "(-?\\d+\\.?[\\deE]*)" + WRAP_END + "\"", "g"
 );
 
-var sortByKeys = function(obj) {
-    if (typeof obj !== 'object' || !obj) {
-        return obj;
-    }
+function sortByKeys(obj) {
+    if (typeof obj !== 'object' || !obj) return obj;
+
     var sorted;
     if (Array.isArray(obj)) {
       sorted = [];
       obj.forEach(function(val, idx) {
         sorted[idx] = sortByKeys(val);
       });
+
     } else {
       sorted = {};
       Object.keys(obj).sort().forEach(function(key) {
         sorted[key] = sortByKeys(obj[key]);
       });
     }
+
     return sorted;
 };
 
@@ -42,9 +43,7 @@ function contentExtractor(pre, options) {
       var jsonExtracted = extractJSON(wrappedText);
 
       var jsonParsed = JSON.parse(jsonExtracted);
-      if (options.addons.sortKeys) {
-        jsonParsed = sortByKeys(jsonParsed);
-      }
+      if (options.addons.sortKeys) jsonParsed = sortByKeys(jsonParsed);
 
       // Validate and decode json
       var decodedJson = JSON.stringify(jsonParsed);
