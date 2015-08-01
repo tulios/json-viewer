@@ -68,3 +68,7 @@ Features:
 ### JSONP
 
   [http://freemusicarchive.org/api/get/curators.jsonp?api_key=60BLHNQCAOUFPIBZ&callback=test](http://freemusicarchive.org/api/get/curators.jsonp?api_key=60BLHNQCAOUFPIBZ&callback=test)
+
+## License
+
+See [LICENSE](https://github.com/tulios/json-viewer/blob/master/LICENSE) for more details.

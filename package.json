@@ -1,6 +1,8 @@
 {
   "name": "json_viewer",
   "description": "The most beautiful and customizable JSON/JSONP highlighter that your eyes have ever seen",
+  "author": "Tulio Ornelas <ornelas.tulio@gmail.com>",
+  "license": "MIT",
   "repository": "https://github.com/tulios/json-viewer",
   "private": true,
   "dependencies": {
