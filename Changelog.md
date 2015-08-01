@@ -3,6 +3,7 @@
   * Option to sort json by keys (thanks to @North101)
   * New theme (yeti)
   * Updated CodeMirror (now it preserves the last search query)
+  * Included scratch pad, a new area which you can type/paste JSON and format indefinitely using a button or key shortcut. To access type json-viewer + TAB + scratch pad ENTER
 
 # 0.9.3 - 2015-07-14
 
