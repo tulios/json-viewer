@@ -8,14 +8,14 @@ function renderExtras(pre, options, highlighter) {
   extras.className = "extras";
 
   var optionsLink = document.createElement("a");
-  optionsLink.className = "json_viewer gear";
+  optionsLink.className = "json_viewer icon gear";
   optionsLink.href = chrome.extension.getURL("/pages/options.html");
   optionsLink.target = "_blank";
   optionsLink.title = "Options";
   optionsLink.innerHTML = svgGear;
 
   var rawLink = document.createElement("a");
-  rawLink.className = "json_viewer raw";
+  rawLink.className = "json_viewer icon raw";
   rawLink.href = "#";
   rawLink.title = "Original JSON toggle";
   rawLink.innerHTML = svgRaw;
@@ -38,7 +38,7 @@ function renderExtras(pre, options, highlighter) {
   }
 
   var unfoldLink = document.createElement("a");
-  unfoldLink.className = "json_viewer unfold";
+  unfoldLink.className = "json_viewer icon unfold";
   unfoldLink.href = "#";
   unfoldLink.title = "Unfold all";
   unfoldLink.innerHTML = svgUnfold;

@@ -101,6 +101,7 @@ Highlighter.prototype = {
       theme: this.theme,
       mode: "application/ld+json",
       indentUnit: 2,
+      tabSize: 2,
       gutters: ["CodeMirror-linenumbers", "CodeMirror-foldgutter"],
       extraKeys: this.getExtraKeysMap()
     }
@@ -117,13 +118,16 @@ Highlighter.prototype = {
 
   getExtraKeysMap: function() {
     var extraKeyMap = {
-      "Enter": function(cm) {
-        CodeMirror.commands.findNext(cm);
-      },
       "Esc": function(cm) {
         CodeMirror.commands.clearSearch(cm);
         cm.setSelection(cm.getCursor());
         cm.focus();
+      }
+    }
+
+    if (this.options.structure.readOnly) {
+      extraKeyMap["Enter"] = function(cm) {
+        CodeMirror.commands.findNext(cm);
       }
     }
 

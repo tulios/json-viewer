@@ -10,6 +10,7 @@
     "css-loader": "0.14.x",
     "extract-text-webpack-plugin": "0.8.x",
     "fs-extra": "0.18.x",
+    "mousetrap": "1.5.x",
     "node-sass": "3.1.x",
     "promise": "7.0.x",
     "sass-loader": "1.0.x",
