@@ -24,6 +24,7 @@ Features:
 * Works with numbers bigger than Number.MAX_VALUE
 * Option to show line numbers
 * Option to customize your theme
+* Option to customize the tab size
 * Option to configure a max JSON size to highlight
 * Option to collapse nodes from second level + Button to unfold all collapsed nodes
 * Option to include a header with timestamp + url
