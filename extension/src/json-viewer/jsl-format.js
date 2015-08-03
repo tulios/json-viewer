@@ -11,9 +11,13 @@ jsl.format = (function () {
         return new Array(count + 1).join(s);
     }
 
-    function formatJson(json, tabSize) {
+    function formatJson(json, options) {
+        options = options || {};
+        var tabSize = options.tabSize || 2;
+        var indentCStyle = options.indentCStyle || false;
+
         var tab = "";
-        for (var ts = 0; ts < (tabSize || 2); ts++) {
+        for (var ts = 0; ts < tabSize; ts++) {
           tab += " ";
         }
 
@@ -31,6 +35,7 @@ jsl.format = (function () {
             case '{':
             case '[':
                 if (!inString) {
+                    if (indentCStyle) newJson += "\n" + repeat(tab, indentLevel);
                     newJson += currentChar + "\n" + repeat(tab, indentLevel + 1);
                     indentLevel += 1;
                 } else {

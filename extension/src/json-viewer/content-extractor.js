@@ -49,8 +49,8 @@ function contentExtractor(pre, options) {
       var decodedJson = JSON.stringify(jsonParsed);
       decodedJson = decodedJson.replace(REPLACE_WRAP_REGEX, "$1");
 
-      var tabSize = options.structure.tabSize;
-      var jsonText = wrappedText.replace(jsonExtracted, jsonFormater(decodedJson, tabSize));
+      var jsonFormatted = jsonFormater(decodedJson, options.structure);
+      var jsonText = wrappedText.replace(jsonExtracted, jsonFormatted);
       resolve({jsonText: jsonText, jsonExtracted: decodedJson});
 
     } catch(e) {
