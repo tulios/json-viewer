@@ -11,10 +11,14 @@ jsl.format = (function () {
         return new Array(count + 1).join(s);
     }
 
-    function formatJson(json) {
+    function formatJson(json, tabSize) {
+        var tab = "";
+        for (var ts = 0; ts < (tabSize || 2); ts++) {
+          tab += " ";
+        }
+
         var i           = 0,
             il          = 0,
-            tab         = "  ",
             newJson     = "",
             indentLevel = 0,
             inString    = false,

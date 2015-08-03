@@ -11,7 +11,8 @@ module.exports = {
     readOnly: true,
     lineNumbers: true,
     lineWrapping: true,
-    foldGutter: true
+    foldGutter: true,
+    tabSize: 2
   },
   style: [
     ".CodeMirror {",
