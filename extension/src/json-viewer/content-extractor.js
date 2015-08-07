@@ -18,10 +18,10 @@ function contentExtractor(pre, options) {
   return new Promise(function(resolve, reject) {
     try {
       var rawJsonText = pre.textContent;
-      var wrappedText = wrapNumbers(rawJsonText);
-      var jsonExtracted = extractJSON(wrappedText);
+      var jsonExtracted = extractJSON(rawJsonText);
+      var wrappedText = wrapNumbers(jsonExtracted);
 
-      var jsonParsed = JSON.parse(jsonExtracted);
+      var jsonParsed = JSON.parse(wrappedText);
       if (options.addons.sortKeys) jsonParsed = sortByKeys(jsonParsed);
 
       // Validate and decode json
@@ -29,7 +29,7 @@ function contentExtractor(pre, options) {
       decodedJson = decodedJson.replace(REPLACE_WRAP_REGEX, "$1");
 
       var jsonFormatted = jsonFormater(decodedJson, options.structure);
-      var jsonText = wrappedText.replace(jsonExtracted, jsonFormatted);
+      var jsonText = rawJsonText.replace(jsonExtracted, jsonFormatted);
       resolve({jsonText: jsonText, jsonExtracted: decodedJson});
 
     } catch(e) {
