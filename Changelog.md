@@ -1,3 +1,7 @@
+# 0.10.1 - 2015-08-08
+
+  * Bugfix: highlight of JSONP callbacks which contains numbers
+
 # 0.10.0 - 2015-08-08
 
   * Option to sort json by keys (thanks to @North101)
