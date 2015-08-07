@@ -15,7 +15,6 @@ var REPLACE_WRAP_REGEX = new RegExp(
 );
 
 function contentExtractor(pre, options) {
-
   return new Promise(function(resolve, reject) {
     try {
       var rawJsonText = pre.textContent;
@@ -40,7 +39,7 @@ function contentExtractor(pre, options) {
 }
 
 function extractJSON(rawJson) {
-  return rawJson.replace(/^.+[a-zA-Z0-9_$\.]+\(/, '').replace(/\);?\s+$/, '');
+  return rawJson.replace(/^.+[a-zA-Z0-9_$\.]+\(/, '').replace(/\);?\s*$/, '');
 }
 
 function sortByKeys(obj) {
