@@ -1,4 +1,4 @@
-# 0.10.0 - ?
+# 0.10.0 - 2015-08-08
 
   * Option to sort json by keys (thanks to @North101)
   * New theme (yeti)
