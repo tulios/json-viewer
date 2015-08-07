@@ -8,7 +8,7 @@ function getOptions() {
       var value = response.value;
 
       if (err) {
-        reject(err);
+        reject('getOptions: ' + err.message);
 
       } else {
         resolve(value);

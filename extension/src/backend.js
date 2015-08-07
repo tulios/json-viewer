@@ -8,6 +8,6 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
     }
   } catch(e) {
     console.error(e);
-    sendResponse({err: e.stack});
+    sendResponse({err: e});
   }
 });
