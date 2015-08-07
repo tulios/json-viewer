@@ -3,6 +3,7 @@ function getPreWithSource() {
   var pre = childNodes[0];
 
   if (childNodes.length === 1 && pre.tagName === "PRE") {
+    pre.textContent = pre.textContent.replace(/^.+[a-zA-Z0-9_$\.]+\(/, '').replace(/\);?$/, '');
     return pre;
   }
 
