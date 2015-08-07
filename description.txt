@@ -37,6 +37,7 @@ Contributors
 Thiago Pontes (@thiagopnts)
 @bluec0re
 @North101
+Ben Hollander (@benhollander)
 
 License
 MIT License

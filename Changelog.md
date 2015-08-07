@@ -7,6 +7,7 @@
   * Bugfix: Javascript NO-BREAK SPACE \u00a0 is converting to Â character (chrome canary)
   * Customizable tab size
   * Option for C-style braces and arrays
+  * Handle JSONP returns that begin with a comment (thanks to @benhollander)
 
 # 0.9.3 - 2015-07-14
 

@@ -14,6 +14,35 @@ var REPLACE_WRAP_REGEX = new RegExp(
   "\"" + WRAP_START + "(-?\\d+\\.?[\\deE]*)" + WRAP_END + "\"", "g"
 );
 
+function contentExtractor(pre, options) {
+
+  return new Promise(function(resolve, reject) {
+    try {
+      var rawJsonText = pre.textContent;
+      var wrappedText = wrapNumbers(rawJsonText);
+      var jsonExtracted = extractJSON(wrappedText);
+
+      var jsonParsed = JSON.parse(jsonExtracted);
+      if (options.addons.sortKeys) jsonParsed = sortByKeys(jsonParsed);
+
+      // Validate and decode json
+      var decodedJson = JSON.stringify(jsonParsed);
+      decodedJson = decodedJson.replace(REPLACE_WRAP_REGEX, "$1");
+
+      var jsonFormatted = jsonFormater(decodedJson, options.structure);
+      var jsonText = wrappedText.replace(jsonExtracted, jsonFormatted);
+      resolve({jsonText: jsonText, jsonExtracted: decodedJson});
+
+    } catch(e) {
+      reject(new Error('contentExtractor: ' + e.message));
+    }
+  });
+}
+
+function extractJSON(rawJson) {
+  return rawJson.replace(/^.+[a-zA-Z0-9_$\.]+\(/, '').replace(/\);?\s+$/, '');
+}
+
 function sortByKeys(obj) {
     if (typeof obj !== 'object' || !obj) return obj;
 
@@ -33,29 +62,6 @@ function sortByKeys(obj) {
 
     return sorted;
 };
-
-function contentExtractor(pre, options) {
-  return new Promise(function(resolve, reject) {
-    try {
-      var rawJsonText = pre.textContent;
-      var wrappedText = wrapNumbers(rawJsonText);
-
-      var jsonParsed = JSON.parse(wrappedText);
-      if (options.addons.sortKeys) jsonParsed = sortByKeys(jsonParsed);
-
-      // Validate and decode json
-      var decodedJson = JSON.stringify(jsonParsed);
-      decodedJson = decodedJson.replace(REPLACE_WRAP_REGEX, "$1");
-
-      var jsonFormatted = jsonFormater(decodedJson, options.structure);
-      var jsonText = wrappedText.replace(wrappedText, jsonFormatted);
-      resolve({jsonText: jsonText, jsonExtracted: decodedJson});
-
-    } catch(e) {
-      reject(e);
-    }
-  });
-}
 
 // Pass all numbers to json parser as strings in order to maintain precision,
 // unwrap them later without quotes.
