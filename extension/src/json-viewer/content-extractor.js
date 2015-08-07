@@ -1,5 +1,4 @@
 var Promise = require('promise');
-var extractJSON = require('./extract-json');
 var jsonFormater = require('./jsl-format');
 
 var TOKEN = (Math.random() + 1).toString(36).slice(2, 7);
@@ -40,9 +39,8 @@ function contentExtractor(pre, options) {
     try {
       var rawJsonText = pre.textContent;
       var wrappedText = wrapNumbers(rawJsonText);
-      var jsonExtracted = extractJSON(wrappedText);
 
-      var jsonParsed = JSON.parse(jsonExtracted);
+      var jsonParsed = JSON.parse(wrappedText);
       if (options.addons.sortKeys) jsonParsed = sortByKeys(jsonParsed);
 
       // Validate and decode json
@@ -50,7 +48,7 @@ function contentExtractor(pre, options) {
       decodedJson = decodedJson.replace(REPLACE_WRAP_REGEX, "$1");
 
       var jsonFormatted = jsonFormater(decodedJson, options.structure);
-      var jsonText = wrappedText.replace(jsonExtracted, jsonFormatted);
+      var jsonText = wrappedText.replace(wrappedText, jsonFormatted);
       resolve({jsonText: jsonText, jsonExtracted: decodedJson});
 
     } catch(e) {
