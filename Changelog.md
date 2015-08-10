@@ -1,3 +1,7 @@
+# 0.10.2 - 2015-08-10
+
+  * Bugfix: array data that has a parentheses immediately adjacent to text throws an error
+
 # 0.10.1 - 2015-08-08
 
   * Bugfix: highlight of JSONP callbacks which contains numbers
