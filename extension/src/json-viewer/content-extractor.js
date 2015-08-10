@@ -39,7 +39,7 @@ function contentExtractor(pre, options) {
 }
 
 function extractJSON(rawJson) {
-  return rawJson.replace(/^.+[a-zA-Z0-9_$\.]+\(/, '').replace(/\);?\s*$/, '');
+  return rawJson.replace(/^.+[a-zA-Z0-9_$\.]+\({/, '{').replace(/}\);?\s*$/, '}');
 }
 
 function sortByKeys(obj) {
