@@ -13,7 +13,7 @@ module.exports = {
     lineWrapping: true,
     foldGutter: true,
     tabSize: 2,
-    indentCStyle: true
+    indentCStyle: false
   },
   style: [
     ".CodeMirror {",
