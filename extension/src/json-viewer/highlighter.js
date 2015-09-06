@@ -129,6 +129,8 @@ Highlighter.prototype = {
       extraKeyMap["Enter"] = function(cm) {
         CodeMirror.commands.findNext(cm);
       }
+
+      extraKeyMap["Ctrl-V"] = extraKeyMap["Cmd-V"] = function(cm) {};
     }
 
     var nativeSearch = this.alwaysRenderAllContent();
