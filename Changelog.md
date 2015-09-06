@@ -1,3 +1,8 @@
+# 0.10.3 - 2015-09-06
+
+  * Bugfix: default `indentCStyle: false`, it should have been since the beginning
+  * Bugfix: read-only mode shouldn't allows paste (issue #54)
+
 # 0.10.2 - 2015-08-10
 
   * Bugfix: array data that has a parentheses immediately adjacent to text throws an error
