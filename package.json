@@ -13,7 +13,8 @@
     "extract-text-webpack-plugin": "0.8.x",
     "fs-extra": "0.18.x",
     "mousetrap": "1.5.x",
-    "node-sass": "3.1.x",
+    "node-libs-browser": "^1.0.0",
+    "node-sass": "^3.1.2",
     "promise": "7.0.x",
     "sass-loader": "1.0.x",
     "style-loader": "0.12.x",
@@ -21,8 +22,8 @@
     "webpack": "1.9.x"
   },
   "engines": {
-    "node": "0.10.38",
-    "npm": "2.7.5"
+    "node": "5.5",
+    "npm": "3.5"
   },
   "scripts": {
     "build": "./node_modules/.bin/webpack --progress --colors && node ./lib/release-script"

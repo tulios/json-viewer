@@ -22,7 +22,16 @@ function prependHeader(options, outsideViewer, jsonText) {
 
 function highlightContent(pre, outsideViewer) {
   getOptions().then(function(options) {
-    if (oversizedJSON(pre, options)) return pre.hidden = false;
+    if (oversizedJSON(pre, options)) {
+      var accepted = options.addons.maxJsonSize;
+      var loaded = pre.textContent.length / 1024;
+      console.warn(
+        "[JSONViewer] Content not highlighted due to oversize. " +
+        "Accepted: " + accepted + " kbytes, received: " + loaded + " kbytes. " +
+        "It's possible to change this value at options -> Add-ons -> maxJsonSize"
+      )
+      return pre.hidden = false;
+    }
 
     return loadRequiredCss(options).
       then(function() { return contentExtractor(pre, options) }).
