@@ -5,7 +5,8 @@ module.exports = {
     maxJsonSize: 400,
     alwaysFold: false,
     alwaysRenderAllContent: false,
-    sortKeys: false
+    sortKeys: false,
+    clickableUrls: true
   },
   structure: {
     readOnly: true,

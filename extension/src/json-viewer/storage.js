@@ -1,4 +1,5 @@
 var defaults = require('./options/defaults');
+var merge = require('./merge');
 
 var OLD_NAMESPACE = "options";
 var NAMESPACE = "v2.options";
@@ -14,7 +15,8 @@ module.exports = {
 
     options = optionsStr ? JSON.parse(optionsStr) : {};
     options.theme = options.theme || defaults.theme;
-    options.addons = options.addons ? JSON.parse(options.addons) : defaults.addons;
+    options.addons = options.addons ? JSON.parse(options.addons) : {};
+    options.addons = merge({}, defaults.addons, options.addons)
     options.structure = options.structure ? JSON.parse(options.structure) : defaults.structure;
     options.style = options.style && options.style.length > 0 ? options.style : defaults.style;
     return options;

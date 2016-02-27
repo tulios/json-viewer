@@ -62,7 +62,7 @@ Highlighter.prototype = {
       var node = elements[0];
       var text = self.removeQuotes(node.textContent);
 
-      if (text.match(URL_PATTERN)) {
+      if (text.match(URL_PATTERN) && self.clickableUrls()) {
         var decodedText = self.decodeText(text);
         node.classList.add("cm-string-link");
         node.setAttribute("data-url", decodedText);
@@ -158,6 +158,10 @@ Highlighter.prototype = {
     // I'll keep it a while
     return this.options.addons.alwaysRenderAllContent ||
            this.options.addons.awaysRenderAllContent;
+  },
+
+  clickableUrls: function() {
+    return this.options.addons.clickableUrls;
   }
 }
 
