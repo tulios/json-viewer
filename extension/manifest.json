@@ -1,6 +1,6 @@
 {
   "name": "JSON Viewer",
-  "version": "0.10.3",
+  "version": "0.11.0",
   "manifest_version": 2,
   "author": "Tulio Ornelas <ornelas.tulio@gmail.com>",
   "description": "The most beautiful and customizable JSON/JSONP highlighter that your eyes have ever seen",

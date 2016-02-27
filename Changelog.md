@@ -1,3 +1,8 @@
+# 0.11.0 - 2016-02-27
+
+  * Alert about JSON size above maxJsonSize (issue #62)
+  * Option to disable clickable URLs (issue #63)
+
 # 0.10.3 - 2015-09-06
 
   * Bugfix: default `indentCStyle: false`, it should have been since the beginning

@@ -18,7 +18,7 @@ Features:
 * Syntax highlighting
 * 23 built-in themes
 * Collapsible nodes
-* Clickable URLs
+* Clickable URLs (optional)
 * URL does not matter (the content is analysed to determine if its a JSON or not)
 * Inspect your json typing "json" in the console
 * Hot word `json-viewer` into omnibox (type `json-viewer` + TAB and paste your JSON into omnibox, hit ENTER and it will be highlighted)
