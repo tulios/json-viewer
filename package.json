@@ -8,7 +8,7 @@
   "dependencies": {
     "archiver": "0.14.x",
     "clean-webpack-plugin": "0.1.x",
-    "codemirror": "5.5.x",
+    "codemirror": "5.12.x",
     "css-loader": "0.14.x",
     "extract-text-webpack-plugin": "0.8.x",
     "fs-extra": "0.18.x",
@@ -19,7 +19,7 @@
     "sass-loader": "1.0.x",
     "style-loader": "0.12.x",
     "sweetalert": "1.0.x",
-    "webpack": "1.9.x"
+    "webpack": "1.12.x"
   },
   "engines": {
     "node": "5.5",
