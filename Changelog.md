@@ -1,3 +1,8 @@
+# 0.11.1 - 2016-03-16
+
+  * Bugfix: JSONP matcher matching agains wrong payload
+  * Support for payloads with `for(;;);`, `while(1);` and `while(true);`
+
 # 0.11.0 - 2016-02-27
 
   * Alert about JSON size above maxJsonSize (issue #62)
