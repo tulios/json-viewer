@@ -1,3 +1,7 @@
+# 0.12.0 - 2016-04-11
+
+* Option to disable auto highlight (issue #76)
+
 # 0.11.1 - 2016-03-16
 
   * Bugfix: JSONP matcher matching agains wrong payload

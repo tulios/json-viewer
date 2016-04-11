@@ -32,6 +32,7 @@ Features:
 * Option to include a header with timestamp + url
 * Option to allow the edition of the loaded JSON
 * Option to sort json by keys
+* Option to disable auto highlight
 * Option for C-style braces and arrays
 * Scratch pad, a new area which you can type/paste JSON and format indefinitely using a button or key shortcut. To access type `json-viewer` + `TAB` + `scratch pad` ENTER
 
