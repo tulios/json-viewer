@@ -7,6 +7,10 @@ function renderExtras(pre, options, highlighter) {
   var extras = document.createElement("div");
   extras.className = "extras";
 
+  if (!options.addons.autoHighlight) {
+    extras.className += ' auto-highlight-off';
+  }
+
   var optionsLink = document.createElement("a");
   optionsLink.className = "json_viewer icon gear";
   optionsLink.href = chrome.extension.getURL("/pages/options.html");
@@ -25,15 +29,15 @@ function renderExtras(pre, options, highlighter) {
 
     if (pre.hidden) {
       // Raw enabled
-      highlighter.defaultSearch = true;
-      editor.hidden = true;
+      highlighter.hide();
       pre.hidden = false;
+      extras.className += ' auto-highlight-off';
 
     } else {
       // Raw disabled
-      highlighter.defaultSearch = false;
-      editor.hidden = false;
+      highlighter.show();
       pre.hidden = true;
+      extras.className = extras.className.replace(/\s+auto-highlight-off/, '');
     }
   }
 

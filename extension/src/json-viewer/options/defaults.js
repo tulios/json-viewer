@@ -6,7 +6,8 @@ module.exports = {
     alwaysFold: false,
     alwaysRenderAllContent: false,
     sortKeys: false,
-    clickableUrls: true
+    clickableUrls: true,
+    autoHighlight: true
   },
   structure: {
     readOnly: true,

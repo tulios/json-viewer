@@ -32,6 +32,20 @@ Highlighter.prototype = {
     this.editor.focus();
   },
 
+  hide: function() {
+    this.getDOMEditor().hidden = true;
+    this.defaultSearch = true;
+  },
+
+  show: function() {
+    this.getDOMEditor().hidden = false;
+    this.defaultSearch = false;
+  },
+
+  getDOMEditor: function() {
+    return document.getElementsByClassName('CodeMirror')[0];
+  },
+
   fold: function() {
     var skippedRoot = false;
     var firstLine = this.editor.firstLine();

@@ -39,7 +39,22 @@ function highlightContent(pre, outsideViewer) {
 
         var formatted = prependHeader(options, outsideViewer, value.jsonText);
         var highlighter = new Highlighter(formatted, options);
-        highlighter.highlight();
+
+        if (options.addons.autoHighlight) {
+          highlighter.highlight();
+
+        } else {
+          highlighter.highlight();
+          highlighter.hide();
+          pre.hidden = false;
+
+          console.warn(
+            "[JSONViewer] You are seeing the raw version because you configured the " +
+            "addon 'autoHighlight' to false. It's possible to highlight from this page, " +
+            "just click at the 'RAW' button in the top-right corner. " +
+            "It's possible to change this value at options -> Add-ons -> autoHighlight"
+          )
+        }
 
         // "awaysFold" was a typo but to avoid any problems I'll keep it
         // a while
@@ -54,7 +69,7 @@ function highlightContent(pre, outsideViewer) {
 
   }).catch(function(e) {
     pre.hidden = false;
-    console.error(e);
+    console.error('[JSONViewer] error: ' + e.message, e);
   });
 }
 

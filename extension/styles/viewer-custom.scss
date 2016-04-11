@@ -46,10 +46,16 @@ body {
     background-size: $icon-size;
     background-color: transparent;
     margin-bottom: 5px;
+    border-radius: 4px;
 
     &:hover {
       background-color: #ccc;
-      border-radius: 4px;
+    }
+  }
+
+  &.auto-highlight-off {
+    .icon {
+      background-color: #ccc;
     }
   }
 }
