@@ -1,5 +1,5 @@
 function exposeJson(text, outsideViewer) {
-  console.log("JsonViewer: Your json was stored into 'window.json', enjoy!");
+  console.info("[JSONViewer] Your json was stored into 'window.json', enjoy!");
 
   if (outsideViewer) {
     window.json = JSON.parse(text);

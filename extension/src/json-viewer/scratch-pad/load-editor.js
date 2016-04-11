@@ -23,7 +23,7 @@ function loadEditor(pre) {
 
     });
   }).catch(function(e) {
-    console.error(e);
+    console.error('[JSONViewer] error: ' + e.message, e);
   });
 }
 

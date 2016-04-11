@@ -51,7 +51,7 @@ module.exports = {
         optionsStr = JSON.stringify(options);
 
       } catch(e) {
-        console.error(e);
+        console.error('[JSONViewer] error: ' + e.message, e);
 
       } finally {
         localStorage.removeItem(OLD_NAMESPACE);

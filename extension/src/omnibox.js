@@ -1,7 +1,7 @@
 var chrome = require('chrome-framework');
 
 chrome.omnibox.onInputChanged.addListener(function(text, suggest) {
-  console.log('inputChanged: ' + text);
+  console.log('[JSONViewer] inputChanged: ' + text);
   suggest([
     {
       content: "Format JSON",
@@ -19,7 +19,7 @@ chrome.omnibox.onInputEntered.addListener(function(text) {
     var omniboxUrl = chrome.extension.getURL("/pages/omnibox.html");
     var path = /scratch pad/i.test(text) ? "?scratch-page=true" : "?json=" + encodeURIComponent(text);
     var url = omniboxUrl + path;
-    console.log("Opening: " + url);
+    console.log("[JSONViewer] Opening: " + url);
 
     chrome.tabs.update(tabs[0].id, {url: url});
   });

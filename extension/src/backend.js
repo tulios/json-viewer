@@ -7,7 +7,7 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
       sendResponse({err: null, value: Storage.load()});
     }
   } catch(e) {
-    console.error(e);
+    console.error('[JSONViewer] error: ' + e.message, e);
     sendResponse({err: e});
   }
 });
