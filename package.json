@@ -26,6 +26,7 @@
     "npm": "3.5"
   },
   "scripts": {
+    "release": "NODE_ENV=production npm run build",
     "build": "./node_modules/.bin/webpack --progress --colors && node ./lib/release-script"
   }
 }

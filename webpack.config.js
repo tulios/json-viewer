@@ -44,7 +44,7 @@ console.log("Entries list:");
 console.log(entries);
 console.log("\n");
 
-module.exports = {
+var manifest = {
   debug: false,
   context: __dirname,
   entry: entries,
@@ -70,12 +70,9 @@ module.exports = {
   plugins: [
     new Clean(["build"]),
     new ExtractTextPlugin("[name].css", {allChunks: true}),
-    new webpack.optimize.UglifyJsPlugin({sourceMap: false}),
-    new webpack.optimize.DedupePlugin(),
-    new webpack.NoErrorsPlugin(),
     new webpack.DefinePlugin({
       "process.env": {
-        NODE_ENV: JSON.stringify("production"),
+        NODE_ENV: JSON.stringify(process.env.NODE_ENV || 'development'),
         VERSION: JSON.stringify(version),
         THEMES: JSON.stringify(themes)
       }
@@ -83,3 +80,11 @@ module.exports = {
     new BuildExtension()
   ]
 };
+
+if (process.env.NODE_ENV === 'production') {
+  manifest.plugins.push(new webpack.optimize.UglifyJsPlugin({sourceMap: false}));
+  manifest.plugins.push(new webpack.optimize.DedupePlugin());
+  manifest.plugins.push(new webpack.NoErrorsPlugin());
+}
+
+module.exports = manifest;
