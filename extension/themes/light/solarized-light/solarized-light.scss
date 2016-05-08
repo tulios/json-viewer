@@ -3,6 +3,10 @@
   display: none;
 }
 
+.cm-s-solarized.cm-s-light div.CodeMirror-selected {
+  background: #E2DCC8;
+}
+
 .extras {
   .icon {
     &:hover {
