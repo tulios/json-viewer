@@ -110,9 +110,11 @@ Highlighter.prototype = {
   },
 
   getEditorOptions: function() {
+    var readOnly = this.options.structure.readOnly ? 'nocursor' : false;
     var obligatory = {
       value: this.text,
       theme: this.theme,
+      readOnly: readOnly,
       mode: "application/ld+json",
       indentUnit: 2,
       tabSize: 2,
