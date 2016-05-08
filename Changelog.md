@@ -1,3 +1,12 @@
+# 0.13.0 - 2016-05-08
+
+* Included dracula and dracula-custom theme (issue #82)
+* Included mehdi theme (issue #81)
+* Improved selection background for some themes
+* Bugfix: disabled cursor when on readOnly (closes #74)
+* Bugfix: doesn't load CSS when content is not JSON (closes #66)
+* Bugfix: Custom search is changing values with the highlight marks (closes #48)
+
 # 0.12.0 - 2016-04-11
 
 * Option to disable auto highlight (issue #76)
