@@ -1,0 +1,62 @@
+.cm-s-mehdi.CodeMirror {
+  background:#2c3e50!important;
+  color:#ecf0f1!important;
+}
+
+.cm-s-mehdi div.CodeMirror-selected {
+  background:#16a085!important;
+}
+
+.cm-s-mehdi .CodeMirror-gutters {
+  background:0 0!important;
+  border:none;
+}
+
+.cm-s-mehdi .CodeMirror-guttermarker {
+  color:#3498db!important;
+}
+
+.cm-s-mehdi .CodeMirror-guttermarker-subtle,.cm-s-mehdi .CodeMirror-linenumber {
+ color:#7f8c8d!important;
+}
+
+.cm-s-mehdi .CodeMirror-cursor {
+  border-color:#ccc!important;
+}
+
+.cm-s-mehdi span.cm-comment {
+  color:#7f8c8d!important;
+}
+
+.cm-s-mehdi span.cm-atom,.cm-s-mehdi span.cm-number {
+  color:#f1c40f!important;
+}
+
+.cm-s-mehdi span.cm-tag {
+  color:#e2777a!important;
+}
+
+.cm-s-mehdi span.cm-error {
+  background:0 0!important;
+  color:#7f8c8d!important;
+}
+
+.cm-s-mehdi .CodeMirror-matchingbracket {
+  color:#27ae60!important;
+}
+
+.cm-s-mehdi.CodeMirror ::selection,.cm-s-mehdi.CodeMirror ::-moz-selection {
+  background:rgba(73,72,62,.99);
+}
+
+.cm-s-mehdi span.cm-attribute,.cm-s-mehdi span.cm-keyword,.cm-s-mehdi span.cm-property,.cm-s-mehdi span.cm-variable,.cm-s-mehdi span.cm-variable-2 {
+  color:#ecf0f1!important;
+}
+
+.cm-s-mehdi span.cm-string,.cm-s-mehdi span.cm-string-2,.cm-s-mehdi span.cm-link {
+  color:#1abc9c!important;
+}
+
+.cm-s-mehdi span.cm-bracket,.cm-s-mehdi span.cm-def,.cm-s-mehdi .CodeMirror-activeline-background {
+  color:#2e383c!important;
+}

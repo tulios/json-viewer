@@ -38,6 +38,7 @@ Thiago Pontes (@thiagopnts)
 @bluec0re
 @North101
 Ben Hollander (@benhollander)
+Mehdi Bahrami (@mehdibahraami)
 
 License
 MIT License

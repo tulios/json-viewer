@@ -1,0 +1,16 @@
+.theme-mehdi-css-check:before {
+  content: 'loaded';
+  display: none;
+}
+
+.extras {
+  .icon {
+    svg {
+      fill: #fff;
+    }
+
+    &:hover {
+      background-color: #333;
+    }
+  }
+}
