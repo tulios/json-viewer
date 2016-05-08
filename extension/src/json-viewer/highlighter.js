@@ -72,16 +72,26 @@ Highlighter.prototype = {
     var self = this;
     this.editor.off("renderLine");
     this.editor.on("renderLine", function(cm, line, element) {
-      var elements = element.getElementsByClassName("cm-string");
-      if (!elements || elements.length === 0) return;
-      var node = elements[0];
-      var text = self.removeQuotes(node.textContent);
+      var elementsNode = element.getElementsByClassName("cm-string");
+      if (!elementsNode || elementsNode.length === 0) return;
+
+      var elements = [];
+      for (var i = 0; i < elementsNode.length; i++) {
+        elements.push(elementsNode[i]);
+      }
+
+      var textContent = elements.reduce(function(str, node) {
+        return str += node.textContent;
+      }, "");
+
+      var text = self.removeQuotes(textContent);
 
       if (text.match(URL_PATTERN) && self.clickableUrls()) {
         var decodedText = self.decodeText(text);
-        node.classList.add("cm-string-link");
-        node.setAttribute("data-url", decodedText);
-        node.textContent = self.includeQuotes(decodedText);
+        elements.forEach(function(node) {
+          node.classList.add("cm-string-link");
+          node.setAttribute("data-url", decodedText);
+        });
       }
     });
   },
