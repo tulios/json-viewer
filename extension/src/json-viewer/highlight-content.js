@@ -33,8 +33,10 @@ function highlightContent(pre, outsideViewer) {
       return pre.hidden = false;
     }
 
-    return loadRequiredCss(options).
-      then(function() { return contentExtractor(pre, options) }).
+    return contentExtractor(pre, options).
+      then(function(value) {
+        return loadRequiredCss(options).then(function() { return value; });
+      }).
       then(function(value) {
 
         var formatted = prependHeader(options, outsideViewer, value.jsonText);
@@ -69,7 +71,9 @@ function highlightContent(pre, outsideViewer) {
 
   }).catch(function(e) {
     pre.hidden = false;
-    console.error('[JSONViewer] error: ' + e.message, e);
+    if (process.env.NODE_ENV === 'development') {
+      console.error('[JSONViewer] error: ' + e.message, e);
+    }
   });
 }
 
