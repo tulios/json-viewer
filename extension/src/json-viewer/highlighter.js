@@ -25,6 +25,7 @@ Highlighter.prototype = {
   highlight: function() {
     this.editor = CodeMirror(document.body, this.getEditorOptions());
     if (!this.alwaysRenderAllContent()) this.preventDefaultSearch();
+    if (this.isReadOny()) this.getDOMEditor().className += ' read-only';
 
     this.bindRenderLine();
     this.bindMousedown();
@@ -110,11 +111,10 @@ Highlighter.prototype = {
   },
 
   getEditorOptions: function() {
-    var readOnly = this.options.structure.readOnly ? 'nocursor' : false;
     var obligatory = {
       value: this.text,
       theme: this.theme,
-      readOnly: readOnly,
+      readOnly: this.isReadOny() ? true : false,
       mode: "application/ld+json",
       indentUnit: 2,
       tabSize: 2,
@@ -178,6 +178,10 @@ Highlighter.prototype = {
 
   clickableUrls: function() {
     return this.options.addons.clickableUrls;
+  },
+
+  isReadOny: function() {
+    return this.options.structure.readOnly;
   }
 }
 
