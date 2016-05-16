@@ -28,8 +28,8 @@ function contentExtractor(pre, options) {
       var decodedJson = JSON.stringify(jsonParsed);
       decodedJson = decodedJson.replace(REPLACE_WRAP_REGEX, "$1");
 
-      var jsonFormatted = jsonFormater(decodedJson, options.structure);
-      var jsonText = rawJsonText.replace(jsonExtracted, jsonFormatted);
+      var jsonFormatted = normalize(jsonFormater(decodedJson, options.structure));
+      var jsonText = normalize(rawJsonText).replace(normalize(jsonExtracted), jsonFormatted);
       resolve({jsonText: jsonText, jsonExtracted: decodedJson});
 
     } catch(e) {
@@ -44,6 +44,10 @@ function extractJSON(rawJson) {
     .replace(/\s*for\(;;\)\s*;?/, '')
     .replace(/^[^{\[].+\({/, '{')
     .replace(/}\);?\s*$/, '}');
+}
+
+function normalize(json) {
+  return json.replace(/\$/g, '$$$$');
 }
 
 function sortByKeys(obj) {
