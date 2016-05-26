@@ -1,3 +1,7 @@
+# 0.13.1 - 2016-05-26
+
+* Bugfix: The character `$` is special, to be used inside `replace` the regular expressions must be escaped with another `$` (issue #83)
+
 # 0.13.0 - 2016-05-08
 
 * Included dracula and dracula-custom theme (issue #82)
