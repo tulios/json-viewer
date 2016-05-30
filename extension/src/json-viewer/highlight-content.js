@@ -3,11 +3,37 @@ var Highlighter = require('./highlighter');
 var timestamp = require('./timestamp');
 var exposeJson = require('./viewer/expose-json');
 var renderExtras = require('./viewer/render-extras');
+var renderAlert = require('./viewer/render-alert');
 var getOptions = require('./viewer/get-options');
 var loadRequiredCss = require('./viewer/load-required-css');
 
 function oversizedJSON(pre, options) {
-  return pre.textContent.length > (options.addons.maxJsonSize * 1024);
+  var jsonSize = pre.textContent.length;
+  var accepted = options.addons.maxJsonSize;
+
+  var loaded = jsonSize / 1024;
+  var maxJsonSize = accepted * 1024;
+  var isOversizedJSON = jsonSize > maxJsonSize;
+
+  if (process.env.NODE_ENV === 'development') {
+    console.debug("[JSONViewer] JSON size: " + loaded + " kbytes");
+    console.debug("[JSONViewer] Max JSON size: " + accepted + " kbytes");
+    console.debug("[JSONViewer] " + jsonSize + " > " + maxJsonSize + " = " + isOversizedJSON);
+  }
+
+  if (isOversizedJSON) {
+    console.warn(
+      "[JSONViewer] Content not highlighted due to oversize. " +
+      "Accepted: " + accepted + " kbytes, received: " + loaded + " kbytes. " +
+      "It's possible to change this value at options -> Add-ons -> maxJsonSize"
+    );
+    renderAlert(pre, options,
+      "[JSONViewer] Content not highlighted due to oversize. " +
+      "Take a look at the console log for more information."
+    );
+  }
+
+  return isOversizedJSON;
 }
 
 function prependHeader(options, outsideViewer, jsonText) {
@@ -23,13 +49,6 @@ function prependHeader(options, outsideViewer, jsonText) {
 function highlightContent(pre, outsideViewer) {
   getOptions().then(function(options) {
     if (oversizedJSON(pre, options)) {
-      var accepted = options.addons.maxJsonSize;
-      var loaded = pre.textContent.length / 1024;
-      console.warn(
-        "[JSONViewer] Content not highlighted due to oversize. " +
-        "Accepted: " + accepted + " kbytes, received: " + loaded + " kbytes. " +
-        "It's possible to change this value at options -> Add-ons -> maxJsonSize"
-      )
       return pre.hidden = false;
     }
 

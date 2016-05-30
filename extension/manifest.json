@@ -13,6 +13,7 @@
   },
   "web_accessible_resources": [
     "assets/viewer.css",
+    "assets/viewer-alert.css",
     "pages/options.html",
     "pages/omnibox.html"
   ],

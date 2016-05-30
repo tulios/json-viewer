@@ -11,6 +11,7 @@ var version = manifest.version;
 
 var entries = {
   viewer: ["./extension/src/viewer.js"],
+  "viewer-alert": ["./extension/styles/viewer-alert.scss"],
   options: ["./extension/src/options.js"],
   backend: ["./extension/src/backend.js"],
   omnibox: ["./extension/src/omnibox.js"],

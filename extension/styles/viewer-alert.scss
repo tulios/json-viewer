@@ -1,0 +1,39 @@
+.json-viewer-alert {
+  -webkit-user-select: none;
+  position: fixed;
+  top: 0;
+  right: 0;
+  margin: 10px;
+  padding: 10px 20px 10px 10px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  max-width: 380px;
+
+  color: #8a6d3b;
+  background-color: #fcf8e3;
+  border-color: #faebcc;
+
+  .close {
+    position: absolute;
+    right: 10px;
+    background-color: transparent;
+    text-decoration: none;
+    font-size: 30px;
+    line-height: 0;
+    font-weight: 700;
+    color: #000;
+    text-shadow: 0 1px 0 #fff;
+    opacity: 0.2;
+
+    &:hover {
+      color: #000;
+      cursor: pointer;
+      opacity: 0.5;
+    }
+  }
+
+  &:before {
+    content: 'loaded';
+    display: none;
+  }
+}
