@@ -1,3 +1,7 @@
+# 0.14.0 - 2016-05-30
+
+* Included UI to notify about content not highlighted due to oversize
+
 # 0.13.1 - 2016-05-26
 
 * Bugfix: The character `$` is special, to be used inside `replace` the regular expressions must be escaped with another `$` (issue #83)
