@@ -1,3 +1,7 @@
+# 0.14.1 - 2016-06-17
+
+* Improved JSON check
+
 # 0.14.0 - 2016-05-30
 
 * Included UI to notify about content not highlighted due to oversize
