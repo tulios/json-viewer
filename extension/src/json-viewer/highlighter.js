@@ -98,7 +98,6 @@ Highlighter.prototype = {
 
   bindMousedown: function() {
     var self = this;
-    console.log(self.openLinksInNewWindow())
     this.editor.off("mousedown");
     this.editor.on("mousedown", function(cm, event) {
       var element = event.target;
