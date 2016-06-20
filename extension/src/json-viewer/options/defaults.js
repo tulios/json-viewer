@@ -7,6 +7,7 @@ module.exports = {
     alwaysRenderAllContent: false,
     sortKeys: false,
     clickableUrls: true,
+    openLinksInNewWindow: true,
     autoHighlight: true
   },
   structure: {

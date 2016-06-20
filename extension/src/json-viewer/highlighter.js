@@ -97,11 +97,17 @@ Highlighter.prototype = {
   },
 
   bindMousedown: function() {
+    var self = this;
     this.editor.off("mousedown");
     this.editor.on("mousedown", function(cm, event) {
       var element = event.target;
       if (element.classList.contains("cm-string-link")) {
-        window.open(element.getAttribute("data-url"));
+        var url = element.getAttribute("data-url")
+        var target = "_self";
+        if (self.openLinksInNewWindow()) {
+          target = "_blank";
+        }
+        window.open(url, target);
       }
     });
   },
@@ -188,6 +194,10 @@ Highlighter.prototype = {
 
   clickableUrls: function() {
     return this.options.addons.clickableUrls;
+  },
+
+  openLinksInNewWindow: function() {
+    return this.options.addons.openLinksInNewWindow;
   },
 
   isReadOny: function() {
