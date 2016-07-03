@@ -1,3 +1,5 @@
+var extractJSON = require('./extract-json');
+
 function getPreWithSource() {
   var childNodes = document.body.childNodes;
   var pre = childNodes[0];
@@ -14,9 +16,15 @@ function isJSON(jsonStr) {
    return (/^[\],:{}\s]*$/).test(str)
  }
 
+ function isJSONP(jsonStr) {
+   return isJSON(extractJSON(jsonStr));
+ }
+
 function checkIfJson(sucessCallback, element) {
   var pre = element || getPreWithSource();
-  if (pre !== null && pre !== undefined && isJSON(pre.textContent)) {
+  if (pre !== null &&
+      pre !== undefined &&
+      (isJSON(pre.textContent) || isJSONP(pre.textContent))) {
     sucessCallback(pre);
   }
 }

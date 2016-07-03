@@ -1,5 +1,6 @@
 var Promise = require('promise');
 var jsonFormater = require('./jsl-format');
+var extractJSON = require('./extract-json');
 
 var TOKEN = (Math.random() + 1).toString(36).slice(2, 7);
 var WRAP_START = "<wrap_" + TOKEN + ">";
@@ -36,14 +37,6 @@ function contentExtractor(pre, options) {
       reject(new Error('contentExtractor: ' + e.message));
     }
   });
-}
-
-function extractJSON(rawJson) {
-  return rawJson
-    .replace(/\s*while\((1|true)\)\s*;?/, '')
-    .replace(/\s*for\(;;\)\s*;?/, '')
-    .replace(/^[^{\[].+\({/, '{')
-    .replace(/}\);?\s*$/, '}');
 }
 
 function normalize(json) {
