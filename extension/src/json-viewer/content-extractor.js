@@ -73,11 +73,12 @@ function wrapNumbers(text) {
   var isInString = false;
   var isInNumber = false;
   var previous = "";
+  var beforePrevious = "";
 
   for (var i = 0, len = text.length; i < len; i++) {
     var char = text[i];
 
-    if (char == '"' && previous != '\\') {
+    if (char == '"' && (previous != '\\' || (previous == '\\' && beforePrevious == '\\'))) {
       isInString = !isInString;
     }
 
@@ -103,6 +104,7 @@ function wrapNumbers(text) {
 
     } else {
       buffer += char;
+      beforePrevious = previous;
       previous = char;
     }
   }
