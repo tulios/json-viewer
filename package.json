@@ -1,32 +1,868 @@
-{
-  "name": "json_viewer",
-  "description": "The most beautiful and customizable JSON/JSONP highlighter that your eyes have ever seen",
-  "author": "Tulio Ornelas <ornelas.tulio@gmail.com>",
-  "license": "MIT",
-  "repository": "https://github.com/tulios/json-viewer",
-  "private": true,
-  "dependencies": {
-    "archiver": "0.14.x",
-    "clean-webpack-plugin": "0.1.x",
-    "codemirror": "5.14.x",
-    "css-loader": "0.14.x",
-    "extract-text-webpack-plugin": "0.8.x",
-    "fs-extra": "0.18.x",
-    "mousetrap": "1.5.x",
-    "node-libs-browser": "^1.0.0",
-    "node-sass": "^3.1.2",
-    "promise": "7.0.x",
-    "sass-loader": "1.0.x",
-    "style-loader": "0.12.x",
-    "sweetalert": "1.0.x",
-    "webpack": "1.12.x"
-  },
-  "engines": {
-    "node": "5.5",
-    "npm": "3.5"
-  },
-  "scripts": {
-    "release": "NODE_ENV=production npm run build",
-    "build": "./node_modules/.bin/webpack --progress --colors && node ./lib/release-script"
-  }
+
+<!DOCTYPE html>
+<html xml:lang="tr" lang="tr" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>C# ile Json Dosyası Okuma/Yazma | MemoryHackers</title>
+<meta name="description" itemprop="description" content="Merhabalar arkadaşlar bu yazımda C#'da nasıl Json Dosyası ile ilgili işlemler yapılır ondan bahsedeceğim. 
+Öncelikle Json dosyaları üzerinde işlem yapabilmek..."/>
+<meta content="index,follow" name="robots"/>
+<meta property="og:type" content="article"/>
+<meta property="og:title" content="C# ile Json Dosyası Okuma/Yazma | MemoryHackers" />
+<meta name="twitter:title" content="C# ile Json Dosyası Okuma/Yazma | MemoryHackers">
+<meta property="fb:appid" content="521007561401606" />
+<meta property="og:site_name" content="MemoryHackers Zula Hile,Wolfteam Hile,Phantomers Hile,Metin2 Hile" />
+<meta property="og:title" content="C# ile Json Dosyası Okuma/Yazma" />
+<meta property="og:description" content="Merhabalar arkadaşlar bu yazımda C#'da nasıl Json Dosyası ile ilgili işlemler yapılır ondan bahsedeceğim.
+
+Öncelikle Json dosyaları üzerind..." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://memoryhackers.net/konu-c-ile-json-dosyasi-okuma-yazma.mh" />
+<meta property="og:image" content="http://memoryhackers.net/images/fblogo.png" />
+
+<link rel="alternate" type="application/rss+xml" title="Son Konular (RSS 2.0)" href="http://memoryhackers.net/syndication.php" />
+<link rel="alternate" type="application/atom+xml" title="Son Konular (Atom 1.0)" href="http://memoryhackers.net/syndication.php?type=atom1.0" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<script src="http://memoryhackers.net/jscripts/jquery.js"></script>
+<script src="http://memoryhackers.net/jscripts/jquery.plugins.min.js?ver=1800"></script>
+<script src="http://memoryhackers.net/jscripts/general.js?ver=1800"></script>
+<link type="text/css" rel="stylesheet" href="http://memoryhackers.net/cache/themes/theme23/global.min.css" />
+<link type="text/css" rel="stylesheet" href="http://memoryhackers.net/cache/themes/theme13/star_ratings.min.css" />
+<link type="text/css" rel="stylesheet" href="http://memoryhackers.net/cache/themes/theme13/showthread.min.css" />
+<link type="text/css" rel="stylesheet" href="http://memoryhackers.net/css.php?stylesheet=184" />
+<link type="text/css" rel="stylesheet" href="http://memoryhackers.net/css.php?stylesheet=202" />
+
+<!-- SEO MH B  @MEMORYHACKERS.COM -->
+<link rel="shortcut icon" href="fcon.png">
+<link rel="alternate" hreflang="tr" href="http://memoryhackers.net/" />
+<meta name="keywords" content=" MemoryHackers,mhc,zula hileleri,wolfteam hileleri,wolfteam bugları,phantomers hileleri,hounds hileleri,metin2 hileleri,sf2 hileleri,programlama,Hacks"/>
+<meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible"/>
+<meta content="FD7B8D8BD1637F6E0C0C31379AC3029" name="msvalidate.01"/>
+<meta name="google-site-verification" content="vsNiH1HK2kzBB4T5PSGIRnrap78xkNAdU6q49v8-IlQ" />
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="">
+<link rel="publisher" href="https://plus.google.com/110307615530447431828"/>
+<meta property="article:publisher" content="" />
+<meta name="alexaVerifyID" content="Ac8QkHbMoxGRIlDxtPGYwsG8qbs"/>
+<meta name="p:domain_verify" content="6d55964cdaaa092b98ccbcaee10bc1ef"/>
+<meta name='yandex-verification' content='471c2f2479ea12ac' />
+<!-- SEO MH E @MEMORYHACKERS.COM -->
+
+<!-- ADS MH B  @MEMORYHACKERS.COM -->
+<script type="text/javascript">
+    window.cookieconsent_options = {"message":"Sizlere daha iyi bir hizmet vermek adına içeriği ve reklamları kişiselleştirmek, sosyal medya özellikleri sunmak ve trafiği analiz etmek için çerezler kullanıyoruz.","dismiss":"Tamam!","learnMore":"Ayrıntıları inceleyin.","link":"http://www.google.com/intl/tr/policies/technologies/cookies/","theme":"dark-floating"};
+</script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/1.0.9/cookieconsent.min.js"></script>
+<!-- ADS MH E @MEMORYHACKERS.COM -->
+<!-- CSS MH B  @MEMORYHACKERS.COM -->
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+<link rel="stylesheet" media="(max-width: 768px)" href="http://memoryhackers.net/images/flat/stylesheet/responsive.css" />
+<!-- CSS MH E @MEMORYHACKERS.COM -->
+
+<script>
+<!--
+  
+  
+	lang.select2_match = "Bir sonuç mevcut, gezinmek için aşağı ve yukarı ok tuşlarını kullanın.";
+	lang.select2_matches = "{1} sonuç mevcut, gezinmek için aşağı ve yukarı ok tuşlarını kullanın.";
+	lang.select2_nomatches = "Hiçbir sonuç bulunamadı";
+	lang.select2_inputtooshort_single = "Lütfen, bir veya daha fazla karakter giriniz";
+	lang.select2_inputtooshort_plural = "En az {1} karakter giriniz";
+	lang.select2_inputtoolong_single = "Lütfen, bir karakter silin";
+	lang.select2_inputtoolong_plural = "Lütfen, {1} karakter silin";
+	lang.select2_selectiontoobig_single = "Yanlızca bir öge seçebilirsiniz";
+	lang.select2_selectiontoobig_plural = "Yanlızca, {1} öge seçebilirsiniz";
+	lang.select2_loadmore = "Sonuçlar yükleniyor...";
+	lang.select2_searching = "Aranıyor...";
+
+  
+	lang.unknown_error = "Sebebi bilinmeyen bir hata oluştu.";
+	var cookieDomain = ".memoryhackers.net";
+	var cookiePath = "/";
+	var cookiePrefix = "";
+	var deleteevent_confirm = "Bu etkinliği silmek istediğinizden emin misiniz?";
+	var removeattach_confirm = "Bu ek dosyayı konudan tamamen silmek istediğinize emin misiniz?";
+	var loading_text = 'Lütfen Bekleyiniz.<br />Sayfa Yükleniyor...';
+	var saving_changes = 'Değişiklikler Kayıtlanıyor...';
+	var use_xmlhttprequest = "1";
+	var my_post_key = "7c619aec43b2e4818661e293ab915c1f";
+	var rootpath = "http://memoryhackers.net";
+	var imagepath = "http://memoryhackers.net/images/flat";
+  	var yes_confirm = "Evet";
+	var no_confirm = "Hayır";
+	var MyBBEditor = null;
+    var spinner_image = "";
+	var spinner = "<div class='modal-spinner'></div>";
+    var default_avatar ="images/default_avatar.png";
+    var userislogged = "0";
+    var theme_id = "23";
+   
+// -->
+</script>
+<script src="http://memoryhackers.net/images/flat/jquery.onscreen.js"></script>
+<script src="http://memoryhackers.net/images/flat/theme_functions.js"></script>
+
+<script type="text/javascript">
+    var unreadAlerts = '';
+</script>
+<script type="text/javascript" src="http://memoryhackers.net/jscripts/myalerts.js"></script>
+
+
+<!-- Go to www.addthis.com/dashboard to customize your tools -->
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-57bfd5c17256389f"></script>
+
+<script>
+<!--
+	var quickdelete_confirm = "Bu mesajı silmek istediğinizden emin misiniz?";
+	var quickrestore_confirm = "Bu mesajı onarmak/geri getirmek istediğinizden emin misiniz?";
+	var allowEditReason = "1";
+	lang.save_changes = "Kaydet";
+	lang.cancel_edit = "Düzenleme İptal";
+	lang.quick_edit_update_error = "Cevabınızı düzenlenirken bir hata oluştu:";
+	lang.quick_reply_post_error = "Cevabınızı gönderirken bir hata oluştu:";
+	lang.quick_delete_error = "Cevabınızı silerken bir hata oluştu:";
+	lang.quick_delete_success = "Mesajınız başarıyla silinmiştir.";
+	lang.quick_delete_thread_success = "Konunuz başarıyla kaldırılmıştır.";
+	lang.quick_restore_error = "Mesajınız geri getirilirken bir hata oluştu:";
+	lang.quick_restore_success = "Mesajınız başarıyla geri getirildi.";
+	lang.editreason = "Sebep";
+    var partialmode = "0";
+// -->
+</script>
+<!-- jeditable (jquery) -->
+<script src="http://memoryhackers.net/jscripts/report.js?ver=1800"></script>
+<script src="http://memoryhackers.net/jscripts/jeditable/jeditable.min.js"></script>
+<script src="http://memoryhackers.net/jscripts/thread.js?ver=1800"></script>
+<meta name="description" content="Merhabalar arkadaşlar bu yazımda C#'da nasıl Json Dosyası ile ilgili işlemler yapılır ondan bahsedeceğim. Öncelikle Json dosyaları üzerinde işlem yapabilmek içi" />
+<link rel="canonical" href="http://memoryhackers.net/konu-c-ile-json-dosyasi-okuma-yazma.mh" />
+</head>
+<body>
+	
+<style>
+@media screen and (max-width: 800px) {
+        #logo {
+                margin: auto;
+        }
+        #logo img {
+                max-width: 300px; 
+                padding: 0px 0px 0px 9%;
+        }
+	.forum {width: 100%;}
 }
+</style>
+
+
+<div id="logo">
+<header>
+
+<div class="welcomeblock_panel" id="MLeftspace">
+	
+<span style="margin: -2px -20px;"><script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- memoryhackers -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:728px;height:90px"
+     data-ad-client="ca-pub-2235062012815115"
+     data-ad-slot="8416723809"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></span>
+
+	</div>
+	
+
+  <span class="logo"><a href="http://memoryhackers.net/index.php"><img class="logo" src="http://memoryhackers.net/images/Logo@2_51.png"></a></span>
+
+</header>
+
+</div>
+<nav>
+
+  <div><div>Menü<a href="#" data-link-role="nav_menu" class="fa fa-bars menu_button"></a></div></div>
+
+<div class="navigation_menu" data-menu="nav_menu">
+<ul class="clearfix">
+<li><a href="http://memoryhackers.net/portal.php"> <i class="fa fa-home"></i>Anasayfa</a></li>
+<li><a href="http://memoryhackers.net/index.php"><i class="fa fa-group"></i>Forum</a></li>
+
+<li><a href="http://memoryhackers.net/memberlist.php"><i class="fa fa-group"></i>Üye Listesi</a></li>
+
+<li><a href="http://memoryhackers.net/misc.php?action=help"><i class="fa fa-question"></i>Yardım</a></li>
+
+	
+<li><a href="#"><i class="fa fa-list"></i> Hizli Linkler ;</a>
+<ul class="navigation_submenu">
+<li><a href="http://memoryhackers.net/search.php"><i class="fa fa-list"></i> Arama</a></li>	
+<li><a href="http://memoryhackers.net/forum-steam-oyun-hileleri-hacks.mh"> Steam Oyun Hileleri & Hacks</a></li>
+<li><a href="http://memoryhackers.net/forum-anti-cheat-yazilim-ve-programlama.mh"> Anti-Cheat ve Programlama</a></li>
+<li><a href="http://memoryhackers.net/forum-multiplayer-oyun-hileleri-hacks.mh"> MultiPlayer Oyun Hileleri</a></li>
+<li><a href="http://memoryhackers.net/forum-wolfteam-hileleri-hacks.mh"> Wolfteam Hileleri</a></li>
+<li><a href="http://memoryhackers.net/forum-mobil-cihazlar.mh"> Mobil Cihazlar</a></li>
+<li><a href="http://memoryhackers.net/forum-webmaster.mh"> Webmaster</a></li>
+	
+</ul>  
+</li>
+	
+<span class="welcomeblock_panel">
+<img class="user_avatar" src="images/default_avatar.png" alt="#" /><a style="color:white" href="http://memoryhackers.net/member.php?action=login" data-link-role="login_modal"><i class="fa fa-user"></i><span data-lang-variable="login"></span>Giriş Yap</a> <a  style="color:white" href="member.php?action=register"><i class="fa fa-external-link"></i>Üye Ol</a> <a style="color:white" href="http://memoryhackers.net/member.php?action=lostpw" class="lost_password"><i class="fa fa-key"></i><span data-lang-variable="lostpw"></span></a>
+	</span>
+<div class="modal" data-modal="login_modal" data-width="460px">
+  
+<div class="header nopadding">
+<span class="modal_tabs clearfix inline-block vmiddle">
+ <a href="#" data-link-role="tab_login-1" class="active_tab">Giriş Yap</a>
+  <a href="#" data-link-role="tab_login-2"><span data-lang-variable="resend_activation"></span></a>
+ <a href="#" data-link-role="tab_login-3"><span data-lang-variable="reset_pass"></span></a>
+</span><a href="#close" rel="modal:close"></a>
+  </div>
+  
+<!--tab 1-->
+<div data-tab="tab_login-1">
+  
+<form action="member.php" method="post">
+  
+<div class="content">
+
+<ul class="list_style">
+<li><span data-lang-variable="username"></span></li>
+<li><input type="text" class="textbox" name="username" size="25" maxlength="14" value="" /></li>
+<li><span data-lang-variable="password"></span></li>
+<li><input type="password" class="textbox" name="password" size="25" value="" /></li>
+</ul>  
+  
+</div>
+
+<div class="footer">
+
+<label title="Bu seçenek, forumdan çıkış yapmadığınız sürece, her ziyaretinizde giriş bilgilerinizin otomatik olarak hatırlanmasını sağlar."><input type="checkbox" class="checkbox" name="remember" checked="checked" value="yes" /> Beni Hatırla</label>
+
+<input type="submit" class="label label_blue float_right" name="submit" style="position:relative;top:-1px;" value="Oturum Aç" /> 
+</div>
+  
+<input type="hidden" name="action" value="do_login" />
+<input type="hidden" name="url" value="" />
+
+
+</form>
+  
+</div>  
+<!--tab 1-->
+  
+<!--tab 2-->
+  
+<div data-tab="tab_login-2">
+  
+<form action="member.php" method="post">
+  
+<div class="content">
+
+<ul class="list_style">
+<li><span data-lang-variable="email"></span></li>
+<li><input type="text" class="textbox" name="username" size="25" maxlength="14" value="" /></li>
+</ul>  
+</div>
+  
+<div class="footer align_right">
+<input type="submit" class="label label_orange" value="Resend activation" />
+</div>
+  
+<input type="hidden" name="action" value="do_resendactivation" />
+</form>
+  
+</div>  
+  
+<!--tab 2-->
+  
+  
+<!--tab 3-->
+
+<div data-tab="tab_login-3">
+  
+<form action="member.php" method="post">
+
+<div class="content">
+  
+<ul class="list_style">
+<li><span data-lang-variable="username"></span></li>
+<li><input type="text" class="textbox" name="username" value="" /></li>
+<li>Aktivasyon Kodu:</li>
+<li><input type="text" class="textbox" name="code" value="" /></li>
+</ul> 
+  
+</div>
+  
+<div class="footer align_right">
+<input type="hidden" name="action" value="resetpassword" /><input type="submit" class="label label_green" name="regsubmit" value="Reset password" />
+</div>
+  
+</form>
+  
+</div> 
+<!--tab 3-->
+</div>
+
+</ul>
+</div>
+</nav>
+
+<div class="memoryhackersaltmenu">
+<ul class="clearfix">
+<li style="color: #444;"><a href="http://memoryhackers.net/search.php?action=getnew"><i class="fa fa-search" aria-hidden="true"></i> Son Aktiviteler</a></li>
+<li style="color: #444;"><a href="http://memoryhackers.net/search.php?action=getdaily"><i class="fa fa-search" aria-hidden="true"></i> Bugünkü Mesajlar</a></li>
+<li><a href="https://www.facebook.com/memoryhackers.net" target="_blank" rel="nofollow"><i class="fa fa-facebook" style="color: #3B5998;"></i> Facebook</a></li>
+<li><a href="https://twitter.com/memoryhackers" target="_blank" rel="nofollow"><i class="fa fa-twitter" style="color: #00BCD4;"></i> Twitter</a></li>
+<li><a href="https://www.youtube.com/channel/UC74YvQon6ktJ6s-KVwfSiSg" target="_blank" rel="nofollow"><i class="fa fa-youtube" style="color: #cc181e;"></i> Youtube</a></li>
+<li style="float: right;color: #444;margin-right: -3px" class="nav_search">
+<form action="http://memoryhackers.com/arama.php/" id="cse-search-box">
+  <div>
+    <input type="hidden" name="cx" value="partner-pub-2235062012815115:2815149004" />
+    <input type="hidden" name="cof" value="FORID:10" />
+    <input type="hidden" name="ie" value="UTF-8" />
+	<input type="text" id="aramamh" class="textbox" name="q">
+    <button type="submit" name="sa" value="Search" /><i class="fa fa-search"></i></button>
+  </div>
+</form>
+
+<script type="text/javascript" src="http://www.google.com.tr/coop/cse/brand?form=cse-search-box&amp;lang=tr"></script>
+
+
+</li>
+</ul>
+</div>
+
+<main>
+
+	
+				
+<div class="breadcrumb">
+
+<a href="http://memoryhackers.net/index.php" itemprop="url"><span itemprop="title">MemoryHackers</span></a>
+<span class="breadcrumb_sep"></span>
+
+
+<a href="forum-anti-cheat-yazilim-ve-programlama.mh" itemprop="url"><span itemprop="title">Anti-Cheat Yazılım ve Programlama</span></a>
+<span class="breadcrumb_sep"></span>
+
+
+<a href="forum-c-programlama.mh?page=4" itemprop="url"><span itemprop="title">C # Programlama</span></a>
+
+
+
+<span class="breadcrumb_sep"></span>
+
+<a class="active" href="javascript:;" itemprop="url"><span itemprop="title">C# ile Json Dosyası Okuma/Yazma</span></a>
+ <span class="float_right"></span>
+</div>
+
+				
+				
+				
+				
+				
+							
+<center style="margin: -5px 0px -16px;">
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- memoryhackers -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:728px;height:90px"
+     data-ad-client="ca-pub-2235062012815115"
+     data-ad-slot="8416723809"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</center>
+					<br />
+
+	
+	
+<div class="thead" style="margin-bottom:5px;">
+<h2><strong><a href="">C# ile Json Dosyası Okuma/Yazma</a></strong></h2><i class="fa fa-tags"></i><a href=""  original-title="Kategori: C # Programlama"> C # Programlama</a>
+<i class="fa fa-info-circle"></i> C # Programlama İle İlgili Paylaşım Kategorisi
+
+<br /><span><a href="javascript:MyBB.whoPosted(10889);"><i class="fa fa-comments-o"></i> 0 Yorum</a></span>
+<span><i class="fa fa-eye"></i> 175 Görüntüleme</span>
+	</div>
+
+ 
+
+	<div class="float_right">
+			
+<div class="star_rating_container">
+		<script>
+		<!--
+			lang.ratings_update_error = "";
+		// -->
+		</script>
+		<script src="http://memoryhackers.net/jscripts/rating.js?ver=1800"></script>
+		<div class="inline_rating">
+			<ul class="star_rating star_rating_notrated" id="rating_thread_10889">
+				<li style="width: 0%" class="current_rating" id="current_rating_10889">0 Oy - 0 Yüzde</li>
+              <li><a class="five_stars" title="5 üzerinden 5 yıldız" href="./ratethread.php?tid=10889&amp;rating=5&amp;my_post_key=7c619aec43b2e4818661e293ab915c1f"></a></li>
+ <li><a class="four_stars" title="5 üzerinden 4 yıldız" href="./ratethread.php?tid=10889&amp;rating=4&amp;my_post_key=7c619aec43b2e4818661e293ab915c1f"></a></li>
+ <li><a class="three_stars" title="5 üzerinden 3 yıldız" href="./ratethread.php?tid=10889&amp;rating=3&amp;my_post_key=7c619aec43b2e4818661e293ab915c1f"></a></li>
+ <li><a class="two_stars" title="5 üzerinden 2 yıldız" href="./ratethread.php?tid=10889&amp;rating=2&amp;my_post_key=7c619aec43b2e4818661e293ab915c1f"></a></li>
+ <li><a class="one_star" title="5 üzerinden 1 yıldız" href="./ratethread.php?tid=10889&amp;rating=1&amp;my_post_key=7c619aec43b2e4818661e293ab915c1f"></a></li>
+              
+			</ul>
+		</div>
+</div>
+
+<span class="button_group vmiddle inline-block">
+	<a href="#" data-link-role="threadtools_menu" class="button"><i class="fa fa-sort-down"></i></a></span> <br class="clear" /></div>
+	<br /><br /><br />
+<div class="dropdown_menu" data-dropdown="true" data-menu="threadtools_menu" data-width="140px">
+<ul>
+  <li class="dropdown_title"><span data-lang-variable="tools"></span></li> 
+<li><a href="printthread.php?tid=10889"><i class="fa fa-print"></i><span data-lang-variable="print"></span></a></li>
+<li><a href="usercp2.php?action=addsubscription&amp;tid=10889&amp;my_post_key=7c619aec43b2e4818661e293ab915c1f"><i class="fa fa-bookmark"></i><span data-lang-variable="thread_subscribe_add"></span></a></li>
+
+
+
+  <li><a href="#" data-link-role="threadshare_modal"><i class="fa fa-share-alt"></i><span data-lang-variable="share"></span></a></li>
+<li class="dropdown_title">View modes</li> 
+ 
+<li><a href="showthread.php?mode=linear&amp;tid=10889&amp;pid=163070#pid163070">Doğrusal Görünüm</a></li>
+<li><a href="showthread.php?mode=threaded&amp;tid=10889&amp;pid=163070#pid163070" class="popup_item">Konu Görünümü</a></li>
+
+
+<li></li>
+<li></li> 
+
+</ul>
+  </div>
+  
+  
+<div id="posts_container">
+	<div id="posts">
+		
+
+<a id="pid163070"></a>
+<div class="tborder postbit_classic" style="" id="post_163070">
+
+<div class="trow1" data-content-status="">
+  
+  <a href="http://memoryhackers.net/uye-byclxon.mh"> <span style="color:#FF00BF;font-weight: bold; ">ByClxon</span></a> <a href="#" class="float_right smalltext">Gizli İçeriği Göster</a><br />
+  <span data-lang-variable="content_soft_deleted"></span>
+
+</div>
+	
+	<style>
+		
+@media screen and (max-width: 800px) {
+        .profilavatar { 
+			border-radius: 10px 20px 10px 20px;
+        }
+}
+</style>
+  
+<div class="postbit_header smalltext">Paylaşım Tarihi:<span class="postbit_time">  05-12-2016, 12:37 PM</span> <span class="float_right">
+<a href="konu-c-ile-json-dosyasi-okuma-yazma.mh?pid=163070#pid163070" data-link-role="postshare163070_modal" data-posttitle="C# ile Json Dosyası Okuma/Yazma " class="vmiddle inline-block">#1 <i class="fa fa-share-alt"></i></a>
+</span></div>
+  
+<div class="trow1 post_content  rowbit">
+
+<div class="postbit_author vtop" data-width="20%">
+
+<span class="block largetext postbit_username"><a href="http://memoryhackers.net/uye-byclxon.mh"> <span style="color:#FF00BF;font-weight: bold; ">ByClxon</span></a></span>
+<span class="block postbit_usertitle">Tengri Kut Başbuğ, ATATÜRK!</span>
+
+
+
+<div class="postbit_avatar author_avatar" style="width:1px;"><a href="uye-byclxon.mh"><img src="http://i.hizliresim.com/Y4WQ3l.jpg?dateline=1472314115" class="profilavatar" alt="" width="55" height="55" /></a></div>
+
+
+<span class="postbit_userstars">
+<img src="images/star.png" alt="*" /><img src="images/star.png" alt="*" /><img src="images/star.png" alt="*" /><img src="images/star.png" alt="*" /><img src="images/star.png" alt="*" /><img src="images/star.png" alt="*" /><br />
+</span>
+
+
+<span id="MLeftspace"><center>
+<img src="images/RankF/SMod.png" alt="Süper Moderator" title="Süper Moderator" />
+ <div style='margin-top: 3px; padding: 0px;'></div></center>
+
+<div class="postbit_author_details smalltext">
+
+<span>Status:<span class="float_right">
+<span class="label label_dark smalltext" title="Çevrimdışı">Çevrimdışı</span>
+</span></span>
+<span>Yorum Sayısı:<span class="float_right">952</span></span>
+<span>Konu Sayısı:<span class="float_right">442</span></span>
+<span>Üyelik Tarihi:<span class="float_right">Jan 2016</span></span>
+
+
+
+ <span>Rep Puanı:<span class="float_right">
+<a href="reputation.php?uid=7505"><span class="reputation_positive">647</span></a>
+</span></span>
+
+	
+</div>
+	<br />
+  </span>
+</div>
+
+	
+  
+    <div class="postbit_content vtop" data-width="80%">
+
+
+
+<div class="post_body postbit_body scaleimages" id="pid_163070"><span class="float_right"></span>
+	<span style="color: #767676;"><span style="font-family: 'Titillium Web', sans-serif;"><span style="font-style: italic;"><span style="color: #333333;"><span style="font-size: small;"><span style="font-family: Verdana, Arial, Tahoma, Calibri, Geneva, sans-serif;">Merhabalar arkadaşlar bu yazımda C#'da nasıl Json Dosyası ile ilgili işlemler yapılır ondan bahsedeceğim.</span></span></span></span></span></span><br />
+<br />
+<span style="color: #4b0082;"><span style="font-family: 'Titillium Web', sans-serif;"><span style="font-size: small;"><span style="font-family: Verdana, Arial, Tahoma, Calibri, Geneva, sans-serif;"><span style="font-family: Helvetica Neue;">Öncelikle Json dosyaları üzerinde işlem yapabilmek için </span></span></span></span></span><span style="color: #767676;"><span style="font-family: 'Titillium Web', sans-serif;"><span style="font-style: italic;"><span style="color: #333333;"><span style="font-size: small;"><span style="font-family: Verdana, Arial, Tahoma, Calibri, Geneva, sans-serif;"><span style="color: #ff0000;"><span style="font-family: Helvetica Neue;">Newtonsoft.Json</span></span></span></span></span></span></span></span><span style="color: #4b0082;"><span style="font-family: 'Titillium Web', sans-serif;"><span style="font-size: small;"><span style="font-family: Verdana, Arial, Tahoma, Calibri, Geneva, sans-serif;"><span style="font-family: Helvetica Neue;"> eklentisi kullanılmalıdır.<br />
+</span></span></span></span></span><span style="color: #4b0082;"><span style="font-family: 'Titillium Web', sans-serif;"><span style="font-size: small;"><span style="font-family: Verdana, Arial, Tahoma, Calibri, Geneva, sans-serif;"><span style="font-family: Helvetica Neue;">Visual Studioya aşağıda ki adımları takip ederek ekleyebilirsiniz;<br />
+<br />
+</span></span></span></span></span><span style="color: #272a34;"><span style="font-family: 'Titillium Web', sans-serif;"><span style="font-size: small;"><span style="font-family: Verdana, Arial, Tahoma, Calibri, Geneva, sans-serif;"><span style="font-family: Helvetica Neue;"><span style="font-weight: bold;"><span style="color: #000000;">1-</span></span><span style="color: #4b0082;">Proje üzerine sağ tıklayın<br />
+</span><span style="color: #000000;"><span style="font-weight: bold;">2-</span></span><span style="color: #4b0082;">Manage NuGet packages seçip</span></span></span></span></span></span><br />
+<span style="color: #272a34;"><span style="font-family: 'Titillium Web', sans-serif;"><span style="font-size: small;"><span style="font-family: Verdana, Arial, Tahoma, Calibri, Geneva, sans-serif;"><span style="font-family: Helvetica Neue;"><span style="color: #000000;"><span style="font-weight: bold;">3-</span></span><span style="color: #4b0082;">Karşına gelen pencerede; Browse kısmına geçip, Newtonsoft.Json yazıp aratın,</span></span></span></span></span></span><br />
+<span style="color: #272a34;"><span style="font-family: 'Titillium Web', sans-serif;"><span style="font-size: small;"><span style="font-family: Verdana, Arial, Tahoma, Calibri, Geneva, sans-serif;"><span style="font-family: Helvetica Neue;"><span style="font-weight: bold;"><span style="color: #000000;">4-</span></span><span style="color: #4b0082;">Çıkan ilk paketi Install deyip projenizi kurabilirsiniz.</span></span></span></span></span></span><br />
+<br />
+<span style="color: #272a34;"><span style="font-family: 'Titillium Web', sans-serif;"><span style="font-size: small;"><span style="font-family: Verdana, Arial, Tahoma, Calibri, Geneva, sans-serif;"><span style="font-family: Helvetica Neue;"><span style="color: #4b0082;"><span style="color: #4b0082;"><span style="font-size: small;"><span style="font-family: Helvetica Neue;">Resmi sitesi üzerinden Download da edebilirsiniz. </span></span></span><span style="color: #272a34;"><span style="font-size: small;"><span style="font-family: Helvetica Neue;"><span style="font-weight: bold;"><font color="green">linkleri görmek için <a href="member.php?action=login"><strong>giriş</strong></a> yapmanız. Yada <a href="member.php?action=register"><strong>üye</strong></a> olmanız gerekir. </font></span></span></span></span><span style="color: #4b0082;"><span style="font-size: small;"><span style="font-family: Helvetica Neue;"><br />
+Bu adımlardan sonra bir json dosyası üzerinde işlem yapalım.</span></span></span></span></span></span></span></span></span><br />
+<br />
+<span style="color: #272a34;"><span style="font-family: 'Titillium Web', sans-serif;"><span style="font-size: small;"><span style="font-family: Verdana, Arial, Tahoma, Calibri, Geneva, sans-serif;"><span style="font-family: Helvetica Neue;"><span style="color: #4b0082;"><span style="color: #4b0082;"><span style="font-size: small;"><span style="font-family: Helvetica Neue;"><span style="color: #272a34;"><span style="font-family: 'Titillium Web', sans-serif;"><span style="font-size: small;"><span style="font-family: Verdana, Arial, Tahoma, Calibri, Geneva, sans-serif;"><span style="font-family: Helvetica Neue;"><span style="color: #4b0082;"><span style="font-style: italic;">Şimdi bir Json dosyası oluşturalım.</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span><br />
+<br />
+<div class="codeblock phpcodeblock"><div class="title">PHP Kod:<br />
+</div><div class="body"><div dir="ltr"><code><span style="color: #007700">{<br /></span><span style="color: #0000BB"> &nbsp; &nbsp; </span><span style="color: #007700">[<br /></span><span style="color: #0000BB"> &nbsp; &nbsp; </span><span style="color: #DD0000">"ID"</span><span style="color: #007700">:&nbsp;</span><span style="color: #DD0000">"1"</span><span style="color: #007700">,<br /></span><span style="color: #0000BB"> &nbsp; &nbsp; </span><span style="color: #DD0000">"Name"</span><span style="color: #007700">:&nbsp;</span><span style="color: #DD0000">"eL.Security"</span><span style="color: #007700">,<br /></span><span style="color: #0000BB"> &nbsp; &nbsp; </span><span style="color: #DD0000">"LastName"</span><span style="color: #007700">:&nbsp;</span><span style="color: #DD0000">"Fexe"</span><span style="color: #007700">,<br /></span><span style="color: #0000BB"> &nbsp; &nbsp; </span><span style="color: #DD0000">"Birthday"</span><span style="color: #007700">:&nbsp;</span><span style="color: #DD0000">"1991/7/10&nbsp;06:12:00"</span><span style="color: #007700">,<br /></span><span style="color: #0000BB"> &nbsp; &nbsp; </span><span style="color: #DD0000">"Weight"</span><span style="color: #007700">:&nbsp;</span><span style="color: #DD0000">"70.80"<br /></span><span style="color: #0000BB"> &nbsp;</span><span style="color: #007700">},<br /></span><span style="color: #0000BB"> &nbsp;</span><span style="color: #007700">{<br /></span><span style="color: #0000BB"> &nbsp; &nbsp; </span><span style="color: #DD0000">"ID"</span><span style="color: #007700">:&nbsp;</span><span style="color: #DD0000">"2"</span><span style="color: #007700">,<br /></span><span style="color: #0000BB"> &nbsp; &nbsp; </span><span style="color: #DD0000">"Name"</span><span style="color: #007700">:&nbsp;</span><span style="color: #DD0000">"eL.Sec"</span><span style="color: #007700">,<br /></span><span style="color: #0000BB"> &nbsp; &nbsp; </span><span style="color: #DD0000">"LastName"</span><span style="color: #007700">:&nbsp;</span><span style="color: #DD0000">"Forumexe"</span><span style="color: #007700">,<br /></span><span style="color: #0000BB"> &nbsp; &nbsp; </span><span style="color: #DD0000">"Birthday"</span><span style="color: #007700">:&nbsp;</span><span style="color: #DD0000">"1956/9/17&nbsp;07:13:00"</span><span style="color: #007700">,<br /></span><span style="color: #0000BB"> &nbsp; &nbsp; </span><span style="color: #DD0000">"Weight"</span><span style="color: #007700">:&nbsp;</span><span style="color: #DD0000">"71.80"<br /></span><span style="color: #0000BB"> &nbsp;</span><span style="color: #007700">}<br />]&nbsp;<br /></span></code></div></div></div>
+<br />
+<span style="color: #272a34;"><span style="font-family: 'Titillium Web', sans-serif;"><span style="font-size: small;"><span style="font-family: Verdana, Arial, Tahoma, Calibri, Geneva, sans-serif;"><span style="font-family: Helvetica Neue;"><span style="color: #4b0082;"><span style="color: #4b0082;"><span style="font-size: small;"><span style="font-family: Helvetica Neue;"><span style="color: #272a34;"><span style="font-family: 'Titillium Web', sans-serif;"><span style="font-size: small;"><span style="font-family: Verdana, Arial, Tahoma, Calibri, Geneva, sans-serif;"><span style="font-family: Helvetica Neue;"><span style="color: #4b0082;"><span style="font-style: italic;"><span style="color: #4b0082;"><span style="font-size: small;"><span style="font-family: Helvetica Neue;">[i]Şimdi de bir consol projesi oluşturalım</span></span></span></span>[/i]</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span><br />
+<br />
+<br />
+<div class="codeblock phpcodeblock"><div class="title">PHP Kod:<br />
+</div><div class="body"><div dir="ltr"><code><span style="color: #0000BB">using&nbsp;System</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">using&nbsp;System</span><span style="color: #007700">.</span><span style="color: #0000BB">Collections</span><span style="color: #007700">.</span><span style="color: #0000BB">Generic</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">using&nbsp;System</span><span style="color: #007700">.</span><span style="color: #0000BB">Linq</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">using&nbsp;System</span><span style="color: #007700">.</span><span style="color: #0000BB">Text</span><span style="color: #007700">;<br /><br /><br /><br /><br /><br /><br /><br /><br />namespace&nbsp;</span><span style="color: #0000BB">JSONHandle<br /></span><span style="color: #007700">{<br /></span><span style="color: #0000BB"> &nbsp;</span><span style="color: #007700">public&nbsp;class&nbsp;</span><span style="color: #0000BB">Person<br /> &nbsp;</span><span style="color: #007700">{<br /></span><span style="color: #0000BB"> &nbsp; &nbsp; public&nbsp;int&nnbsp;ID</span><span style="color: #007700">;<br /></span><span style="color: #0000BB"> &nbsp; &nbsp; public&nbsp;string&nbsp;Name</span><span style="color: #007700">;<br /></span><span style="color: #0000BB"> &nbsp; &nbsp; public&nbsp;string&nbsp;LastName</span><span style="color: #007700">;<br /></span><span style="color: #0000BB"> &nbsp; &nbsp; public&nbsp;DateTime&nbsp;Birthday</span><span style="color: #007700">;<br /></span><span style="color: #0000BB"> &nbsp; &nbsp; public&nbsp;float&nbsp;Weight</span><span style="color: #007700">;<br /></span><span style="color: #0000BB"> &nbsp;</span><span style="color: #007700">}<br /><br /><br /><br /><br /><br /><br /><br /><br /></span><span style="color: #0000BB"> &nbsp;</span><span style="color: #007700">class&nbsp;</span><span style="color: #0000BB">Program<br /> &nbsp;</span><span style="color: #007700">{<br /></span><span style="color: #0000BB"> &nbsp; &nbsp; static&nbsp;void&nbsp;Main</span><span style="color: #007700">(</span><span style="color: #0000BB">string</span><span style="color: #007700">[]&nbsp;</span><span style="color: #0000BB">args</span><span style="color: #007700">)<br /></span><span style="color: #0000BB"> &nbsp; &nbsp; </span><span style="color: #007700">{<br /></span><span style="color: #0000BB"> &nbsp; &nbsp; &nbsp; &nbsp;using&nbsp;</span><span style="color: #007700">(</span><span style="color: #0000BB">System</span><span style="color: #007700">.</span><span style="color: #0000BB">IO</span><span style="color: #007700">.</span><span style="color: #0000BB">StreamReader&nbsp;_StreamReader&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">System</span><span style="color: #007700">.</span><span style="color: #0000BB">IO</span><span style="color: #007700">.</span><span style="color: #0000BB">StreamReader</span><span style="color: #007700">(@</span><span style="color: #DD0000">"C:&#092;Users&#092;USER&#092;Desktop&#092;Person.json"</span><span style="color: #007700">))<br /></span><span style="color: #0000BB"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span style="color: #007700">{<br /></span><span style="color: #0000BB"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; string&nbsp;jsonData&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">_StreamReader</span><span style="color: #007700">.</span><span style="color: #0000BB">ReadToEnd</span><span style="color: #007700">();<br /></span><span style="color: #0000BB"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; List</span><span style="color: #007700">&lt;</span><span style="color: #0000BB">Person</span><span style="color: #007700">&gt;&nbsp;</span><span style="color: #0000BB">listPerson&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">Newtonsoft</span><span style="color: #007700">.</span><span style="color: #0000BB">Json</span><span style="color: #007700">.</span><span style="color: #0000BB">JsonConvert</span><span style="color: #007700">.</span><span style="color: #0000BB">DeserializeObject</span><span style="color: #007700">&lt;List&lt;</span><span style="color: #0000BB">Person</span><span style="color: #007700">&gt;&gt;(</span><span style="color: #0000BB">jsonData</span><span style="color: #007700">);<br /><br /><br /><br /><br /><br /><br /><br /><br /></span><span style="color: #0000BB"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; foreach&nbsp;</span><span style="color: #007700">(var&nbsp;</span><span style="color: #0000BB">_Person&nbsp;in&nbsp;listPerson</span><span style="color: #007700">)<br /></span><span style="color: #0000BB"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span style="color: #007700">{<br /></span><span style="color: #0000BB"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Console</span><span style="color: #007700">.</span><span style="color: #0000BB">WriteLine</span><span style="color: #007700">(</span><span style="color: #DD0000">"{0}&nbsp;{1}"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">_Person</span><span style="color: #007700">.</span><span style="color: #0000BB">Name</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">_Person</span><span style="color: #007700">.</span><span style="color: #0000BB">LastName</span><span style="color: #007700">);<br /></span><span style="color: #0000BB"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span style="color: #007700">}<br /></span><span style="color: #0000BB"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span style="color: #007700">}<br /></span><span style="color: #0000BB"> &nbsp; &nbsp; </span><span style="color: #007700">}<br /></span><span style="color: #0000BB"> &nbsp;</span><span style="color: #007700">}<br />}&nbsp;<br /></span></code></div></div></div>
+<span style="color: #272a34;"><span style="font-family: 'Titillium Web', sans-serif;"><span style="font-size: small;"><span style="font-family: Verdana, Arial, Tahoma, Calibri, Geneva, sans-serif;"><span style="font-family: Helvetica Neue;"><span style="color: #4b0082;"><span style="color: #4b0082;"><span style="font-size: small;"><span style="font-family: Helvetica Neue;"><span style="color: #272a34;"><span style="font-family: 'Titillium Web', sans-serif;"><span style="font-size: small;"><span style="font-family: Verdana, Arial, Tahoma, Calibri, Geneva, sans-serif;"><span style="font-family: Helvetica Neue;"><span style="color: #4b0082;"><span style="font-style: italic;"><span style="color: #4b0082;"><span style="font-size: small;"><span style="font-family: Helvetica Neue;">[i]<span style="color: #272a34;"><span style="font-family: 'Titillium Web', sans-serif;"><span style="font-size: small;"><span style="font-family: Verdana, Arial, Tahoma, Calibri, Geneva, sans-serif;"><span style="font-family: Helvetica Neue;"><span style="color: #4b0082;">[i][i]Yukarı da anlattığım şekilde basit bir şekilde Veri çekip okuyabilirsiniz.</span>[/i]</span></span></span></span></span></span><br />
+[/i]</span></span></span>[/i]</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span><br />
+<br />
+<span style="color: #272a34;"><span style="font-family: 'Titillium Web', sans-serif;"><span style="font-size: small;"><span style="font-family: Verdana, Arial, Tahoma, Calibri, Geneva, sans-serif;"><span style="font-family: Helvetica Neue;"><span style="color: #4b0082;"><span style="color: #4b0082;"><span style="font-size: small;"><span style="font-family: Helvetica Neue;"><span style="color: #272a34;"><span style="font-family: 'Titillium Web', sans-serif;"><span style="font-size: small;"><span style="font-family: Verdana, Arial, Tahoma, Calibri, Geneva, sans-serif;"><span style="font-family: Helvetica Neue;"><span style="color: #4b0082;"><span style="font-style: italic;"><span style="color: #4b0082;"><span style="font-size: small;"><span style="font-family: Helvetica Neue;">[i]<span style="color: #767676;"><span style="font-size: small;"><span style="font-family: 'Titillium Web', sans-serif;"><span style="font-family: Verdana, Arial, Tahoma, Calibri, Geneva, sans-serif;"><span style="font-family: Helvetica Neue;">[i][i]<span style="color: #272a34;">İyi forumlar. </span></span>[/i]</span></span></span></span></span>[/i]</span></span></span>[/i]</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span>
+		</div>
+
+
+	<div id="edited_by_163070"></div>
+			
+
+
+
+
+
+<div class="postbit_signature signature scaleimages">
+#fenerbahçeA.A.K.<br />
+<img onclick="javascript:window.location='http://i.hizliresim.com/nErB8V.png';" src="http://i.hizliresim.com/nErB8V.png" alt="İmage" id="maxresim" title="Fotoğrafın Büyük Halini Görmek İçin tıklayınız!"><br />
+İletişim İçin Facebook;<br />
+<br />
+<font color="green">linkleri görmek için <a href="member.php?action=login"><strong>giriş</strong></a> yapmanız. Yada <a href="member.php?action=register"><strong>üye</strong></a> olmanız gerekir. </font><br />
+<br />
+<br />
+<span style="font-size: x-large;"><span style="color: #ff3333;"><span style="font-family: Roboto, arial, sans-serif;">Öfkemiz sarsın her yanı, bozkurtlar yürüye yürüye</span></span><br />
+<span style="color: #ff3333;"><span style="font-family: Roboto, arial, sans-serif;">Dökülsün düşmanın kanı, yaşasın ırkçı TÜRKİYE!</span></span><br />
+<br />
+<span style="color: #ff3333;"><span style="font-family: Roboto, arial, sans-serif;">Taşında gözü olanın yurduna MEZAR kazacağız</span></span><br />
+<span style="color: #ff3333;"><span style="font-family: Roboto, arial, sans-serif;">Hainin, soysuzun, döneğin alnına VATAN y</span><span style="font-family: Roboto, arial, sans-serif;">a</span><span style="font-family: Roboto, arial, sans-serif;">azcağız</span></span><br />
+<span style="color: #ff3333;"><span style="font-family: Roboto, arial, sans-serif;">Hainin, soysuzun alnına YAŞASIN TURAN ya</span></span><span style="font-size: small;"><span style="font-family: Roboto, arial, sans-serif;"><span style="font-size: x-large;"><span style="color: #ff3333;">zacağız!</span></span></span></span></span><br />
+<br />
+<br />
+<img onclick="javascript:window.location='http://i.hizliresim.com/LQgldG.png';" src="http://i.hizliresim.com/LQgldG.png" alt="İmage" id="maxresim" title="Fotoğrafın Büyük Halini Görmek İçin tıklayınız!"><br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+ <br />
+<br />
+         <br />
+<br />
+
+</div>
+
+
+  
+</div> 
+
+</div>  
+  
+<div class="postbit_footer tfoot">
+  
+	
+<a href="search.php?action=finduser&amp;uid=7505" title="Tüm Mesajlarına Bak" class="postbit_button"><i class="fa fa-search"></i><span>Ara</span></a>
+
+
+<div class="float_right">
+		
+<a href="newreply.php?tid=10889&amp;replyto=163070" id="multiquote_link_1" title="Alıntı ile Cevapla" class="postbit_button"><i class="fa fa-thumbs-up"></i><span>Cevapla</span></a>
+<span id="MLeftspace"></span>
+</div>
+  
+</div>  
+  
+</div>
+
+<!-- 					
+
+ -->
+
+	</div>
+</div>
+	<br />
+  
+  
+			
+ <a href="konu-c-ile-json-dosyasi-okuma-yazma.mh?action=nextoldest" title="Önceki"><i class="label label_dark fa fa-angle-double-left"></i></a><a href="konu-c-ile-json-dosyasi-okuma-yazma.mh?action=nextnewest" title="Sonraki"><i class="label label_dark fa fa-angle-double-right"></i></a>
+  
+  
+
+	<div class="float_right">
+		<form action="search.php" method="post">
+			<input type="hidden" name="action" value="thread" />
+			<input type="hidden" name="tid" value="10889" />
+			<input type="text" name="keywords" value="Anahtar Kelime Girin" onfocus="if(this.value == 'Anahtar Kelime Girin') { this.value = ''; }" onblur="if(this.value=='') { this.value='Anahtar Kelime Girin'; }" class="textbox" size="25" />
+			<input type="submit" class="button" value="Go" />
+		</form>
+	</div>
+
+  
+				<br />	<br />
+  
+  
+  <div class="float_left"></div>
+	
+  <div class="float_right"></div>
+  <br class="clear" /><br />
+		<center><script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- memoryhackers -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:728px;height:90px"
+     data-ad-client="ca-pub-2235062012815115"
+     data-ad-slot="8416723809"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></center>
+  
+  
+		
+  <div class="align_right">		</div>
+<br />
+  
+
+  
+	
+	
+<br />
+<div class="tborder">
+
+<div class="thead">Aradığınızı Bulamadınız Mı ?</div>
+	
+	
+<div class="trow1">
+
+
+<div class="threadbit_main" data-width="60%">
+&nbsp;<a href="konu-c-ile-json-dosyasi-okuma-yazma-18959.mh">C# ile Json Dosyası Okuma/Yazma</a> <i class="fa fa-external-link"></i>
+</div>
+</div>
+
+<div class="trow1">
+
+
+<div class="threadbit_main" data-width="60%">
+&nbsp;<a href="konu-c-zihin-okuma-programi-16715.mh">C++ Zihin Okuma Programı</a> <i class="fa fa-external-link"></i>
+</div>
+</div>
+
+</div>
+
+
+
+  
+
+<br />
+<div class="mediumtext"><i class="fa fa-globe vmiddle"></i> Konuyu görüntüleyenler:</div>1 Misafir
+<br />
+
+  
+
+<hr>
+<footer>
+
+<div class="clearfix">
+
+<div class="footer_column">
+
+<div class="footer_title">Hızlı Linkler</div>
+
+<ul class="smalltext">
+<li><a href="http://memoryhackers.net/index.php">Anasayfa</a></li>
+<li><a href="http://memoryhackers.net/search.php">Arama</a></li>
+	<li><a href="http://memoryhackers.net" title="Wolfteam Phantomers Zula Hileleri" rel="dofollow" target="_blank"><i class="fa fa-external-link fa_xtra white"></i> Wolfteam Phantomers Zula Hileleri</a></li>
+</ul>
+</div>
+
+
+<div class="footer_column">
+
+<div class="footer_title">Topluluk</div>
+
+<ul class="smalltext">
+<li><a href="http://memoryhackers.net/memberlist.php">Üye</a></li>
+<li><a href="http://memoryhackers.net/showteam.php">Forum Takımı</a></li>
+<li><a href="http://memoryhackers.net/online.php">Kim Online ?</a></li>
+<li><a href="http://memoryhackers.net/online.php?action=today">Bugün Kimler Onlineydi ?</a></li>
+</ul>
+</div>
+
+<div class="footer_column">
+
+<div class="footer_title">Diğer</div>
+
+<ul class="smalltext">
+<li><a href="http://memoryhackers.net/misc.php?action=help">Yardım Dökümanları</a></li>
+<li><a href="http://memoryhackers.net/calendar.php">Takvim</a></li>
+
+<li><a href="http://memoryhackers.net/stats.php">İstastikler</a></li>
+
+</ul>
+</div>
+
+
+<div class="footer_column social_column">
+
+<div class="footer_title">Bu Sayfayı Paylaş</div>
+<a href="#" title="Website Uptime Monitoring"><img src="https://www.statuscake.com/App/button/index.php?Track=BqeDkmSTfS&Days=1000&Design=1" /></a>
+
+<ul>
+<li><a href="https://facebook.com/" class="facebook" title="Facebook"><i class="fa fa-facebook"></i></a></li>
+<li><a href="https://twitter.com/" class="twitter" title="twitter"><i class="fa fa-twitter"></i></a></li>
+<li><a href="https://google.com" class="google" title="Google plus"><i class="fa fa-google-plus"></i></a></li>
+<li><a href="https://youtube.com" class="youtube" title="YouTube"><i class="fa fa-video-camera"></i></a></li>
+<li><a href="https://linkedin.com" class="linkedin" title="Linkedin"><i class="fa fa-linkedin"></i></a></li>
+<li><a href="http://memoryhackers.net/misc.php?action=syndication" title="RSS" class="feed"><i class="fa fa-rss"></i></a></li>
+
+<li><a href="http://memoryhackers.net/nader44ndeu@gmail.com" class="contact" title="İletişim"><i class="fa fa-at"></i></a></li>
+
+</ul>
+</div>
+
+</div>
+<br>
+<div class="copyright">
+<center>
+ <a href="http://memoryhackers.net/">&copy;Copyright 2016 MemoryHackers | Wolfteam Phantomers Zula Hileleri</a> Tüm Hakları Saklıdır.
+<br>
+Theme By >_ İoz
+<br />Yazılım: <a href="http://mybb.com/" target="_blank">MyBB</a> | <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="Creative Commons Lisansı" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/80x15.png" /> </center>
+</div>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-71312373-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+<!-- Start Alexa Certify Javascript -->
+<script type="text/javascript">
+_atrk_opts = { atrk_acct:"Cfumn1aMp410/9", domain:"memoryhackers.com",dynamic: true};
+(function() { var as = document.createElement('script'); as.type = 'text/javascript'; as.async = true; as.src = "https://d31qbv1cthcecs.cloudfront.net/atrk.js"; var s = document.getElementsByTagName('script')[0];s.parentNode.insertBefore(as, s); })();
+</script>
+<noscript><img src="https://d5nxst8fruw4z.cloudfront.net/atrk.gif?account=Cfumn1aMp410/9" style="display:none" height="1" width="1" alt="" /></noscript>
+<!-- End Alexa Certify Javascript -->
+
+</footer>
+	
+<!-- The following piece of code allows MyBB to run scheduled tasks. DO NOT REMOVE -->
+<!-- End task image code -->
+
+  
+ <a href="#top" title="Yukardı Dön" class="top_button"><i class="fa fa-angle-up"></i></a>
+</main>
+
+  
+  
+<div class="modal" data-modal="threadshare_modal" data-width="380px">
+
+<div class="header nopadding"><span class="modal_tabs clearfix inline-block vmiddle">
+<a href="#" data-link-role="tab_thread_1" class="active_tab">Direkt Link</a>
+<a href="#" data-link-role="tab_thread_2">Paylaş</a>
+</span>
+    <a href="#close" rel="modal:close"></a>
+ </div>
+<div class="content">
+
+<div data-tab="tab_thread_1">
+<ul class="list_style">
+<li><span data-lang-variable="share_plain"></span></li>
+<li><input type="text" value="http://memoryhackers.net/showthread.php?tid=10889" class="textbox" onclick="select()" /></li>
+  
+<li><span data-lang-variable="share_bbcode"></span></li>
+<li><input type="text" value="[url=http://memoryhackers.net/showthread.php?tid=10889] C# ile Json Dosyası Okuma/Yazma[/url]" class="textbox" onclick="select()" /></li>
+
+<li><span data-lang-variable="share_bbcode"></span></li>
+<li><input type="text" value="<a href=\'http://memoryhackers.net/showthread.php?tid=10889\'>C# ile Json Dosyası Okuma/Yazma</a>" class="textbox thread_bburl" onclick="select()" /></li>
+</ul>
+</div>
+
+<div data-tab="tab_thread_2">
+
+<ul class="list_style clearfix">
+
+<li><a class="addthis_button_facebook"><i class="fa fa-facebook"></i>Facebook</a></li>
+
+<li><a class="addthis_button_twitter"><i class="fa fa-twitter"></i>Twitter</a></li>
+
+<li><a class="addthis_button_stumbleupon"><i class="fa fa-stumbleupon"></i>Stumbleupon</a></li>
+
+<li><a class="addthis_button_tumblr"><i class="fa fa-tumblr"></i>Tumblr</a></li>
+
+<li><a class="addthis_button_google_plusone_share"><i class="fa fa-google"></i>Google +</a></li>
+
+<li><a class="addthis_button_linkedin"><i class="fa fa-linkedin"></i>LinkedIn</a></li>
+
+<li><a class="addthis_button_digg"><i class="fa fa-digg"></i>Digg</a></li>
+
+<li><a class="addthis_button_compact"><i class="fa fa-share-alt"></i>Daha Fazla</a></li>
+
+
+</ul>
+
+<script type="text/javascript" src="//s7.addthis.com/js/250/addthis_widget.js"></script>
+  
+ 
+</div>  
+  
+  
+</div>  
+  
+</div>  
+  
+<!-- postbit_share-->
+  
+<div class="modal" data-modal="postshare_modal" data-width="450px">
+  <div class="header"><span data-lang-variable="share" class="inline-block vmiddle"></span><a href="#close" rel="modal:close"></a></div> 
+  
+  
+<div class="content">
+  
+<ul class="list_style">
+<li><span data-lang-variable="share_plain"></span></li>
+<li><input type="text"  data-width="100%" value="" class="textbox post_plain" onclick="select()" /></li>
+  
+<li><span data-lang-variable="share_bbcode"></span></li>
+<li><input  data-width="100%" type="text" value="" class="textbox post_bbcode" onclick="select()" /></li>
+
+<li><span data-lang-variable="share_html"></span></li>
+<li><input  data-width="100%" type="text" value="" class="textbox post_html" onclick="select()" /></li>
+</ul>
+  
+</div>  
+  
+</div>  
+  
+  
+<!-- postbit_share-->  
+  
+</body>
+</html>
