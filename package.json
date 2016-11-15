@@ -6,7 +6,7 @@
   "repository": "https://github.com/tulios/json-viewer",
   "private": true,
   "dependencies": {
-    "archiver": "0.14.x",
+    "archiver": "1.2.x",
     "clean-webpack-plugin": "0.1.x",
     "codemirror": "5.14.x",
     "css-loader": "0.14.x",
@@ -22,8 +22,8 @@
     "webpack": "1.12.x"
   },
   "engines": {
-    "node": "5.5",
-    "npm": "3.5"
+    "node": "7.0",
+    "npm": "3.10"
   },
   "scripts": {
     "release": "NODE_ENV=production npm run build",
