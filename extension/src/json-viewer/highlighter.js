@@ -28,7 +28,7 @@ Highlighter.prototype = {
     if (this.isReadOny()) this.getDOMEditor().className += ' read-only';
 
     this.bindRenderLine();
-    this.bindMousedown();
+    this.bindDblclick();
     this.editor.refresh();
     this.editor.focus();
   },
@@ -96,13 +96,13 @@ Highlighter.prototype = {
     });
   },
 
-  bindMousedown: function() {
+  bindDblclick: function() {
     var self = this;
-    this.editor.off("mousedown");
-    this.editor.on("mousedown", function(cm, event) {
+    this.editor.off("dblclick");
+    this.editor.on("dblclick", function(cm, event) {
       var element = event.target;
       if (element.classList.contains("cm-string-link")) {
-        var url = element.getAttribute("data-url")
+        var url = element.getAttribute("data-url");
         var target = "_self";
         if (self.openLinksInNewWindow()) {
           target = "_blank";
