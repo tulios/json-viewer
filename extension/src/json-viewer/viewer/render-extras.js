@@ -44,11 +44,20 @@ function renderExtras(pre, options, highlighter) {
   var unfoldLink = document.createElement("a");
   unfoldLink.className = "json_viewer icon unfold";
   unfoldLink.href = "#";
-  unfoldLink.title = "Unfold all";
+  unfoldLink.title = "Fold/Unfold all toogle";
   unfoldLink.innerHTML = svgUnfold;
   unfoldLink.onclick = function(e) {
     e.preventDefault();
-    highlighter.unfoldAll();
+    var value = pre.getAttribute('data-folded')
+
+    if (value === 'true' || value === true) {
+      highlighter.unfoldAll();
+      pre.setAttribute('data-folded', false)
+
+    } else {
+      highlighter.fold();
+      pre.setAttribute('data-folded', true)
+    }
   }
 
   extras.appendChild(optionsLink);
@@ -56,9 +65,8 @@ function renderExtras(pre, options, highlighter) {
 
   // "awaysFold" was a typo but to avoid any problems I'll keep it
   // a while
-  if (options.addons.alwaysFold || options.addons.awaysFold) {
-    extras.appendChild(unfoldLink);
-  }
+  pre.setAttribute('data-folded', options.addons.alwaysFold || options.addons.awaysFold)
+  extras.appendChild(unfoldLink);
 
   document.body.appendChild(extras);
 }
