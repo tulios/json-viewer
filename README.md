@@ -16,7 +16,7 @@ Notes:
 Features:
 
 * Syntax highlighting
-* 26 built-in themes
+* 27 built-in themes
 * Collapsible nodes
 * Clickable URLs (optional)
 * URL does not matter (the content is analysed to determine if its a JSON or not)

@@ -1,3 +1,14 @@
+# 0.16.0 - 2016-12-01
+
+* Make the extension work if the content-type is text/html (PR #117)
+* Included panda-syntax theme (issue #112)
+* Updated CodeMirror (5.21.0)
+* Always show fold/unfold button (issue #107)
+
+# 0.15.0 - 2016-08-13
+
+* Bugfix: fixed issue with wrapNumbers failing when string ends with backslash (PR #94)
+
 # 0.14.1 - 2016-06-17
 
 * Improved JSON check
