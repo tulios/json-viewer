@@ -45,7 +45,7 @@ jsl.format = (function () {
         options = options || {};
         var tabSize = options.tabSize || 2;
         var indentCStyle = options.indentCStyle || false;
-
+        var showArraySize = (typeof options.showArraySize !== "undefined" ? Boolean(options.showArraySize) : true);
         var tab = "";
         for (var ts = 0; ts < tabSize; ts++) {
           tab += " ";
@@ -66,9 +66,11 @@ jsl.format = (function () {
                 if (!inString) {
                     if (indentCStyle) newJson += "\n" + repeat(tab, indentLevel);
                     if(currentChar === "["){
-                        var arraySize = getSizeOfArray(json,i);
-                        if(arraySize !== null){
-                            newJson += "Array[" + arraySize + "]";
+                        if(showArraySize){
+                            var arraySize = getSizeOfArray(json,i);
+                            if(arraySize !== null){
+                                newJson += "Array[" + arraySize + "]";
+                            }
                         }
                     }
                     newJson += currentChar;

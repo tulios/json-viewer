@@ -16,7 +16,8 @@ module.exports = {
     lineWrapping: true,
     foldGutter: true,
     tabSize: 2,
-    indentCStyle: false
+    indentCStyle: false,
+    showArraySize:true
   },
   style: [
     ".CodeMirror {",
