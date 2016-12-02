@@ -15,26 +15,31 @@ jsl.format = (function () {
         var currentposition = startingposition + 1;
         var inString = false;
         var num_opened = 1;
-        while (num_opened > 0 && currentposition < jsonstring.length) {
-            var currentChar = jsonstring.charAt(currentposition)
-            switch (currentChar) {
-                case '[':
-                    if(!inString){
-                        num_opened++;
-                    }
-                    break;
-                case ']':
-                    if(!inString){
-                        num_opened--;
-                    }
-                    break;
-                case '"':
-                    inString = !inString;
-                    break;
+        try{
+            while (num_opened > 0 && currentposition < jsonstring.length) {
+                var currentChar = jsonstring.charAt(currentposition)
+                switch (currentChar) {
+                    case '[':
+                        if(!inString){
+                            num_opened++;
+                        }
+                        break;
+                    case ']':
+                        if(!inString){
+                            num_opened--;
+                        }
+                        break;
+                    case '"':
+                        inString = !inString;
+                        break;
+                }
+                currentposition++;
             }
-            currentposition++;
+            return JSON.parse(jsonstring.substring(startingposition,currentposition)).length;
         }
-        return JSON.parse(jsonstring.substring(startingposition,currentposition)).length;
+        catch(err){
+            return null;
+        }
     }
     function formatJson(json, options) {
         options = options || {};
@@ -61,7 +66,10 @@ jsl.format = (function () {
                 if (!inString) {
                     if (indentCStyle) newJson += "\n" + repeat(tab, indentLevel);
                     if(currentChar === "["){
-                        newJson += "Array[" + getSizeOfArray(json,i) + "]";
+                        var arraySize = getSizeOfArray(json,i);
+                        if(arraySize !== null){
+                            newJson += "Array[" + arraySize + "]";
+                        }
                     }
                     newJson += currentChar;
                     
