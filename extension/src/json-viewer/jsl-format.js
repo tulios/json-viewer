@@ -10,7 +10,32 @@ jsl.format = (function () {
     function repeat(s, count) {
         return new Array(count + 1).join(s);
     }
-
+    function getSizeOfArray(jsonstring,startingposition){
+        var result;
+        var currentposition = startingposition + 1;
+        var inString = false;
+        var num_opened = 1;
+        while (num_opened > 0 && currentposition < jsonstring.length) {
+            var currentChar = jsonstring.charAt(currentposition)
+            switch (currentChar) {
+                case '[':
+                    if(!inString){
+                        num_opened++;
+                    }
+                    break;
+                case ']':
+                    if(!inString){
+                        num_opened--;
+                    }
+                    break;
+                case '"':
+                    inString = !inString;
+                    break;
+            }
+            currentposition++;
+        }
+        return JSON.parse(jsonstring.substring(startingposition,currentposition)).length;
+    }
     function formatJson(json, options) {
         options = options || {};
         var tabSize = options.tabSize || 2;
@@ -27,7 +52,6 @@ jsl.format = (function () {
             indentLevel = 0,
             inString    = false,
             currentChar = null;
-
         for (i = 0, il = json.length; i < il; i += 1) {
             currentChar = json.charAt(i);
 
@@ -36,7 +60,12 @@ jsl.format = (function () {
             case '[':
                 if (!inString) {
                     if (indentCStyle) newJson += "\n" + repeat(tab, indentLevel);
-                    newJson += currentChar + "\n" + repeat(tab, indentLevel + 1);
+                    if(currentChar === "["){
+                        newJson += "Array[" + getSizeOfArray(json,i) + "]";
+                    }
+                    newJson += currentChar;
+                    
+                    newJson +=  "\n" + repeat(tab, indentLevel + 1);
                     indentLevel += 1;
                 } else {
                     newJson += currentChar;
