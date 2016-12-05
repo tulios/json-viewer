@@ -10,32 +10,31 @@ jsl.format = (function () {
     function repeat(s, count) {
         return new Array(count + 1).join(s);
     }
-    function getSizeOfArray(jsonstring,startingposition){
-        var result;
-        var currentposition = startingposition + 1;
+    function getSizeOfArray(jsonString,startingPosition){
+        var currentPosition = startingPosition + 1;
         var inString = false;
-        var num_opened = 1;
+        var numOpened = 1;
         try{
-            while (num_opened > 0 && currentposition < jsonstring.length) {
-                var currentChar = jsonstring.charAt(currentposition)
+            while (numOpened > 0 && currentPosition < jsonString.length) {
+                var currentChar = jsonString.charAt(currentPosition)
                 switch (currentChar) {
                     case '[':
                         if(!inString){
-                            num_opened++;
+                            numOpened++;
                         }
                         break;
                     case ']':
                         if(!inString){
-                            num_opened--;
+                            numOpened--;
                         }
                         break;
                     case '"':
                         inString = !inString;
                         break;
                 }
-                currentposition++;
+                currentPosition++;
             }
-            return JSON.parse(jsonstring.substring(startingposition,currentposition)).length;
+            return JSON.parse(jsonString.substring(startingPosition,currentPosition)).length;
         }
         catch(err){
             return null;
