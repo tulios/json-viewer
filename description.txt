@@ -40,6 +40,7 @@ Thiago Pontes (@thiagopnts)
 Ben Hollander (@benhollander)
 Mehdi Bahrami (@mehdibahraami)
 Reimund Trost (@reimund)
+Ben van Enckevort (@benvan)
 
 License
 MIT License

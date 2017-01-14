@@ -1,3 +1,8 @@
+# 0.16.2 - 2017-01-14
+
+* Bugfix: checkIfJson fails when chrome splits text nodes (PR #133 thanks to @benvan)
+* Bug fix: quotes incorrectly parsed by wrapNumbers resulting in broken json (PR #134 thanks to @benvan)
+
 # 0.16.1 - 2016-12-04
 
 * Bugfix: Empty <pre> prepended to body when markup contained one text node with any whitespace character inside (issue #123)
