@@ -71,6 +71,7 @@ function wrapNumbers(text) {
   var buffer = "";
   var numberBuffer = "";
   var isInString = false;
+  var charIsEscaped = false;
   var isInNumber = false;
   var previous = "";
   var beforePrevious = "";
@@ -78,7 +79,7 @@ function wrapNumbers(text) {
   for (var i = 0, len = text.length; i < len; i++) {
     var char = text[i];
 
-    if (char == '"' && (previous != '\\' || (previous == '\\' && beforePrevious == '\\'))) {
+    if (char == '"' && !charIsEscaped) {
       isInString = !isInString;
     }
 
@@ -98,6 +99,9 @@ function wrapNumbers(text) {
 
       numberBuffer = "";
     }
+
+    // this applies to the _next_ character - the one used in the next iteration
+    charIsEscaped = (char == '\\') ? !charIsEscaped : false
 
     if (isInNumber) {
       numberBuffer += char;
