@@ -5,7 +5,7 @@
 
 # 0.16.1 - 2016-12-04
 
-* Bugfix: Empty <pre> prepended to body when markup contained one text node with any whitespace character inside (issue #123)
+* Bugfix: Empty `<pre>` prepended to body when markup contained one text node with any whitespace character inside (issue #123)
 
 # 0.16.0 - 2016-12-01
 
