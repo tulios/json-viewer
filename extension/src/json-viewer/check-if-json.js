@@ -1,9 +1,20 @@
 var extractJSON = require('./extract-json');
 
+function allTextNodes(nodes) {
+  return Object.keys(nodes).reduce(function(result, key) {
+    return result && nodes[key].nodeName === '#text'
+  }, true)
+}
+
 function getPreWithSource() {
   var childNodes = document.body.childNodes;
 
   if (childNodes.length > 1 && childNodes[0].nodeName === "#text"){
+  if (childNodes.length > 1 && allTextNodes(childNodes)) {
+    if (process.env.NODE_ENV === 'development') {
+      console.debug("[JSONViewer] Loaded from a multiple text nodes, normalizing");
+    }
+
     document.body.normalize() // concatenates adjacent text nodes
   }
 
