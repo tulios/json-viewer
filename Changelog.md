@@ -1,3 +1,8 @@
+# 0.17.0 - 2017-01-16
+
+* Bugfix: check if all nodes are text nodes before the normalization when facing multiple nodes (issue #136)
+* Add key map `shift-enter` to show the previous search result (PR #135 thanks to @benvan)
+
 # 0.16.2 - 2017-01-14
 
 * Bugfix: checkIfJson fails when chrome splits text nodes (PR #133 thanks to @benvan)
