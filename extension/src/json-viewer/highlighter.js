@@ -162,6 +162,10 @@ Highlighter.prototype = {
         CodeMirror.commands.findNext(cm);
       }
 
+      extraKeyMap["Shift-Enter"] = function(cm) {
+        CodeMirror.commands.findPrev(cm);
+      }
+
       extraKeyMap["Ctrl-V"] = extraKeyMap["Cmd-V"] = function(cm) {};
     }
 
