@@ -26,7 +26,7 @@ function getPreWithSource() {
       return childNode;
 
     // if Content-Type is text/html
-  } else if (nodeName === "#text" && textContent.trim().length > 0) {
+    } else if (nodeName === "#text" && textContent.trim().length > 0) {
       if (process.env.NODE_ENV === 'development') {
         console.debug("[JSONViewer] Loaded from a text node, this might have returned content-type: text/html");
       }
