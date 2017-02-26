@@ -55,7 +55,8 @@ function isJSON(jsonStr) {
 }
 
 function isJSONP(jsonStr) {
-  return isJSON(extractJSON(jsonStr));
+  debugger
+  return isJSON(extractJSON.replaceWrapper(jsonStr));
 }
 
 function checkIfJson(sucessCallback, element) {

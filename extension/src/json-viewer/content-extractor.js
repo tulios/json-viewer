@@ -15,11 +15,12 @@ var REPLACE_WRAP_REGEX = new RegExp(
   "\"" + WRAP_START + "(-?\\d+\\.?[\\deE]*)" + WRAP_END + "\"", "g"
 );
 
-function contentExtractor(pre, options) {
+function getJSON (pre, options) {
   return new Promise(function(resolve, reject) {
     try {
       var rawJsonText = pre.textContent;
-      var jsonExtracted = extractJSON(rawJsonText);
+      var jsonpWrapper = extractJSON.getWrapper(rawJsonText);
+      var jsonExtracted = extractJSON.replaceWrapper(rawJsonText);
       var wrappedText = wrapNumbers(jsonExtracted);
 
       var jsonParsed = JSON.parse(wrappedText);
@@ -29,15 +30,24 @@ function contentExtractor(pre, options) {
       var decodedJson = JSON.stringify(jsonParsed);
       decodedJson = decodedJson.replace(REPLACE_WRAP_REGEX, "$1");
 
-      var jsonFormatted = normalize(jsonFormater(decodedJson, options.structure));
-      var jsonText = normalize(rawJsonText).replace(normalize(jsonExtracted), jsonFormatted);
-      resolve({jsonText: jsonText, jsonExtracted: decodedJson});
-
+      resolve({jsonObj: decodedJson, jsonpWrapper: jsonpWrapper, options: options});
     } catch(e) {
       reject(new Error('contentExtractor: ' + e.message));
     }
   });
 }
+
+function formatJSON (data) {
+  return new Promise(function(resolve, reject) {
+    var jsonFormatted = normalize(jsonFormater(data.jsonObj, data.options.structure));
+    var jsonText = normalize(data.jsonpWrapper.header) + jsonFormatted + normalize(data.jsonpWrapper.footer);
+    resolve({jsonText: jsonText, jsonObj: data.jsonObj});
+  })
+}
+
+// function filterJSON () {
+//
+// }
 
 function normalize(json) {
   return json.replace(/\$/g, '$$$$');
@@ -131,4 +141,7 @@ function isCharInString(char, previous) {
          char != '-';
 }
 
-module.exports = contentExtractor;
+module.exports = {
+  getJSON: getJSON,
+  formatJSON: formatJSON
+};
