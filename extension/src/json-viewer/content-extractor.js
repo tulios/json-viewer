@@ -15,7 +15,7 @@ var REPLACE_WRAP_REGEX = new RegExp(
   "\"" + WRAP_START + "(-?\\d+\\.?[\\deE]*)" + WRAP_END + "\"", "g"
 );
 
-function getJSON (pre, options) {
+function getJSON(pre, options) {
   return new Promise(function(resolve, reject) {
     try {
       var rawJsonText = pre.textContent;
@@ -26,28 +26,43 @@ function getJSON (pre, options) {
       var jsonParsed = JSON.parse(wrappedText);
       if (options.addons.sortKeys) jsonParsed = sortByKeys(jsonParsed);
 
-      // Validate and decode json
-      var decodedJson = JSON.stringify(jsonParsed);
-      decodedJson = decodedJson.replace(REPLACE_WRAP_REGEX, "$1");
-
-      resolve({jsonObj: decodedJson, jsonpWrapper: jsonpWrapper, options: options});
+      resolve({jsonObj: jsonParsed, jsonpWrapper: jsonpWrapper, options: options});
     } catch(e) {
       reject(new Error('contentExtractor: ' + e.message));
     }
   });
 }
 
-function formatJSON (data) {
+function formatJSON(data) {
   return new Promise(function(resolve, reject) {
-    var jsonFormatted = normalize(jsonFormater(data.jsonObj, data.options.structure));
+    var decodedJson = JSON.stringify(data.jsonObj).replace(REPLACE_WRAP_REGEX, "$1");
+    var jsonFormatted = normalize(jsonFormater(decodedJson, data.options.structure));
     var jsonText = normalize(data.jsonpWrapper.header) + jsonFormatted + normalize(data.jsonpWrapper.footer);
+
     resolve({jsonText: jsonText, jsonObj: data.jsonObj});
   })
 }
 
-// function filterJSON () {
-//
-// }
+function filterJSON(query) {
+  return function (data) {
+    if (!query) {
+      return data
+    }
+
+    var fullQuery = query.toString().split('.')
+    var filteredJson = null
+    if (Array.isArray(data.jsonObj)) {
+      filteredJson = data.jsonObj.reduce(function(acc, next) {
+        acc.push(applyFilter(next, fullQuery))
+        return acc;
+      }, [])
+    } else {
+      filteredJson = applyFilter(data.jsonObj, fullQuery)
+    }
+
+    return {jsonObj: filteredJson, jsonpWrapper: data.jsonpWrapper, options: data.options}
+  }
+}
 
 function normalize(json) {
   return json.replace(/\$/g, '$$$$');
@@ -141,7 +156,47 @@ function isCharInString(char, previous) {
          char != '-';
 }
 
+function applyFilter(input, query) {
+  var currentKey = query.length ? query[0] : null
+  var nextQuery = query.slice(1)
+
+  if (!currentKey) return input
+
+  var index = null
+  var match = currentKey.match(/^(.*)\[([0-9]*)\]$/)
+  if (match && match.length > 0) {
+    currentKey = match[1]
+    index = parseInt(match[2], 10)
+  }
+
+  if (typeof input[currentKey] !== 'object') {
+    var result = {}
+    result[currentKey] = input[currentKey]
+    return result
+  }
+
+  if (Array.isArray(input[currentKey])) {
+
+    return input[currentKey].reduce((acc, next, i) => {
+      if (index && index !== i) {
+        return acc
+      }
+
+      if (typeof next === 'object') {
+        acc.push(applyFilter(next, nextQuery))
+      } else {
+        acc.push(next)
+      }
+
+      return acc
+    }, [])
+  } else {
+    return applyFilter(input[currentKey], nextQuery)
+  }
+}
+
 module.exports = {
   getJSON: getJSON,
-  formatJSON: formatJSON
+  formatJSON: formatJSON,
+  filterJSON: filterJSON
 };

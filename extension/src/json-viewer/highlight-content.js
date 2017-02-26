@@ -53,6 +53,11 @@ function highlightContent(pre, outsideViewer) {
     }
 
     return contentExtractor.getJSON(pre, options)
+      .then((data) => {
+        exposeJson(data.jsonObj, outsideViewer);
+        return data;
+      })
+      .then(contentExtractor.filterJSON(decodeURIComponent(document.location.hash.substring(1))))
       .then(contentExtractor.formatJSON)
       .then(function(data) {
         return loadRequiredCss(options).then(function() { return data; });
@@ -84,9 +89,7 @@ function highlightContent(pre, outsideViewer) {
           highlighter.fold();
         }
 
-        exposeJson(data.jsonObj, outsideViewer);
         renderExtras(pre, options, highlighter);
-
       });
 
   }).catch(function(e) {
