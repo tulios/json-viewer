@@ -157,42 +157,44 @@ function isCharInString(char, previous) {
 }
 
 function applyFilter(input, query) {
-  var currentKey = query.length ? query[0] : null
+  var querySegment = query.length ? query[0] : null
   var nextQuery = query.slice(1)
 
-  if (!currentKey) return input
+  if (!querySegment) return input
 
-  var index = null
-  var match = currentKey.match(/^(.*)\[([0-9]*)\]$/)
+  var secondaryFilter = []
+  var match = querySegment.match(/^(.*)\[(.*)\]$/)
   if (match && match.length > 0) {
-    currentKey = match[1]
-    index = parseInt(match[2], 10)
+    querySegment = match[1]
+    secondaryFilter = (match[2] || '').split(',')
   }
 
-  if (typeof input[currentKey] !== 'object') {
-    var result = {}
-    result[currentKey] = input[currentKey]
+  var result = {}
+  if (!querySegment || typeof input[querySegment] !== 'object') {
+    if (secondaryFilter.length) {
+      secondaryFilter.forEach(function(key) {
+        if (input.hasOwnProperty(key)) {
+          result[key] = input[key]
+        }
+      })
+    } else {
+      result[querySegment] = input[querySegment]
+    }
     return result
   }
 
-  if (Array.isArray(input[currentKey])) {
-
-    return input[currentKey].reduce((acc, next, i) => {
-      if (index && index !== i) {
-        return acc
-      }
-
-      if (typeof next === 'object') {
+  if (Array.isArray(input[querySegment])) {
+    result[querySegment] = input[querySegment].reduce((acc, next, i) => {
+      var indexInSecondaryFilter = secondaryFilter.indexOf(i.toString()) !== -1
+      if (!secondaryFilter.length || (secondaryFilter.length && indexInSecondaryFilter)) {
         acc.push(applyFilter(next, nextQuery))
-      } else {
-        acc.push(next)
       }
-
       return acc
     }, [])
   } else {
-    return applyFilter(input[currentKey], nextQuery)
+    result[querySegment] = applyFilter(input[querySegment], nextQuery)
   }
+  return result
 }
 
 module.exports = {
