@@ -37,7 +37,14 @@ function formatJSON(data) {
   return new Promise(function(resolve, reject) {
     var decodedJson = JSON.stringify(data.jsonObj).replace(REPLACE_WRAP_REGEX, "$1");
     var jsonFormatted = normalize(jsonFormater(decodedJson, data.options.structure));
-    var jsonText = normalize(data.jsonpWrapper.header) + jsonFormatted + normalize(data.jsonpWrapper.footer);
+    var filterQuery = data.filterQuery
+      ? '/* FILTER: ' + data.filterQuery + ' */\n'
+      : ''
+    var jsonText =
+      filterQuery +
+      normalize(data.jsonpWrapper.header) +
+      jsonFormatted +
+      normalize(data.jsonpWrapper.footer);
 
     resolve({jsonText: jsonText, jsonObj: data.jsonObj});
   })
