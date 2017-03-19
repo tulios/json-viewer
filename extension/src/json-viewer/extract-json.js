@@ -1,37 +1,25 @@
-var JSONP_HEADER_REGEX = [
-  /\s*while\((1|true)\)\s*;?/,
-  /\s*for\(;;\)\s*;?/
-]
-var JSONP_FOOTER_REGEX = /\}\);?\s*$/
+var JSONP_HEADER_REGEX = new RegExp([
+  '(\\s*while\\((1|true)\\)\\s*;?)',
+  '(\\s*for\\(;;\\)\\s*;?)',
+  '(^[^{\\[].+?\\()'
+].join('|'))
 
-function replaceWrapper(rawJSON) {
-  return rawJSON
-    .replace(JSONP_HEADER_REGEX[0], '')
-    .replace(JSONP_HEADER_REGEX[1], '')
-    .replace(/^[^{\[].+\({/, '{')
-    .replace(JSONP_FOOTER_REGEX, '}');
+var JSONP_FOOTER_REGEX = /\);?\s*$/
+
+function replaceWrapper(rawJsonString) {
+  return rawJsonString
+    .replace(JSONP_HEADER_REGEX, '')
+    .replace(JSONP_FOOTER_REGEX, '')
 }
 
-function getWrapper (rawJSON) {
+function getWrapper (rawJsonString) {
   var wrapper = { header: '', footer: '' };
 
-  var a = rawJSON.match(JSONP_HEADER_REGEX[0]);
-  if (a && a.length) {
-    wrapper.header = a[0];
-  }
-  a = rawJSON.match(JSONP_HEADER_REGEX[1]);
-  if (a && a.length) {
-    wrapper.header = a[0];
-  }
-  a = rawJSON.match(/^[^{\[].+\({/);
-  if (a && a.length) {
-    wrapper.header = a[0];
-  }
+  var header = rawJsonString.match(JSONP_HEADER_REGEX)
+  wrapper.header = header ? header[0] : ''
 
-  b = rawJSON.match(JSONP_FOOTER_REGEX);
-  if (b && b.length) {
-    wrapper.footer = b[0];
-  }
+  var footer = rawJsonString.match(JSONP_FOOTER_REGEX)
+  wrapper.footer = footer ? footer[0] : ''
 
   return wrapper;
 }
