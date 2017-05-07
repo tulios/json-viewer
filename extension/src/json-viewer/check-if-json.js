@@ -1,4 +1,5 @@
 var extractJSON = require('./extract-json');
+var optionsProm = require('./viewer/get-options')();
 
 function allTextNodes(nodes) {
   return Object.keys(nodes).reduce(function(result, key) {
@@ -59,14 +60,44 @@ function isJSONP(jsonStr) {
 }
 
 function checkIfJson(sucessCallback, element) {
-  var pre = element || getPreWithSource();
+  optionsProm.then(function(options) {
+    var pre = element || getPreWithSource();
+    console.log('Options: ', options);
+    var forceEncodeOption = options.addons.forceUTF8;
+    console.log(forceEncodeOption);
+    var forcedEncoding = 'UTF-8';
+    var enc = document.characterSet;
 
-  if (pre !== null &&
-    pre !== undefined &&
-    (isJSON(pre.textContent) || isJSONP(pre.textContent))) {
+    if(forceEncodeOption && enc !== forcedEncoding) {
+      var xhr = new XMLHttpRequest();
+      xhr.open('GET', window.location);
+      xhr.overrideMimeType(document.contentType + '; charset=utf-8')
+      xhr.onload = function() {
 
-    sucessCallback(pre);
-  }
+
+        pre.textContent = xhr.response; //.replace(/\t/g, ' '.repeat(tabSize));
+        if (pre !== null &&
+          pre !== undefined &&
+          (isJSON(pre.textContent) || isJSONP(pre.textContent))) {
+
+          sucessCallback(pre);
+        }
+        console.log('resource read as UTF-8 instead of ' + enc);
+      }
+      xhr.send();
+    } else {
+
+
+      if (pre !== null &&
+        pre !== undefined &&
+        (isJSON(pre.textContent) || isJSONP(pre.textContent))) {
+
+        sucessCallback(pre);
+      }
+    }
+  }).catch(function(e) {
+    console.log('[JSONViewer] error: ' + e);
+  });
 }
 
 module.exports = checkIfJson;
