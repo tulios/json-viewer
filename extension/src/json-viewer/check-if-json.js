@@ -1,5 +1,7 @@
 var extractJSON = require('./extract-json');
-var optionsProm = require('./viewer/get-options')();
+var getOptions = require('./viewer/get-options');
+
+var FORCED_ENCODING = 'UTF-8';
 
 function allTextNodes(nodes) {
   return Object.keys(nodes).reduce(function(result, key) {
@@ -59,45 +61,39 @@ function isJSONP(jsonStr) {
   return isJSON(extractJSON(jsonStr));
 }
 
-function checkIfJson(sucessCallback, element) {
-  optionsProm.then(function(options) {
-    var pre = element || getPreWithSource();
-    console.log('Options: ', options);
-    var forceEncodeOption = options.addons.forceUTF8;
-    console.log(forceEncodeOption);
-    var forcedEncoding = 'UTF-8';
-    var enc = document.characterSet;
-
-    if(forceEncodeOption && enc !== forcedEncoding) {
-      var xhr = new XMLHttpRequest();
-      xhr.open('GET', window.location);
-      xhr.overrideMimeType(document.contentType + '; charset=utf-8')
-      xhr.onload = function() {
-
-
-        pre.textContent = xhr.response; //.replace(/\t/g, ' '.repeat(tabSize));
-        if (pre !== null &&
-          pre !== undefined &&
-          (isJSON(pre.textContent) || isJSONP(pre.textContent))) {
-
-          sucessCallback(pre);
-        }
-        console.log('resource read as UTF-8 instead of ' + enc);
-      }
-      xhr.send();
-    } else {
-
-
-      if (pre !== null &&
-        pre !== undefined &&
-        (isJSON(pre.textContent) || isJSONP(pre.textContent))) {
-
-        sucessCallback(pre);
-      }
-    }
-  }).catch(function(e) {
-    console.log('[JSONViewer] error: ' + e);
-  });
+function forceEncoding(pre, enc, callback) {
+  var xhr = new XMLHttpRequest();
+  xhr.open('GET', window.location);
+  xhr.overrideMimeType(document.contentType + '; charset=utf-8');
+  xhr.onload = function() {
+    pre.textContent = xhr.response;
+    callback(pre);
+    console.log('resource read as UTF-8 instead of ' + enc);
+  }
+  xhr.onerror = function() {
+    // Make this fail quietly?
+    console.log('resource could not be re-encoded due to network issue');
+  }
+  xhr.send()
 }
+
+function checkIfJson(sucessCallback, element) {
+  var pre = element || getPreWithSource();
+  if(pre === null || pre === undefined) return;
+  var enc = document.characterSet;
+  var callback = function(pre) { if(isJSON(pre.textContent) || isJSONP(pre.textContent)) sucessCallback(pre) }
+  if(enc === FORCED_ENCODING) callback(pre);
+  else {
+      getOptions()
+        .then(function(options) {
+          if(options.addons.forceUTF8) forceEncoding(pre, enc, callback);
+          else callback(pre);
+        })
+        .catch(function(e) {
+          console.log('[JSONViewer] error: ' + e);
+        });
+    }
+}
+
 
 module.exports = checkIfJson;
