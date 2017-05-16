@@ -10,12 +10,41 @@ jsl.format = (function () {
     function repeat(s, count) {
         return new Array(count + 1).join(s);
     }
-
+    function getSizeOfArray(jsonString,startingPosition){
+        var currentPosition = startingPosition + 1;
+        var inString = false;
+        var numOpened = 1;
+        try{
+            while (numOpened > 0 && currentPosition < jsonString.length) {
+                var currentChar = jsonString.charAt(currentPosition)
+                switch (currentChar) {
+                    case '[':
+                        if(!inString){
+                            numOpened++;
+                        }
+                        break;
+                    case ']':
+                        if(!inString){
+                            numOpened--;
+                        }
+                        break;
+                    case '"':
+                        inString = !inString;
+                        break;
+                }
+                currentPosition++;
+            }
+            return JSON.parse(jsonString.substring(startingPosition,currentPosition)).length;
+        }
+        catch(err){
+            return null;
+        }
+    }
     function formatJson(json, options) {
         options = options || {};
         var tabSize = options.tabSize || 2;
         var indentCStyle = options.indentCStyle || false;
-
+        var showArraySize = (typeof options.showArraySize !== "undefined" ? Boolean(options.showArraySize) : true);
         var tab = "";
         for (var ts = 0; ts < tabSize; ts++) {
           tab += " ";
@@ -27,7 +56,6 @@ jsl.format = (function () {
             indentLevel = 0,
             inString    = false,
             currentChar = null;
-
         for (i = 0, il = json.length; i < il; i += 1) {
             currentChar = json.charAt(i);
 
@@ -36,7 +64,17 @@ jsl.format = (function () {
             case '[':
                 if (!inString) {
                     if (indentCStyle) newJson += "\n" + repeat(tab, indentLevel);
-                    newJson += currentChar + "\n" + repeat(tab, indentLevel + 1);
+                    if(currentChar === "["){
+                        if(showArraySize){
+                            var arraySize = getSizeOfArray(json,i);
+                            if(arraySize !== null){
+                                newJson += "Array[" + arraySize + "]";
+                            }
+                        }
+                    }
+                    newJson += currentChar;
+                    
+                    newJson +=  "\n" + repeat(tab, indentLevel + 1);
                     indentLevel += 1;
                 } else {
                     newJson += currentChar;
