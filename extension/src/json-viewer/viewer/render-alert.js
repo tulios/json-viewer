@@ -1,11 +1,8 @@
 var loadCss = require('../load-css');
 
-function renderAlert(pre, options, message) {
+function renderAlert(pre, options, content) {
   var alertContainer = document.createElement("div");
   alertContainer.className = "json-viewer-alert";
-
-  var content = document.createElement("span");
-  content.innerHTML = message;
   alertContainer.appendChild(content);
 
   var closeBtn = document.createElement("a");
