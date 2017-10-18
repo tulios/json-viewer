@@ -73,7 +73,10 @@ jsl.format = (function () {
                 }
                 break;
             case '"':
-                if (i > 0 && (json.charAt(i - 1) !== '\\' || (json.charAt(i - 1) == '\\' && json.charAt(i - 2) == '\\'))) {
+                if (i === 0) {
+                    inString = true;
+                }
+                else if (json.charAt(i - 1) !== '\\' || (json.charAt(i - 1) == '\\' && json.charAt(i - 2) == '\\')) {
                     inString = !inString;
                 }
                 newJson += currentChar;
