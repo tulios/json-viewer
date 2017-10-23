@@ -2,6 +2,7 @@
   "correct_value:80402000000790837": 80402000000790837,
   "number_string": "53061",
   "float": 122.80,
+  "big_float": 1.5034464E+9,
   "boolean": true,
   "another_boolean": false,
   "float_with_exponent": 8.4127988E8,
