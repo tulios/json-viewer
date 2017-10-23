@@ -44,7 +44,7 @@ function renderExtras(pre, options, highlighter) {
   var unfoldLink = document.createElement("a");
   unfoldLink.className = "json_viewer icon unfold";
   unfoldLink.href = "#";
-  unfoldLink.title = "Fold/Unfold all toogle";
+  unfoldLink.title = "Fold/Unfold all toggle";
   unfoldLink.innerHTML = svgUnfold;
   unfoldLink.onclick = function(e) {
     e.preventDefault();

@@ -7,6 +7,7 @@ module.exports = {
     alwaysRenderAllContent: false,
     sortKeys: false,
     clickableUrls: true,
+    wrapLinkWithAnchorTag: false,
     openLinksInNewWindow: true,
     autoHighlight: true
   },
@@ -16,7 +17,8 @@ module.exports = {
     lineWrapping: true,
     foldGutter: true,
     tabSize: 2,
-    indentCStyle: false
+    indentCStyle: false,
+    showArraySize: false
   },
   style: [
     ".CodeMirror {",

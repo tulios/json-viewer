@@ -7,7 +7,7 @@ var renderAlert = require('./viewer/render-alert');
 var getOptions = require('./viewer/get-options');
 var loadRequiredCss = require('./viewer/load-required-css');
 
-function oversizedJSON(pre, options) {
+function oversizedJSON(pre, options, outsideViewer) {
   var jsonSize = pre.textContent.length;
   var accepted = options.addons.maxJsonSize;
 
@@ -27,10 +27,26 @@ function oversizedJSON(pre, options) {
       "Accepted: " + accepted + " kbytes, received: " + loaded + " kbytes. " +
       "It's possible to change this value at options -> Add-ons -> maxJsonSize"
     );
-    renderAlert(pre, options,
-      "[JSONViewer] Content not highlighted due to oversize. " +
-      "Take a look at the console log for more information."
-    );
+
+    var container = document.createElement("div");
+
+    var message = document.createElement("div");
+    message.innerHTML = "[JSONViewer] Content not highlighted due to oversize. " +
+    "Take a look at the console log for more information.";
+    container.appendChild(message);
+
+    var highlightAnyway = document.createElement("a");
+    highlightAnyway.href = "#";
+    highlightAnyway.title = "Highlight anyway!";
+    highlightAnyway.innerHTML = "Highlight anyway!";
+    highlightAnyway.onclick = function(e) {
+      e.preventDefault();
+      pre.hidden = true;
+      highlightContent(pre, outsideViewer, true);
+    }
+    container.appendChild(highlightAnyway);
+
+    renderAlert(pre, options, container);
   }
 
   return isOversizedJSON;
@@ -46,9 +62,9 @@ function prependHeader(options, outsideViewer, jsonText) {
   return jsonText;
 }
 
-function highlightContent(pre, outsideViewer) {
+function highlightContent(pre, outsideViewer, ignoreLimit) {
   getOptions().then(function(options) {
-    if (oversizedJSON(pre, options)) {
+    if (!ignoreLimit && oversizedJSON(pre, options, outsideViewer)) {
       return pre.hidden = false;
     }
 

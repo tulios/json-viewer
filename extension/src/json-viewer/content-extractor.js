@@ -5,14 +5,15 @@ var extractJSON = require('./extract-json');
 var TOKEN = (Math.random() + 1).toString(36).slice(2, 7);
 var WRAP_START = "<wrap_" + TOKEN + ">";
 var WRAP_END = "</wrap_" + TOKEN +">";
-var NUM_REGEX = /^-?\d+\.?[\deE]*$/g;
+var NUM_REGEX = /^-?\d+\.?\d*([eE]\+)?\d*$/g;
+var ESCAPED_REGEX = "(-?\\d+\\.?\\d*([eE]\\+)?\\d*)"
 
 var WRAP_REGEX = new RegExp(
-  "^" + WRAP_START + "(-?\\d+\\.?[\\deE]*)" + WRAP_END + "$", "g"
+  "^" + WRAP_START + ESCAPED_REGEX + WRAP_END + "$", "g"
 );
 
 var REPLACE_WRAP_REGEX = new RegExp(
-  "\"" + WRAP_START + "(-?\\d+\\.?[\\deE]*)" + WRAP_END + "\"", "g"
+  "\"" + WRAP_START + ESCAPED_REGEX + WRAP_END + "\"", "g"
 );
 
 function contentExtractor(pre, options) {
@@ -119,6 +120,7 @@ function wrapNumbers(text) {
 function isCharInNumber(char, previous) {
   return ('0' <= char && char <= '9') ||
          ('0' <= previous && previous <= '9' && (char == 'e' || char == 'E')) ||
+         (('e' == previous || 'E' == previous) && char == '+') ||
          char == '.' ||
          char == '-';
 }
@@ -127,6 +129,7 @@ function isCharInString(char, previous) {
   return ('0' > char || char > '9') &&
          char != 'e' &&
          char != 'E' &&
+         char != '+' &&
          char != '.' &&
          char != '-';
 }
