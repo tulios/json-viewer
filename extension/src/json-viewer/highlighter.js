@@ -91,6 +91,14 @@ Highlighter.prototype = {
         elements.forEach(function(node) {
           node.classList.add("cm-string-link");
           node.setAttribute("data-url", decodedText);
+          if (self.wrapLinkWithAnchorTag()) {
+            var linkTag = document.createElement("a");
+            linkTag.href = decodedText;
+            linkTag.setAttribute('target', '_blank')
+            linkTag.innerHTML = decodedText;
+            node.innerHTML = "";
+            node.appendChild(linkTag);
+          }
         });
       }
     });
@@ -198,6 +206,10 @@ Highlighter.prototype = {
 
   clickableUrls: function() {
     return this.options.addons.clickableUrls;
+  },
+
+  wrapLinkWithAnchorTag: function() {
+    return this.options.addons.wrapLinkWithAnchorTag;
   },
 
   openLinksInNewWindow: function() {
