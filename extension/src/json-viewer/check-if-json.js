@@ -1,16 +1,16 @@
 var extractJSON = require('./extract-json');
 
 function allTextNodes(nodes) {
-  return Object.keys(nodes).reduce(function(result, key) {
-    return result && nodes[key].nodeName === '#text'
-  }, true)
+  return !Object.keys(nodes).some(function(key) {
+    return nodes[key].nodeName !== '#text'
+  })
 }
 
 function getPreWithSource() {
   var childNodes = document.body.childNodes;
 
   if (childNodes.length === 0) {
-    null
+    return null
   }
 
   if (childNodes.length > 1 && allTextNodes(childNodes)) {

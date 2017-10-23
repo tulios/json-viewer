@@ -21,10 +21,6 @@
     "sweetalert": "1.0.x",
     "webpack": "1.12.x"
   },
-  "engines": {
-    "node": "7.0",
-    "npm": "3.10"
-  },
   "scripts": {
     "release": "NODE_ENV=production npm run build",
     "build": "./node_modules/.bin/webpack --progress --colors && node ./lib/release-script"
