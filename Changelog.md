@@ -1,3 +1,15 @@
+# 0.18.0 - 2017-10-23
+
+* Make clear this plugin is open source (PR #144)
+* Support pages with multiple nodes (PR #150)
+* Add option to display the array size, disabled by default (`showArraySize` PR #122)
+* Support JSONP with spaces around (PR #157)
+* Allow force highlight for oversized JSON (PR #168)
+* Add option to wrap links with a link tag [<a/>] (PR #173)
+* Bugfix: preserve spaces in plain strings (PR #175)
+* Bugfix: Remove unnecessary limitations from package.json (issue #171)
+* Bugfix: fix float point numbers (issues #167 #111)
+
 # 0.17.0 - 2017-01-16
 
 * Bugfix: check if all nodes are text nodes before the normalization when facing multiple nodes (issue #136)
