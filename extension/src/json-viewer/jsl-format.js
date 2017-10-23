@@ -73,7 +73,7 @@ jsl.format = (function () {
                         }
                     }
                     newJson += currentChar;
-                    
+
                     newJson +=  "\n" + repeat(tab, indentLevel + 1);
                     indentLevel += 1;
                 } else {
