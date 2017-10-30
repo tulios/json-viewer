@@ -44,7 +44,7 @@ jsl.format = (function () {
         options = options || {};
         var tabSize = options.tabSize || 2;
         var indentCStyle = options.indentCStyle || false;
-        var showArraySize = (typeof options.showArraySize !== "undefined" ? Boolean(options.showArraySize) : true);
+        var showArraySize = (typeof options.showArraySize !== "undefined" ? Boolean(options.showArraySize) : false);
         var tab = "";
         for (var ts = 0; ts < tabSize; ts++) {
           tab += " ";
