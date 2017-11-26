@@ -18,7 +18,7 @@
     "promise": "7.0.x",
     "sass-loader": "6.0.x",
     "style-loader": "0.18.x",
-    "sweetalert": "1.0.x",
+    "sweetalert2": "7.0.x",
     "webpack": "1.15.x"
   },
   "scripts": {

@@ -7,7 +7,7 @@ require('codemirror/mode/javascript/javascript');
 require('codemirror/addon/hint/show-hint');
 require('codemirror/addon/hint/css-hint');
 require('codemirror/mode/css/css');
-var sweetAlert = require('sweetalert');
+var sweetAlert = require('sweetalert2');
 
 var Storage = require('./json-viewer/storage');
 var renderThemeList = require('./json-viewer/options/render-theme-list');
