@@ -1,6 +1,6 @@
 {
   "name": "JSON Viewer",
-  "version": "0.18.0",
+  "version": "0.18.1",
   "manifest_version": 2,
   "author": "Tulio Ornelas <ornelas.tulio@gmail.com>",
   "description": "The most beautiful and customizable JSON/JSONP highlighter that your eyes have ever seen. Open source at https://goo.gl/fmphc7",
@@ -17,6 +17,7 @@
     "pages/options.html",
     "pages/omnibox.html"
   ],
+  "offline_enabled": true,
   "omnibox": { "keyword" : "json-viewer" },
   "options_page": "pages/options.html",
   "content_scripts": [
