@@ -1,4 +1,7 @@
 var extractJSON = require('./extract-json');
+var getOptions = require('./viewer/get-options');
+
+var FORCED_ENCODING = 'UTF-8';
 
 function allTextNodes(nodes) {
   return !Object.keys(nodes).some(function(key) {
@@ -61,15 +64,39 @@ function isJSONP(jsonStr) {
   return isJSON(extractJSON(jsonStr));
 }
 
+function forceEncoding(pre, enc, callback) {
+  var xhr = new XMLHttpRequest();
+  xhr.open('GET', window.location);
+  xhr.overrideMimeType(document.contentType + '; charset=utf-8');
+  xhr.onload = function() {
+    pre.textContent = xhr.response;
+    callback(pre);
+    console.log('resource read as UTF-8 instead of ' + enc);
+  }
+  xhr.onerror = function() {
+    // Make this fail quietly?
+    console.log('resource could not be re-encoded due to network issue');
+  }
+  xhr.send()
+}
+
 function checkIfJson(sucessCallback, element) {
   var pre = element || getPreWithSource();
-
-  if (pre !== null &&
-    pre !== undefined &&
-    (isJSON(pre.textContent) || isJSONP(pre.textContent))) {
-
-    sucessCallback(pre);
-  }
+  if(pre === null || pre === undefined) return;
+  var enc = document.characterSet;
+  var callback = function(pre) { if(isJSON(pre.textContent) || isJSONP(pre.textContent)) sucessCallback(pre) }
+  if(enc === FORCED_ENCODING) callback(pre);
+  else {
+      getOptions()
+        .then(function(options) {
+          if(options.addons.forceUTF8) forceEncoding(pre, enc, callback);
+          else callback(pre);
+        })
+        .catch(function(e) {
+          console.log('[JSONViewer] error: ' + e);
+        });
+    }
 }
+
 
 module.exports = checkIfJson;
