@@ -1,4 +1,4 @@
-var checkIfJson = require('./json-viewer/check-if-json');
+var JSONUtils = require('./json-viewer/check-if-json');
 var highlightContent = require('./json-viewer/highlight-content');
 var loadScratchPadEditor = require('./json-viewer/scratch-pad/load-editor');
 
@@ -19,7 +19,7 @@ function handleJSONHighlight(pre, query) {
   var rawJson = query.replace(/^json=/, '');
   pre.innerText = decodeURIComponent(rawJson);
 
-  checkIfJson(function(pre) {
+  JSONUtils.checkIfJson(function(pre) {
     pre.hidden = true;
     highlightContent(pre, true);
   }, pre);
