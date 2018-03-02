@@ -53,23 +53,29 @@
 // - Made starting path slash optional (http://example.com?foo=bar)
 //
 // - Allow a dot (.) at the end of hostnames (http://example.com.)
-//
-module.exports = new RegExp(
-  "^" +
-    // protocol identifier
-    "(?:(?:https?|ftp)://)" +
-    // user:pass authentication
-    "(?:\\S+(?::\\S*)?@)?" +
-    "(?:" +
-      // IPv6 or hybrid addresses
-      "(?:\\[[a-f0-9.:]+\\])" +
-      "|" +
-      // anything else, including IPv4 addresses
-      "(?:[a-z0-9\\u00a1-\\uffff.-]+)" +
-    ")" +
-    // port number
-    "(?::\\d{2,5})?" +
-    // resource path
-    "(?:[/?#]\\S*)?" +
-  "$", "i"
-);
+
+function resourcePath() {
+    return "(?:[/?#]\\S*)?";
+}
+
+function absolutePath() {
+    return "^" +
+        // protocol identifier
+        "(?:(?:https?|ftp)://)" +
+        // user:pass authentication
+        "(?:\\S+(?::\\S*)?@)?" +
+        "(?:" +
+        // IPv6 or hybrid addresses
+        "(?:\\[[a-f0-9.:]+\\])" +
+        "|" +
+        // anything else, including IPv4 addresses
+        "(?:[a-z0-9\\u00a1-\\uffff.-]+)" +
+        ")" +
+        // port number
+        "(?::\\d{2,5})?" +
+        // resource path
+        resourcePath() +
+        "$";
+}
+
+module.exports = new RegExp(`${absolutePath()}|${resourcePath()}`, "i");
