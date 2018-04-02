@@ -89,15 +89,26 @@ Highlighter.prototype = {
       if (text.match(URL_PATTERN) && self.clickableUrls()) {
         var decodedText = self.decodeText(text);
         elements.forEach(function(node) {
-          node.classList.add("cm-string-link");
-          node.setAttribute("data-url", decodedText);
           if (self.wrapLinkWithAnchorTag()) {
             var linkTag = document.createElement("a");
             linkTag.href = decodedText;
             linkTag.setAttribute('target', '_blank')
-            linkTag.innerHTML = decodedText;
-            node.innerHTML = "";
+            linkTag.classList.add("cm-string");
+
+            // reparent the child nodes to preserve the cursor when editing
+            node.childNodes.forEach(function(child) {
+              linkTag.appendChild(child);
+            });
+
+            // block CodeMirror's contextmenu handler
+            linkTag.addEventListener("contextmenu", function(e) {
+              if (e.bubbles) e.cancelBubble = true;
+            });
+
             node.appendChild(linkTag);
+          } else {
+            node.classList.add("cm-string-link");
+            node.setAttribute("data-url", decodedText);
           }
         });
       }
