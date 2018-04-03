@@ -72,4 +72,7 @@ function checkIfJson(sucessCallback, element) {
   }
 }
 
-module.exports = checkIfJson;
+module.exports = {
+  checkIfJson: checkIfJson,
+  isJSON: isJSON
+};

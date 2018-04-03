@@ -5,6 +5,8 @@ var loadRequiredCss = require('../viewer/load-required-css');
 var renderExtras = require('../viewer/render-extras');
 var renderFormatButton = require('./render-format-button');
 var jsonFormater = require('../jsl-format');
+var JSONUtils = require('../check-if-json');
+var exposeJson = require('../viewer/expose-json');
 
 function loadEditor(pre) {
   getOptions().then(function(options) {
@@ -19,6 +21,9 @@ function loadEditor(pre) {
       renderFormatButton(function() {
         var text = highlighter.editor.getValue();
         highlighter.editor.setValue(jsonFormater(text));
+        if (JSONUtils.isJSON(text)) {
+          exposeJson(text, true);
+        }
       });
 
     });
