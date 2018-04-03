@@ -1,4 +1,4 @@
-var sweetAlert = require('sweetalert');
+var sweetAlert = require('sweetalert2');
 var defaults = require('./defaults');
 var Storage = require('../storage');
 
@@ -14,18 +14,20 @@ function bindResetButton() {
       showCancelButton: true,
       confirmButtonColor: "#DD6B55",
       confirmButtonText: "Yes, reset!",
-      closeOnConfirm: false
-    }, function() {
+      showLoaderOnConfirm: true,
+      preConfirm: function() {
+        var options = {};
+        options.theme = defaults.theme;
+        options.addons = JSON.stringify(defaults.addons);
+        options.structure = JSON.stringify(defaults.structure);
+        options.style = defaults.style;
 
-      var options = {};
-      options.theme = defaults.theme;
-      options.addons = JSON.stringify(defaults.addons);
-      options.structure = JSON.stringify(defaults.structure);
-      options.style = defaults.style;
+        Storage.save(options);
 
-      Storage.save(options);
-      document.location.reload();
-
+        return new Promise(() => {
+          document.location.reload();
+        })
+      }
     });
   }
 }
