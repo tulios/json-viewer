@@ -141,7 +141,7 @@ Highlighter.prototype = {
 
   decodeText: function(text) {
     var div = document.createElement("div");
-    div.innerHTML = text;
+    div.appendChild(document.createTextNode(text));
     return div.firstChild.nodeValue;
   },
 
