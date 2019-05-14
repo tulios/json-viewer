@@ -1,9 +1,12 @@
-require('./viewer-styles');
-var JSONUtils = require('./json-viewer/check-if-json');
-var highlightContent = require('./json-viewer/highlight-content');
+import { checkIfJson } from './json-viewer/check-if-json';
 
 function onLoad() {
-  JSONUtils.checkIfJson(function(pre) {
+  checkIfJson(document.contentType, async (pre) => {
+    const resolved = await Promise.all([
+      import(/* webpackChunkName: "highlight-content" */ './viewer-styles'),
+      import(/* webpackChunkName: "highlight-content" */ './json-viewer/highlight-content'),
+    ]);
+    const { highlightContent } = resolved[1];
     pre.hidden = true;
     highlightContent(pre);
   });
