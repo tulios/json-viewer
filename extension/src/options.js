@@ -27,6 +27,10 @@ function isValidJSON(pseudoJSON) {
   }
 }
 
+function clearShowSize(json) {
+  return json.replace(/(Array|Object)\[\d+\]/gi, '');
+}
+
 function renderVersion() {
   var version = process.env.VERSION;
   var versionLink = document.getElementsByClassName('version')[0];
@@ -45,6 +49,9 @@ function onLoaded() {
 
   bindResetButton();
   bindSaveButton([addonsEditor, structureEditor, styleEditor], function(options) {
+    options.addons = clearShowSize(options.addons);
+    options.structure = clearShowSize(options.structure);
+
     if (!isValidJSON(options.addons)) {
       sweetAlert("Ops!", "\"Add-ons\" isn't a valid JSON", "error");
 

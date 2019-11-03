@@ -1,6 +1,6 @@
 function bindSaveButton(editors, onSaveClicked) {
   var form = document.getElementById("options");
-  form.onsubmit = function() { return false; }
+  form.onsubmit = function() { return false; };
 
   var saveButton = document.getElementById("save");
   saveButton.onclick = function(e) {

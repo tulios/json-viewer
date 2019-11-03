@@ -3,14 +3,19 @@ var jsl = typeof jsl === 'undefined' ? {} : jsl;
 
 /**
  * jsl.format - Provide json reformatting in a character-by-character approach, so that even invalid JSON may be reformatted (to the best of its ability).
- *
 **/
 jsl.format = (function () {
-
     function repeat(s, count) {
         return new Array(count + 1).join(s);
     }
-    function getSizeOfArray(jsonString,startingPosition){
+    function getSizeOfArray(jsonString, startingPosition){
+        return countSizeBy(jsonString, startingPosition, '[', ']');
+
+    }
+    function getSizeOfObject(jsonString, startingPosition){
+        return countSizeBy(jsonString, startingPosition, '{', '}');
+    }
+    function countSizeBy(jsonString, startingPosition, openChar, closeChar) {
         var currentPosition = startingPosition + 1;
         var inString = false;
         var numOpened = 1;
@@ -18,12 +23,12 @@ jsl.format = (function () {
             while (numOpened > 0 && currentPosition < jsonString.length) {
                 var currentChar = jsonString.charAt(currentPosition);
                 switch (currentChar) {
-                    case '[':
+                    case openChar:
                         if(!inString){
                             numOpened++;
                         }
                         break;
-                    case ']':
+                    case closeChar:
                         if(!inString){
                             numOpened--;
                         }
@@ -34,17 +39,35 @@ jsl.format = (function () {
                 }
                 currentPosition++;
             }
-            return JSON.parse(jsonString.substring(startingPosition,currentPosition)).length;
+            return Object.keys(JSON.parse(jsonString.substring(startingPosition,currentPosition))).length;
         }
         catch(err){
             return null;
         }
     }
+    function getSize(currentChar, json, i, options) {
+        var target;
+        var isShow;
+        var arraySize;
+
+        switch (currentChar) {
+            case '[': target = 'Array'; break;
+            case '{': target = 'Object'; break;
+            default: return null;
+        }
+
+        isShow = (typeof options['show'+target+'Size'] !== "undefined" ? Boolean(options['show'+target+'Size']) : false);
+        if(!isShow) {
+            return null;
+        }
+
+        arraySize = jsl.format['getSizeOf'+target](json, i);
+        return arraySize == null ? null : target + "[" + arraySize + "]";
+    }
     function formatJson(json, options) {
         options = options || {};
         var tabSize = options.tabSize || 2;
         var indentCStyle = options.indentCStyle || false;
-        var showArraySize = (typeof options.showArraySize !== "undefined" ? Boolean(options.showArraySize) : false);
         var tab = "";
         for (var ts = 0; ts < tabSize; ts++) {
           tab += " ";
@@ -64,16 +87,11 @@ jsl.format = (function () {
             case '[':
                 if (!inString) {
                     if (indentCStyle) newJson += "\n" + repeat(tab, indentLevel);
-                    if(currentChar === "["){
-                        if(showArraySize){
-                            var arraySize = getSizeOfArray(json,i);
-                            if(arraySize !== null){
-                                newJson += "Array[" + arraySize + "]";
-                            }
-                        }
-                    }
-                    newJson += currentChar;
 
+                    var size = getSize(currentChar, json, i, options);
+                    if(size) newJson += size;
+
+                    newJson += currentChar;
                     newJson +=  "\n" + repeat(tab, indentLevel + 1);
                     indentLevel += 1;
                 } else {
@@ -129,8 +147,11 @@ jsl.format = (function () {
         return newJson;
     }
 
-    return { "formatJson": formatJson };
-
+    return {
+        "formatJson": formatJson,
+        "getSizeOfArray": getSizeOfArray,
+        "getSizeOfObject": getSizeOfObject,
+    };
 }());
 
 module.exports = jsl.format.formatJson;
