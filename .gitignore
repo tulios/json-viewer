@@ -3,3 +3,5 @@ build/*
 pkg/*
 node_modules/*
 *.log
+.idea/*
+yarn.lock
