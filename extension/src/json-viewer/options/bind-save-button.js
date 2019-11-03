@@ -19,7 +19,6 @@ function bindSaveButton(editors, onSaveClicked) {
     }
 
     onSaveClicked(output);
-
   }
 }
 

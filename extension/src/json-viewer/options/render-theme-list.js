@@ -15,7 +15,7 @@ var themeJSONExample = {
       "and fake keys"
     ]
   }
-}
+};
 
 function onThemeChange(input, editor) {
   var selectedTheme = input.options[input.selectedIndex].value;
@@ -60,7 +60,7 @@ function renderThemeList(CodeMirror, value) {
 
   themes.onchange = function() {
     onThemeChange(themesInput, themeEditor);
-  }
+  };
 
   var optionSelected = value;
   themesInput.appendChild(createOption(themeDefault, optionSelected));
@@ -74,7 +74,7 @@ function renderThemeList(CodeMirror, value) {
 
 function createOption(theme, optionSelected) {
   var option = document.createElement("option");
-  option.value = theme
+  option.value = theme;
   option.text = theme;
 
   if (theme === optionSelected) {

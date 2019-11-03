@@ -16,7 +16,7 @@ jsl.format = (function () {
         var numOpened = 1;
         try{
             while (numOpened > 0 && currentPosition < jsonString.length) {
-                var currentChar = jsonString.charAt(currentPosition)
+                var currentChar = jsonString.charAt(currentPosition);
                 switch (currentChar) {
                     case '[':
                         if(!inString){
@@ -114,7 +114,8 @@ jsl.format = (function () {
                 if (i === 0) {
                     inString = true;
                 }
-                else if (json.charAt(i - 1) !== '\\' || (json.charAt(i - 1) == '\\' && json.charAt(i - 2) == '\\')) {
+                else if (json.charAt(i - 1) !== '\\' ||
+                    (json.charAt(i - 1) === '\\' && json.charAt(i - 2) === '\\')) {
                     inString = !inString;
                 }
                 newJson += currentChar;

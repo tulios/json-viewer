@@ -16,7 +16,7 @@ module.exports = {
     options = optionsStr ? JSON.parse(optionsStr) : {};
     options.theme = options.theme || defaults.theme;
     options.addons = options.addons ? JSON.parse(options.addons) : {};
-    options.addons = merge({}, defaults.addons, options.addons)
+    options.addons = merge({}, defaults.addons, options.addons);
     options.structure = options.structure ? JSON.parse(options.structure) : defaults.structure;
     options.style = options.style && options.style.length > 0 ? options.style : defaults.style;
     return options;
@@ -36,7 +36,7 @@ module.exports = {
         options.addons = {
           prependHeader: JSON.parse(oldOptions.prependHeader || defaults.addons.prependHeader),
           maxJsonSize: parseInt(oldOptions.maxJsonSize || defaults.addons.maxJsonSize, 10)
-        }
+        };
 
         // Update to at least the new max value
         if (options.addons.maxJsonSize < defaults.addons.maxJsonSize) {
@@ -60,4 +60,4 @@ module.exports = {
 
     return optionsStr;
   }
-}
+};
