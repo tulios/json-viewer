@@ -142,20 +142,20 @@ Highlighter.prototype = {
   decodeText: function(text) {
     var div = document.createElement("div");
     div.innerHTML = text;
-    return div.firstChild.nodeValue;
+    return div.firstChild ? div.firstChild.nodeValue : "";
   },
 
   getEditorOptions: function() {
     var obligatory = {
       value: this.text,
       theme: this.theme,
-      readOnly: this.isReadOny() ? true : false,
+      readOnly: this.isReadOny(),
       mode: "application/ld+json",
       indentUnit: 2,
       tabSize: 2,
       gutters: ["CodeMirror-linenumbers", "CodeMirror-foldgutter"],
       extraKeys: this.getExtraKeysMap()
-    }
+    };
 
     if (this.alwaysRenderAllContent()) {
       obligatory.viewportMargin = Infinity;
@@ -174,16 +174,16 @@ Highlighter.prototype = {
         cm.setSelection(cm.getCursor());
         cm.focus();
       }
-    }
+    };
 
     if (this.options.structure.readOnly) {
       extraKeyMap["Enter"] = function(cm) {
         CodeMirror.commands.findNext(cm);
-      }
+      };
 
       extraKeyMap["Shift-Enter"] = function(cm) {
         CodeMirror.commands.findPrev(cm);
-      }
+      };
 
       extraKeyMap["Ctrl-V"] = extraKeyMap["Cmd-V"] = function(cm) {};
     }
