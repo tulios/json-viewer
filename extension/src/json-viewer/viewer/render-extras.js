@@ -1,7 +1,9 @@
 var chrome = require('chrome-framework');
+var svgSearch = require('./svg-raw');
 var svgGear = require('./svg-gear');
 var svgRaw = require('./svg-raw');
 var svgUnfold = require('./svg-unfold');
+var applyJsonPath = require('./apply-jsonpath');
 
 function renderExtras(pre, options, highlighter) {
   var extras = document.createElement("div");
@@ -9,6 +11,43 @@ function renderExtras(pre, options, highlighter) {
 
   if (!options.addons.autoHighlight) {
     extras.className += ' auto-highlight-off';
+  }
+
+  var searchLink = document.createElement("a");
+  searchLink.className = "json_viewer icon raw";
+  searchLink.href = "#";
+  searchLink.title = "Toggle JSONPath Search";
+  searchLink.innerHTML = svgSearch;
+  searchLink.onclick = function(e) {
+    e.preventDefault();
+
+    var editor = document.getElementsByClassName('CodeMirror')[0];
+    if (pre.searchEnabled) {
+      pre.searchEnabled = false;
+      extras.classList.remove("search-active");
+
+      var searchWindow = document.getElementsByClassName("search");
+
+    } else {
+      pre.searchEnabled = true;
+      extras.classList.add("search-active");
+
+      var searchWindow = document.createElement("div");
+      searchWindow.classList.add("search", "jsonpath-wrapper");
+
+      var textField = document.createElement("input");
+      textField.value = "$";
+      searchWindow.appendChild(textField);
+
+      var text = highlighter.editor.getValue();
+      textField.addEventListener('keyup', function () {
+        if (!this.value) this.value = '$';
+        
+        applyJsonPath(this.value, text, highlighter, options.addons.prependHeader);
+      })
+
+      editor.prepend(searchWindow);
+    }
   }
 
   var optionsLink = document.createElement("a");
@@ -60,6 +99,7 @@ function renderExtras(pre, options, highlighter) {
     }
   }
 
+  extras.appendChild(searchLink);
   extras.appendChild(optionsLink);
   extras.appendChild(rawLink);
 
