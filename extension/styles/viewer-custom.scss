@@ -13,7 +13,7 @@ body {
 }
 
 .search {
-  padding: 15px 20px;
+  padding: 15px 80px 15px 15px;
 
   input {
     width: 100%;
@@ -37,10 +37,6 @@ body {
     transition: all ease-in-out 250ms;
     visibility: visible;
     opacity: 0.3;
-  }
-
-  &.search-active {
-    top: 40px;
   }
 
   &:hover a {

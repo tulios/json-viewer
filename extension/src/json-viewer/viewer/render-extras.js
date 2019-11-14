@@ -13,6 +13,7 @@ function renderExtras(pre, options, highlighter) {
     extras.className += ' auto-highlight-off';
   }
 
+  var originalText = "";
   var searchLink = document.createElement("a");
   searchLink.className = "json_viewer icon raw";
   searchLink.href = "#";
@@ -26,11 +27,12 @@ function renderExtras(pre, options, highlighter) {
       pre.searchEnabled = false;
       extras.classList.remove("search-active");
 
-      var searchWindow = document.getElementsByClassName("search");
+      var searchWindow = document.getElementsByClassName("search")[0];
+      editor.removeChild(searchWindow);
 
+      highlighter.editor.setValue(originalText);
     } else {
       pre.searchEnabled = true;
-      extras.classList.add("search-active");
 
       var searchWindow = document.createElement("div");
       searchWindow.classList.add("search", "jsonpath-wrapper");
@@ -39,11 +41,11 @@ function renderExtras(pre, options, highlighter) {
       textField.value = "$";
       searchWindow.appendChild(textField);
 
-      var text = highlighter.editor.getValue();
-      textField.addEventListener('keyup', function () {
-        if (!this.value) this.value = '$';
+      originalText = highlighter.editor.getValue();
+      textField.addEventListener("keyup", function () {
+        if (!this.value) this.value = "$";
         
-        applyJsonPath(this.value, text, highlighter, options.addons.prependHeader);
+        applyJsonPath(this.value, originalText, highlighter, options.addons.prependHeader);
       })
 
       editor.prepend(searchWindow);
