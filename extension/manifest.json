@@ -18,7 +18,7 @@
     "pages/omnibox.html"
   ],
   "offline_enabled": true,
-  "omnibox": { "keyword" : "json-viewer" },
+  "omnibox": { "keyword" : "jv" },
   "options_page": "pages/options.html",
   "content_scripts": [
     {
