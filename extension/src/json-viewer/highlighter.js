@@ -142,7 +142,7 @@ Highlighter.prototype = {
   decodeText: function(text) {
     var div = document.createElement("div");
     div.innerHTML = text;
-    return div.firstChild.nodeValue;
+    return div.firstChild ? div.firstChild.nodeValue : "";
   },
 
   getEditorOptions: function() {
