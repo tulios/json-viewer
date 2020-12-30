@@ -13,7 +13,7 @@ function renderAlert(pre, options, content) {
   closeBtn.onclick = function(e) {
     e.preventDefault();
     alertContainer.parentNode.removeChild(alertContainer);
-  }
+  };
 
   alertContainer.appendChild(closeBtn);
 
