@@ -12,6 +12,7 @@
     "css-loader": "0.14.x",
     "extract-text-webpack-plugin": "0.8.x",
     "fs-extra": "0.18.x",
+    "jsonpath": "^1.0.2",
     "mousetrap": "1.5.x",
     "node-libs-browser": "^1.0.0",
     "node-sass": "^4.5.3",
