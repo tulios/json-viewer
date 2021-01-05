@@ -55,7 +55,7 @@ function restoreNonJSONBody() {
   document.body.removeChild(artificialPre);
 }
 
-function isJSON(jsonStr) {
+export function isJSON(jsonStr) {
   var str = jsonStr;
   if (!str || str.length === 0) {
     return false
@@ -71,12 +71,17 @@ function isJSONP(jsonStr) {
   return isJSON(extractJSON(jsonStr));
 }
 
-function checkIfJson(sucessCallback, element) {
+export function checkIfJson(contentType, sucessCallback, element) {
   var pre = element || getPreWithSource();
 
-  if (pre !== null &&
-    pre !== undefined &&
-    (isJSON(pre.textContent) || isJSONP(pre.textContent))) {
+  if (
+    contentType.startsWith('application/json') || (
+      pre !== null
+      && pre !== undefined
+      && (pre.textContent.startsWith('{') || pre.textContent.startsWith('['))
+      && (isJSON(pre.textContent) || isJSONP(pre.textContent))
+    )
+  ) {
 
     sucessCallback(pre);
   } else if (bodyModified) {
@@ -84,7 +89,7 @@ function checkIfJson(sucessCallback, element) {
   }
 }
 
-module.exports = {
-  checkIfJson: checkIfJson,
-  isJSON: isJSON
+export default {
+  checkIfJson,
+  isJSON,
 };
