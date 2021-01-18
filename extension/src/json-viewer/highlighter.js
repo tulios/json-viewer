@@ -12,6 +12,7 @@ var merge = require('./merge');
 var defaults = require('./options/defaults');
 var URL_PATTERN = require('./url-pattern');
 var F_LETTER = 70;
+var LEFT_CLICK = 0;
 
 function Highlighter(jsonText, options) {
   this.options = options || {};
@@ -25,7 +26,7 @@ Highlighter.prototype = {
   highlight: function() {
     this.editor = CodeMirror(document.body, this.getEditorOptions());
     if (!this.alwaysRenderAllContent()) this.preventDefaultSearch();
-    if (this.isReadOny()) this.getDOMEditor().className += ' read-only';
+    if (this.isReadOnly()) this.getDOMEditor().className += ' read-only';
 
     this.bindRenderLine();
     this.bindMousedown();
@@ -120,7 +121,7 @@ Highlighter.prototype = {
     this.editor.off("mousedown");
     this.editor.on("mousedown", function(cm, event) {
       var element = event.target;
-      if (element.classList.contains("cm-string-link")) {
+      if (element.classList.contains("cm-string-link") && event.button == LEFT_CLICK) {
         var url = element.getAttribute("data-url")
         var target = "_self";
         if (self.openLinksInNewWindow()) {
@@ -227,7 +228,7 @@ Highlighter.prototype = {
     return this.options.addons.openLinksInNewWindow;
   },
 
-  isReadOny: function() {
+  isReadOnly: function() {
     return this.options.structure.readOnly;
   }
 }
