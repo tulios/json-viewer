@@ -1,0 +1,66 @@
+{
+  "author": "Tulio Ornelas \u003Cornelas.tulio@gmail.com>",
+  "background": {
+    "persistent": false,
+    "scripts": ["assets/backend.js", "assets/omnibox.js"]
+  },
+  "content_scripts": [
+    {
+      "js": ["assets/viewer.js"],
+      "matches": ["\u003Call_urls>"],
+      "run_at": "document_start"
+    }
+  ],
+  "description": "The most beautiful and customizable JSON/JSONP highlighter that your eyes have ever seen. Open source at https://goo.gl/fmphc7",
+  "homepage_url": "https://github.com/tulios/json-viewer",
+  "icons": {
+    "128": "icons/128.png",
+    "16": "icons/16.png",
+    "32": "icons/32.png"
+  },
+  "key": "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCruFyb/8fP+PcCb2lBfX9kQrQXa0wE0PE+PTbfl6/ljgsJKpu2CTzEJWCci140a0okKgPJZihxX88iIJrFEZC8Gm0n+irynwuvVUCfKZ4odCfCSlWo/GS1tJREK36jc4vppVLzq0Cu9OEKKzN6vQimT/vPpjGxJqjces3t2RZLFwIDAQAB",
+  "manifest_version": 2,
+  "minimum_chrome_version": "21",
+  "name": "JSON Viewer",
+  "offline_enabled": true,
+  "omnibox": {
+    "keyword": "json-viewer"
+  },
+  "options_page": "pages/options.html",
+  "permissions": ["*://*/*", "\u003Call_urls>"],
+  "update_url": "https://clients2.google.com/service/update2/crx",
+  "version": "0.18.1",
+  "web_accessible_resources": [
+    "assets/viewer.css",
+    "assets/viewer-alert.css",
+    "pages/options.html",
+    "pages/omnibox.html",
+    "themes/light/base16-light.css",
+    "themes/light/coy.css",
+    "themes/light/funky.css",
+    "themes/light/mdn-like.css",
+    "themes/light/neo.css",
+    "themes/light/solarized_light.css",
+    "themes/light/yeti.css",
+    "themes/dark/3024-night.css",
+    "themes/dark/ambiance.css",
+    "themes/dark/base16-dark.css",
+    "themes/dark/cobalt.css",
+    "themes/dark/dark.css",
+    "themes/dark/dracula-custom.css",
+    "themes/dark/dracula.css",
+    "themes/dark/jellybeans.css",
+    "themes/dark/material.css",
+    "themes/dark/mbo.css",
+    "themes/dark/mehdi.css",
+    "themes/dark/midnight.css",
+    "themes/dark/monokai.css",
+    "themes/dark/omni.css",
+    "themes/dark/okaidia.css",
+    "themes/dark/panda-syntax.css",
+    "themes/dark/solarized_dark.css",
+    "themes/dark/tomorrow.css",
+    "themes/dark/twilight.css",
+    "themes/dark/zenburn.css"
+  ]
+}
