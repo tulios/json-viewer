@@ -191,6 +191,11 @@ Highlighter.prototype = {
     var nativeSearch = this.alwaysRenderAllContent();
     extraKeyMap["Ctrl-F"] = nativeSearch ? false : this.openSearchDialog;
     extraKeyMap["Cmd-F"] = nativeSearch ? false : this.openSearchDialog;
+
+    delete CodeMirror.keyMap.macDefault["Cmd-["];
+    delete CodeMirror.keyMap.pcDefault["Alt-Left"];
+    extraKeyMap["Cmd-Left"] = function() { window.history.back(); };
+
     return extraKeyMap;
   },
 
