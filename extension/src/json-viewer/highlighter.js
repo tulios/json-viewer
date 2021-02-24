@@ -92,7 +92,7 @@ Highlighter.prototype = {
           if (self.wrapLinkWithAnchorTag()) {
             var linkTag = document.createElement("a");
             linkTag.href = decodedText;
-            linkTag.setAttribute('target', '_blank')
+            linkTag.setAttribute('target', self.getLinkTarget());
             linkTag.classList.add("cm-string");
 
             // reparent the child nodes to preserve the cursor when editing
@@ -122,11 +122,7 @@ Highlighter.prototype = {
       var element = event.target;
       if (element.classList.contains("cm-string-link")) {
         var url = element.getAttribute("data-url")
-        var target = "_self";
-        if (self.openLinksInNewWindow()) {
-          target = "_blank";
-        }
-        window.open(url, target);
+        window.open(url, self.getLinkTarget());
       }
     });
   },
@@ -225,6 +221,10 @@ Highlighter.prototype = {
 
   openLinksInNewWindow: function() {
     return this.options.addons.openLinksInNewWindow;
+  },
+
+  getLinkTarget: function() {
+    return this.openLinksInNewWindow() ? "_blank" : "_self";
   },
 
   isReadOny: function() {
