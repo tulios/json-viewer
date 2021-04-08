@@ -73,7 +73,7 @@ Features:
 
 ### JSONP
 
-  [http://freemusicarchive.org/api/get/curators.jsonp?api_key=60BLHNQCAOUFPIBZ&callback=test](http://freemusicarchive.org/api/get/curators.jsonp?api_key=60BLHNQCAOUFPIBZ&callback=test)
+  [https://www.w3schools.com/js/demo_jsonp.php](https://www.w3schools.com/js/demo_jsonp.php)
 
 ## License
 
