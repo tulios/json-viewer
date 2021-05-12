@@ -8,7 +8,7 @@
   "dependencies": {
     "archiver": "1.2.x",
     "clean-webpack-plugin": "0.1.x",
-    "codemirror": "5.21.x",
+    "codemirror": "5.58.x",
     "css-loader": "0.14.x",
     "extract-text-webpack-plugin": "0.8.x",
     "fs-extra": "0.18.x",
