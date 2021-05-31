@@ -23,7 +23,13 @@ function contentExtractor(pre, options) {
       var jsonExtracted = extractJSON(rawJsonText);
       var wrappedText = wrapNumbers(jsonExtracted);
 
-      var jsonParsed = JSON.parse(wrappedText);
+      var jsonParsed;
+      try {
+        jsonParsed = JSON.parse(wrappedText);
+      } catch(e) {
+        // Try to parse JSON Lines
+        jsonParsed = JSON.parse('[\n' + wrappedText.split(/\n+/g).filter(i=>i).join(',\n') + '\n]');
+      }
       if (options.addons.sortKeys) jsonParsed = sortByKeys(jsonParsed);
 
       // Validate and decode json
