@@ -23,7 +23,18 @@ function contentExtractor(pre, options) {
       var jsonExtracted = extractJSON(rawJsonText);
       var wrappedText = wrapNumbers(jsonExtracted);
 
-      var jsonParsed = JSON.parse(wrappedText);
+      var jsonParsed;
+      try {
+        jsonParsed = JSON.parse(wrappedText);
+      } catch(e) {
+        // Try to parse JSON Lines, if there are multiple non-blank lines.
+        if (wrappedText.match(/[^\s]\s*\n\s*[^\s]/)) {
+          var jsonLinesArray = '[\n' + wrappedText.split(/\n+/g).filter(i=>i).join(',\n') + '\n]';
+          jsonParsed = JSON.parse(jsonLinesArray);
+        } else {
+          throw(e);
+        }
+      }
       if (options.addons.sortKeys) jsonParsed = sortByKeys(jsonParsed);
 
       // Validate and decode json
