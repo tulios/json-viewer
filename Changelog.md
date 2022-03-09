@@ -1,3 +1,13 @@
+# 0.18.1 - 2020-12-22
+
+* Update viewer-custom.scss #267 (fix blank space)
+* Fixed bug where non-JSON text/html pages were polluted #218
+* showArraySize should default to false if undefined. #179
+* Set window.json when formatting from scratch page #195
+* Support for clickable relative paths #197
+* Improve link anchor wrapping #204
+* Enable for offline use. #189
+
 # 0.18.0 - 2017-10-23
 
 * Make clear this plugin is open source (PR #144)

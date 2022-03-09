@@ -70,4 +70,4 @@ function absolutePath() {
         relativePath();                     /* resource path*/
 }
 
-module.exports = new RegExp(`^(${absolutePath()}|${relativePath()})$`, "i");
+module.exports = new RegExp("^(" + absolutePath() + "|" + relativePath() + ")$", "i");
