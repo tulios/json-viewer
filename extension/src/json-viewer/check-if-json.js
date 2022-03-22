@@ -1,4 +1,5 @@
 var extractJSON = require('./extract-json');
+var bodyModified = false;
 
 function allTextNodes(nodes) {
   return !Object.keys(nodes).some(function(key) {
@@ -39,10 +40,19 @@ function getPreWithSource() {
     pre.textContent = textContent;
     document.body.removeChild(childNode);
     document.body.appendChild(pre);
+    bodyModified = true;
     return pre;
   }
 
   return null
+}
+
+function restoreNonJSONBody() {
+  var artificialPre = document.body.lastChild;
+  var removedChildNode = document.createElement("text");
+  removedChildNode.textContent = artificialPre.textContent;
+  document.body.insertBefore(removedChildNode, document.body.firstChild);
+  document.body.removeChild(artificialPre);
 }
 
 function isJSON(jsonStr) {
@@ -69,6 +79,8 @@ function checkIfJson(sucessCallback, element) {
     (isJSON(pre.textContent) || isJSONP(pre.textContent))) {
 
     sucessCallback(pre);
+  } else if (bodyModified) {
+    restoreNonJSONBody();
   }
 }
 
