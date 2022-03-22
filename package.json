@@ -14,7 +14,7 @@
     "fs-extra": "0.18.x",
     "mousetrap": "1.5.x",
     "node-libs-browser": "^1.0.0",
-    "node-sass": "^4.5.3",
+    "node-sass": "^7.0.0",
     "promise": "7.0.x",
     "sass-loader": "6.0.x",
     "style-loader": "0.18.x",
