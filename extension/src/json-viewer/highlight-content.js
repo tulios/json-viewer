@@ -63,7 +63,7 @@ function prependHeader(options, outsideViewer, jsonText) {
   return jsonText;
 }
 
-function highlightContent(pre, outsideViewer, ignoreLimit) {
+export function highlightContent(pre, outsideViewer, ignoreLimit) {
   getOptions().then(function(options) {
     if (!ignoreLimit && oversizedJSON(pre, options, outsideViewer)) {
       return pre.hidden = false;
@@ -113,4 +113,4 @@ function highlightContent(pre, outsideViewer, ignoreLimit) {
   });
 }
 
-module.exports = highlightContent;
+export default highlightContent;

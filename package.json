@@ -24,5 +24,10 @@
   "scripts": {
     "release": "NODE_ENV=production npm run build",
     "build": "./node_modules/.bin/webpack --progress --colors && node ./lib/release-script"
-  }
+  },
+  "sideEffects": [
+    "*.css",
+    "*.scss",
+    "*-styles.js"
+  ]
 }
