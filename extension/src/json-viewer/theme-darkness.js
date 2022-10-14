@@ -4,4 +4,4 @@ module.exports = function(name) {
   if (themes.dark.indexOf(name) !== -1) darkness = "dark";
 
   return darkness;
-}
+};

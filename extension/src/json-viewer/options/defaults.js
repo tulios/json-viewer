@@ -28,4 +28,4 @@ module.exports = {
     "  line-height: 1.5em;",
     "}"
   ].join('\n')
-}
+};

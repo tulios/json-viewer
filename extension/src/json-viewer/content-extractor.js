@@ -6,7 +6,7 @@ var TOKEN = (Math.random() + 1).toString(36).slice(2, 7);
 var WRAP_START = "<wrap_" + TOKEN + ">";
 var WRAP_END = "</wrap_" + TOKEN +">";
 var NUM_REGEX = /^-?\d+\.?\d*([eE]\+)?\d*$/g;
-var ESCAPED_REGEX = "(-?\\d+\\.?\\d*([eE]\\+)?\\d*)"
+var ESCAPED_REGEX = "(-?\\d+\\.?\\d*([eE]\\+)?\\d*)";
 
 var WRAP_REGEX = new RegExp(
   "^" + WRAP_START + ESCAPED_REGEX + WRAP_END + "$", "g"
@@ -80,7 +80,7 @@ function wrapNumbers(text) {
   for (var i = 0, len = text.length; i < len; i++) {
     var char = text[i];
 
-    if (char == '"' && !charIsEscaped) {
+    if (char === '"' && !charIsEscaped) {
       isInString = !isInString;
     }
 
@@ -102,11 +102,10 @@ function wrapNumbers(text) {
     }
 
     // this applies to the _next_ character - the one used in the next iteration
-    charIsEscaped = (char == '\\') ? !charIsEscaped : false
+    charIsEscaped = (char === '\\') ? !charIsEscaped : false;
 
     if (isInNumber) {
       numberBuffer += char;
-
     } else {
       buffer += char;
       beforePrevious = previous;
@@ -119,19 +118,18 @@ function wrapNumbers(text) {
 
 function isCharInNumber(char, previous) {
   return ('0' <= char && char <= '9') ||
-         ('0' <= previous && previous <= '9' && (char == 'e' || char == 'E')) ||
-         (('e' == previous || 'E' == previous) && char == '+') ||
-         char == '.' ||
-         char == '-';
+         ('0' <= previous && previous <= '9' && char.toUpperCase() === 'E') ||
+         (char.toUpperCase() === 'E' && char === '+') ||
+         char === '.' ||
+         char === '-';
 }
 
-function isCharInString(char, previous) {
+function isCharInString(char) {
   return ('0' > char || char > '9') &&
-         char != 'e' &&
-         char != 'E' &&
-         char != '+' &&
-         char != '.' &&
-         char != '-';
+         char.toUpperCase() !== 'E' &&
+         char !== '+' &&
+         char !== '.' &&
+         char !== '-';
 }
 
 module.exports = contentExtractor;

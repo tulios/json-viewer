@@ -25,7 +25,6 @@ function bindResetButton() {
 
       Storage.save(options);
       document.location.reload();
-
     });
   }
 }
