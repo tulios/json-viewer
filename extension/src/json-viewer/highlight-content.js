@@ -54,6 +54,7 @@ function oversizedJSON(pre, options, outsideViewer) {
 
 function prependHeader(options, outsideViewer, jsonText) {
   if (!outsideViewer && options.addons.prependHeader) {
+    options.structure.firstLineNumber = options.structure.firstLineNumber - 3
     var header = "// " + timestamp() + "\n";
     header += "// " + document.location.href + "\n\n";
     jsonText = header + jsonText;
