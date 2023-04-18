@@ -149,6 +149,7 @@
 	  structure: {
 	    readOnly: true,
 	    lineNumbers: true,
+	    firstLineNumber: 1,
 	    lineWrapping: true,
 	    foldGutter: true,
 	    tabSize: 2,
@@ -11512,13 +11513,13 @@
 	      }
 
 	      if (/loaded/.test(content)) {
-	        clearTimeout(scheduleId);
+	        cancelAnimationFrame(scheduleId);
 	        document.body.removeChild(checkElement);
 	        resolve();
 
 	      } else {
 	        attempts++;
-	        scheduleId = setTimeout(scheduleCheck, 1);
+	        scheduleId = requestAnimationFrame(scheduleCheck, 1);
 	      }
 	    }
 

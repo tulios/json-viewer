@@ -81,6 +81,7 @@
 	  structure: {
 	    readOnly: true,
 	    lineNumbers: true,
+	    firstLineNumber: 1,
 	    lineWrapping: true,
 	    foldGutter: true,
 	    tabSize: 2,
@@ -350,6 +351,7 @@
 
 	function prependHeader(options, outsideViewer, jsonText) {
 	  if (!outsideViewer && options.addons.prependHeader) {
+	    options.structure.firstLineNumber = options.structure.firstLineNumber - 3
 	    var header = "// " + timestamp() + "\n";
 	    header += "// " + document.location.href + "\n\n";
 	    jsonText = header + jsonText;
@@ -13149,13 +13151,13 @@
 	      }
 
 	      if (/loaded/.test(content)) {
-	        clearTimeout(scheduleId);
+	        cancelAnimationFrame(scheduleId);
 	        document.body.removeChild(checkElement);
 	        resolve();
 
 	      } else {
 	        attempts++;
-	        scheduleId = setTimeout(scheduleCheck, 1);
+	        scheduleId = requestAnimationFrame(scheduleCheck, 1);
 	      }
 	    }
 

@@ -167,6 +167,7 @@
 	  structure: {
 	    readOnly: true,
 	    lineNumbers: true,
+	    firstLineNumber: 1,
 	    lineWrapping: true,
 	    foldGutter: true,
 	    tabSize: 2,
