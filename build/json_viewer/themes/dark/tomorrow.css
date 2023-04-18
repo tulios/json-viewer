@@ -1,0 +1,93 @@
+.cm-s-tomorrow.CodeMirror {
+  background: #2d2d2d !important; }
+
+.cm-s-tomorrow.CodeMirror {
+  color: #cccccc !important; }
+
+.cm-s-tomorrow div.CodeMirror-selected {
+  background: #49483E !important; }
+
+.cm-s-tomorrow.CodeMirror ::selection {
+  background: rgba(73, 72, 62, 0.99); }
+
+.cm-s-tomorrow.CodeMirror ::-moz-selection {
+  background: rgba(73, 72, 62, 0.99); }
+
+.cm-s-tomorrow .CodeMirror-gutters {
+  background: rgba(0, 0, 0, 0) !important;
+  border: none; }
+
+.cm-s-tomorrow .CodeMirror-guttermarker {
+  color: #1d75b3 !important; }
+
+.cm-s-tomorrow .CodeMirror-guttermarker-subtle {
+  color: #575757 !important; }
+
+.cm-s-tomorrow .CodeMirror-linenumber {
+  color: #575757 !important; }
+
+.cm-s-tomorrow .CodeMirror-cursor {
+  border-color: #cccccc !important; }
+
+.cm-s-tomorrow span.cm-comment {
+  color: #999999 !important; }
+
+.cm-s-tomorrow span.cm-atom {
+  color: #f08d49 !important; }
+
+.cm-s-tomorrow span.cm-number {
+  color: #f08d49 !important; }
+
+.cm-s-tomorrow span.cm-property {
+  color: #cccccc !important; }
+
+.cm-s-tomorrow span.cm-attribute {
+  color: #cccccc !important; }
+
+.cm-s-tomorrow span.cm-keyword {
+  color: #cccccc !important; }
+
+.cm-s-tomorrow span.cm-string {
+  color: #7ec699 !important; }
+
+.cm-s-tomorrow span.cm-string-2 {
+  color: #7ec699 !important; }
+
+.cm-s-tomorrow span.cm-variable {
+  color: #cccccc !important; }
+
+.cm-s-tomorrow span.cm-variable-2 {
+  color: #cccccc !important; }
+
+.cm-s-tomorrow span.cm-def {
+  color: #2e383c !important; }
+
+.cm-s-tomorrow span.cm-bracket {
+  color: #2e383c !important; }
+
+.cm-s-tomorrow span.cm-tag {
+  color: #e2777a !important; }
+
+.cm-s-tomorrow span.cm-link {
+  color: #7ec699 !important; }
+
+.cm-s-tomorrow span.cm-error {
+  background: rgba(0, 0, 0, 0) !important; }
+
+.cm-s-tomorrow span.cm-error {
+  color: #2e383c !important; }
+
+.cm-s-tomorrow .CodeMirror-activeline-background {
+  color: #2e383c !important; }
+
+.cm-s-tomorrow .CodeMirror-matchingbracket {
+  color: lime !important; }
+.theme-tomorrow-css-check:before {
+  content: 'loaded';
+  display: none; }
+
+.extras .icon svg {
+  fill: #fff; }
+
+.extras .icon:hover {
+  background-color: #333; }

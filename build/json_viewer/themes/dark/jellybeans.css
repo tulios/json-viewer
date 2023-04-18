@@ -1,0 +1,93 @@
+.cm-s-jellybeans.CodeMirror {
+  background: #151515 !important; }
+
+.cm-s-jellybeans.CodeMirror {
+  color: #e3a559 !important; }
+
+.cm-s-jellybeans div.CodeMirror-selected {
+  background: #49483E !important; }
+
+.cm-s-jellybeans.CodeMirror ::selection {
+  background: rgba(73, 72, 62, 0.99); }
+
+.cm-s-jellybeans.CodeMirror ::-moz-selection {
+  background: rgba(73, 72, 62, 0.99); }
+
+.cm-s-jellybeans .CodeMirror-gutters {
+  background: rgba(0, 0, 0, 0) !important;
+  border: none; }
+
+.cm-s-jellybeans .CodeMirror-guttermarker {
+  color: #1d75b3 !important; }
+
+.cm-s-jellybeans .CodeMirror-guttermarker-subtle {
+  color: #5B5B5B !important; }
+
+.cm-s-jellybeans .CodeMirror-linenumber {
+  color: #5B5B5B !important; }
+
+.cm-s-jellybeans .CodeMirror-cursor {
+  border-color: #2e383c !important; }
+
+.cm-s-jellybeans span.cm-comment {
+  color: #858a81 !important; }
+
+.cm-s-jellybeans span.cm-atom {
+  color: #a24c3e !important; }
+
+.cm-s-jellybeans span.cm-number {
+  color: #a24c3e !important; }
+
+.cm-s-jellybeans span.cm-property {
+  color: #818e5b !important; }
+
+.cm-s-jellybeans span.cm-attribute {
+  color: #818e5b !important; }
+
+.cm-s-jellybeans span.cm-keyword {
+  color: #818e5b !important; }
+
+.cm-s-jellybeans span.cm-string {
+  color: #818e5b !important; }
+
+.cm-s-jellybeans span.cm-string-2 {
+  color: #818e5b !important; }
+
+.cm-s-jellybeans span.cm-variable {
+  color: #818e5b !important; }
+
+.cm-s-jellybeans span.cm-variable-2 {
+  color: #818e5b !important; }
+
+.cm-s-jellybeans span.cm-def {
+  color: #2e383c !important; }
+
+.cm-s-jellybeans span.cm-bracket {
+  color: #2e383c !important; }
+
+.cm-s-jellybeans span.cm-tag {
+  color: #9c3328 !important; }
+
+.cm-s-jellybeans span.cm-link {
+  color: #818e5b !important; }
+
+.cm-s-jellybeans span.cm-error {
+  background: rgba(0, 0, 0, 0) !important; }
+
+.cm-s-jellybeans span.cm-error {
+  color: #2e383c !important; }
+
+.cm-s-jellybeans .CodeMirror-activeline-background {
+  color: #2e383c !important; }
+
+.cm-s-jellybeans .CodeMirror-matchingbracket {
+  color: lime !important; }
+.theme-jellybeans-css-check:before {
+  content: 'loaded';
+  display: none; }
+
+.extras .icon svg {
+  fill: #fff; }
+
+.extras .icon:hover {
+  background-color: #333; }
