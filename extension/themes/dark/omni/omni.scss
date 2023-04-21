@@ -1,0 +1,20 @@
+.theme-omni-css-check:before {
+  content: 'loaded';
+  display: none;
+}
+
+.cm-s-omni .CodeMirror-selected {
+  background: rgb(25,22,34);
+}
+
+.extras {
+  .icon {
+    svg {
+      fill: #E1E1E6;
+    }
+
+    &:hover {
+      background-color: #44475a;
+    }
+  }
+}
