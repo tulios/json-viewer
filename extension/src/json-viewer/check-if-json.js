@@ -23,8 +23,15 @@ function getPreWithSource() {
   }
 
   var childNode = childNodes[0];
-  var nodeName = childNode.nodeName
-  var textContent = childNode.textContent
+  var nodeName = childNode.nodeName;
+  var textContent = childNode.textContent;
+
+  // skip chrome's built-in pretty print button
+  if (nodeName === "DIV" && childNodes.length > 1) {
+    childNode = childNodes[1];
+    nodeName = childNode.nodeName;
+    textContent = childNode.textContent;
+  }
 
   if (nodeName === "PRE") {
     return childNode;
