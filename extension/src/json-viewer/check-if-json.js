@@ -26,11 +26,11 @@ function getPreWithSource() {
   var nodeName = childNode.nodeName;
   var textContent = childNode.textContent;
 
-  // handle chrome's built-in pretty print button
+  // skip chrome's built-in pretty print button
   if (nodeName === "DIV" && childNodes.length > 1) {
-    childNode.remove();
-
-    return getPreWithSource();
+    childNode = childNodes[1];
+    nodeName = childNode.nodeName;
+    textContent = childNode.textContent;
   }
 
   if (nodeName === "PRE") {
