@@ -59,7 +59,7 @@ function relativePath() {
 }
 
 function absolutePath() {
-    return "(?:(?:https?|ftp)://)" +        /* protocol identifier*/
+    return "(?:(?:https?|ftp|devtools)://)" +        /* protocol identifier*/
         "(?:\\S+(?::\\S*)?@)?" +            /* user:pass authentication*/
         "(?:" +
         "(?:\\[[a-f0-9.:]+\\])" +           /* IPv6 or hybrid addresses*/
