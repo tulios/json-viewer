@@ -61,7 +61,7 @@ Features:
 
   [http://graph.facebook.com/github](http://graph.facebook.com/github)
 
-  [https//api.github.com](https://api.github.com)
+  [https://api.github.com](https://api.github.com)
 
   [https://api.github.com/gists/public](https://api.github.com/gists/public)
 
