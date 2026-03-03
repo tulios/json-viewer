@@ -10,7 +10,7 @@
 
     <div class="container">
       <h1>
-        <span class="logo" title="JSON Viewer"></span>
+        <span class="logo" title="JSON Viewer" role="img" aria-label="JSON Viewer logo"></span>
         <span class="page-title">Options page</span>
       </h1>
 
@@ -20,7 +20,8 @@
         </header>
 
         <div class="select-style">
-          <select id="themes" name="theme"></select>
+          <label for="themes" class="visually-hidden">Select theme</label>
+          <select id="themes" name="theme" aria-label="Select theme"></select>
         </div>
         <textarea id="themes-example" name="themes-example" disabled="disabled" style="display: none;">
         </textarea>
@@ -96,9 +97,9 @@
 
         <div class="action-bar">
           <div class="container">
-            <a class="version" target="_blank"></a>
-            <button id="reset">Reset to defaults</button>
-            <button id="save">Save</button>
+            <a class="version" target="_blank" aria-label="View version on GitHub"></a>
+            <button type="button" id="reset">Reset to defaults</button>
+            <button type="submit" id="save">Save</button>
           </div>
         </div>
       </form>
