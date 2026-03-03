@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <link type="text/css" rel="stylesheet" href="../assets/options.css">
@@ -10,7 +10,7 @@
 
     <div class="container">
       <h1>
-        <span class="logo" title="JSON Viewer"></span>
+        <span class="logo" role="img" aria-label="JSON Viewer logo"></span>
         <span class="page-title">Options page</span>
       </h1>
 
@@ -20,7 +20,7 @@
         </header>
 
         <div class="select-style">
-          <select id="themes" name="theme"></select>
+          <select id="themes" name="theme" aria-label="Select theme"></select>
         </div>
         <textarea id="themes-example" name="themes-example" disabled="disabled" style="display: none;">
         </textarea>
@@ -97,8 +97,8 @@
         <div class="action-bar">
           <div class="container">
             <a class="version" target="_blank"></a>
-            <button id="reset">Reset to defaults</button>
-            <button id="save">Save</button>
+            <button id="reset" aria-label="Reset to defaults">Reset to defaults</button>
+            <button id="save" aria-label="Save settings">Save</button>
           </div>
         </div>
       </form>

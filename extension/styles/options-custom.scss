@@ -3,7 +3,8 @@ body {
 }
 
 *:focus {
-  outline: 0;
+  outline: 2px solid #378de5;
+  outline-offset: 2px;
 }
 
 .container {
