@@ -8,7 +8,12 @@ body {
 }
 
 *:focus-visible {
-  outline: 2px solid #378de5;
+  outline: 3px solid #378de5;
+  outline-offset: 2px;
+}
+
+.select-style select:focus-visible {
+  outline: 3px solid #378de5;
   outline-offset: 2px;
 }
 
@@ -16,6 +21,19 @@ body {
   position: relative;
   max-width: 1150px;
   margin: 0 auto;
+
+  /* Accessibility: Visually hidden but screen reader accessible */
+  .visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
 
   .version {
     float: left;
@@ -63,7 +81,7 @@ header {
 
   .hint {
     font-style: italic;
-    color: #999;
+    color: #666;
     font-family: 'Helvetica Neue', Arial, sans-serif;
   }
 }

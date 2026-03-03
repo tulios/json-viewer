@@ -10,7 +10,8 @@
 
     <div class="container">
       <h1>
-        <span class="logo" title="JSON Viewer" role="img" aria-label="JSON Viewer logo"></span>
+        <span class="logo" role="img" aria-hidden="true"></span>
+        <span class="visually-hidden">JSON Viewer</span>
         <span class="page-title">Options page</span>
       </h1>
 
@@ -97,9 +98,9 @@
 
         <div class="action-bar">
           <div class="container">
-            <a class="version" target="_blank" aria-label="View version on GitHub"></a>
-            <button type="button" id="reset">Reset to defaults</button>
-            <button type="submit" id="save">Save</button>
+            <a class="version" target="_blank" aria-label="View version on GitHub">View version</a>
+            <button type="button" id="reset" aria-label="Reset all settings to defaults">Reset to defaults</button>
+            <button type="submit" id="save" aria-label="Save settings">Save</button>
           </div>
         </div>
       </form>
