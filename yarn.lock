@@ -1255,8 +1255,8 @@ foreground-child@^3.1.0:
     signal-exit "^4.0.1"
 
 fs-extra@11.3.x:
-  version "11.3.4"
-  resolved "https://registry.yarnpkg.com/fs-extra/-/fs-extra-11.3.4.tgz#ab6934eca8bcf6f7f6b82742e33591f86301d6fc"
+  version "11.3.5"
+  resolved "https://registry.yarnpkg.com/fs-extra/-/fs-extra-11.3.5.tgz#07a44eff40bea53e719909a532f91a23bf0769ff"
   dependencies:
     graceful-fs "^4.2.0"
     jsonfile "^6.0.1"
