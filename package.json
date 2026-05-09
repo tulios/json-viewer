@@ -6,7 +6,7 @@
   "repository": "https://github.com/tulios/json-viewer",
   "private": true,
   "dependencies": {
-    "archiver": "7.0.x",
+    "archiver": "8.0.x",
     "clean-webpack-plugin": "4.0.x",
     "codemirror": "6.0.x",
     "css-loader": "7.1.x",
