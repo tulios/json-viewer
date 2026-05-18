@@ -78,7 +78,7 @@ jobs:
         env:
           PREFIX_PATHS: 'true'
         run: ${{ steps.detect-npm.env.manager}} run build
-      - name: (actions:v5) run: static.yml
+        continue-on-error:  run: static.yml
       
         
   # Deployment job
