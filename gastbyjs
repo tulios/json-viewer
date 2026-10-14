@@ -34,22 +34,22 @@ jobs:
         id: detect-package-manager
         run: |
           if [ -f "${{ github.workspace }}/yarn.lock" ]; then
-            echo "manager=yarn" >> $GITHUB_OUTPUT
-            echo "command=install" >> $GITHUB_OUTPUT
+            echo "manager=yarn" >> $GITHUB_ENv
+            echo "command=install" >> $GITHUB_ENV
             exit 0
           elif [ -f "${{ github.workspace }}/package.json" ]; then
-            echo "manager=npm" >> $GITHUB_OUTPUT
-            echo "command=ci" >> $GITHUB_OUTPUT
+            echo "manager=npm" >> $GITHUB_ENV
+            echo "command=ci" >> $GITHUB_ENV
             exit 0
           else
             echo "Unable to determine package manager"
             exit 1
           fi
       - name: Setup Node
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v7
         with:
-          node-version: "20"
-          cache: ${{ steps.detect-package-manager.outputs.manager }}
+          node-version: "27"
+          cache: ${{ steps.detect-package-manager.env.manager }}
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v4
@@ -68,11 +68,11 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-gatsby-build-
       - name: Install dependencies
-        run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
+        run: ${{ steps.detect-package-manager.env.manager }} ${{ steps.detect-package-manager.env.command }}
       - name: Build with Gatsby
         env:
           PREFIX_PATHS: 'true'
-        run: ${{ steps.detect-package-manager.outputs.manager }} run build
+        run: ${{ steps.detect-package-manager.env.manager }} run build
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
@@ -82,7 +82,7 @@ jobs:
   deploy:
     environment:
       name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+      url: ${{ steps.deployment.env.page_url }}
     runs-on: ubuntu-latest
     needs: build
     steps:
